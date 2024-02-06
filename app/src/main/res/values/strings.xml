@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Alawan</string>
+    <string name="login">Se connecter</string>
+    <string name="logo">Logo</string>
+    <string name="user">Nom d\'utilisateur</string>
+    <string name="password">Mot de passe</string>
+    <string name="background">Background</string>
 </resources>
