@@ -3,10 +3,13 @@
     <string name="login">Se connecter</string>
     <string name="logo">Logo</string>
     <string name="user">Nom d\'utilisateur</string>
+    <string name="nom">Nom complet</string>
     <string name="password">Mot de passe</string>
+    <string name="confirmerPassword">Confirmer le mot de passe</string>
     <string name="background">Background</string>
     <string name="email">Adresse courriel</string>
     <string name="oublieMdp">Mot de passe oublié?</string>
     <string name="creerCompte">Vous n\'avez pas de compte?</string>
     <string name="inscrire">S\'inscrire</string>
+    <string name="creerCompteTitre">Créer un compte</string>
 </resources>
