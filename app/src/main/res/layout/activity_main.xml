@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:pointerIcon="arrow"
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/background"
         android:layout_width="425dp"
         android:layout_height="768dp"
         android:contentDescription="@string/background"
@@ -15,45 +16,124 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.513"
         app:srcCompat="@drawable/BackgroundLoginAlawan" />
 
+    <ImageView
+        android:id="@+id/emailLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/passwordLogo"
+        app:layout_constraintEnd_toStartOf="@+id/email"
+        app:layout_constraintHorizontal_bias="0.694"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.913"
+        app:srcCompat="@drawable/mail_logo" />
+
+    <ImageView
+        android:id="@+id/passwordLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.105"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/password_logo" />
+
     <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="250dp"
+        android:id="@+id/email"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="4dp"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:pointerIcon="context_menu"
+        android:textColor="#357266"
+        android:textColorHighlight="#A3BBAD"
+        android:textColorHint="#357266"
+        android:textColorLink="#A3BBAD"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.747"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/oubliePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="168dp"
+        android:text="@string/oublieMdp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginBottom="44dp"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:textColor="#357266"
+        android:textColorHighlight="#A3BBAD"
+        android:textColorHint="#357266"
+        android:textColorLink="#A3BBAD"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.751"
+        app:layout_constraintHorizontal_bias="0.747"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="@string/user"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.751"
+    <TextView
+        android:id="@+id/inscrireTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/creerCompte"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="330dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="60dp"
-        android:text="@string/login"
-        android:textSize="24sp"
+    <TextView
+        android:id="@+id/inscrireLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:text="@string/inscrire"
+        android:textColor="#357266"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintStart_toEndOf="@+id/inscrireTV" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="330dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="80dp"
+        android:background="#A3BBAD"
+        android:foregroundTintMode="add"
+        android:text="@string/login"
+        android:textColor="#000000"
+        android:textColorHighlight="#A3BBAD"
+        android:textColorLink="#A3BBAD"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

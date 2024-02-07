@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="vertPale">#A3BBAD</color>
+    <color name="vertFonce">#357266</color>
+    <color name="rouge">#B3001B</color>
+    <color name="bleu">#0E3B43</color>
 </resources>

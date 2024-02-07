@@ -5,4 +5,8 @@
     <string name="user">Nom d\'utilisateur</string>
     <string name="password">Mot de passe</string>
     <string name="background">Background</string>
+    <string name="email">Adresse courriel</string>
+    <string name="oublieMdp">Mot de passe oublié?</string>
+    <string name="creerCompte">Vous n\'avez pas de compte?</string>
+    <string name="inscrire">S\'inscrire</string>
 </resources>
