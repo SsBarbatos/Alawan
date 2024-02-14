@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mapMenu"
+        android:title="Acceuil"
+        android:icon="@drawable/ic_home_clicked"/>
+    <item
+        android:id="@+id/rechercheMenu"
+        android:title="Recherche"
+        android:icon="@drawable/ic_search" />
+    <item
+        android:id="@+id/profileMenu"
+        android:title="Profile"
+        android:icon="@drawable/ic_profile"/>
+    <item
+        android:id="@+id/chatMenu"
+        android:title="Chat"
+        android:icon="@drawable/ic_chat"/>
+</menu>
