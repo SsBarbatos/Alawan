@@ -12,4 +12,6 @@
     <string name="creerCompte">Vous n\'avez pas de compte?</string>
     <string name="inscrire">S\'inscrire</string>
     <string name="creerCompteTitre">Créer un compte</string>
+    <string name="reinitialisationMdp">Réinitialiser le mot de passe</string>
+    <string name="reinitialiser">Réinitialiser</string>
 </resources>
