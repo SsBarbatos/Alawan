@@ -18,76 +18,10 @@
         app:srcCompat="@drawable/BackgroundAlawan" />
 
     <EditText
-        android:id="@+id/etNom"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="@string/nom"
-        android:inputType="text"
-        android:textColor="@color/vertFonce"
-        android:textColorHighlight="@color/vertPale"
-        android:textColorHint="@color/vertFonce"
-        android:textColorLink="@color/vertPale"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/etMail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.767"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/logoNom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/logoMail"
-        app:layout_constraintEnd_toStartOf="@+id/etNom"
-        app:layout_constraintHorizontal_bias="0.854"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.839"
-        app:srcCompat="@drawable/baseline_person_outline_24" />
-
-    <EditText
-        android:id="@+id/etMail"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/vertFonce"
-        android:textColorHighlight="@color/vertPale"
-        android:textColorHint="@color/vertFonce"
-        android:textColorLink="@color/vertPale"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/etMdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.767"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/etMdp"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:textColor="@color/vertFonce"
-        android:textColorHighlight="@color/vertPale"
-        android:textColorHint="@color/vertFonce"
-        android:textColorLink="@color/vertPale"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/etMdpConf"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.767"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
         android:id="@+id/etMdpConf"
-        android:layout_width="300dp"
+        android:layout_width="260dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="152dp"
+        android:layout_marginBottom="140dp"
         android:ems="10"
         android:hint="@string/confirmerPassword"
         android:inputType="textPassword"
@@ -98,46 +32,12 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.758"
+        app:layout_constraintHorizontal_bias="0.635"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/logoMail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        app:layout_constraintBottom_toTopOf="@+id/logoMdp1"
-        app:layout_constraintEnd_toStartOf="@+id/etMail"
-        app:layout_constraintHorizontal_bias="0.854"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/mail_logo" />
-
-    <ImageView
-        android:id="@+id/logoMdp1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="460dp"
-        app:layout_constraintEnd_toStartOf="@+id/etMdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/password_logo" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/etMdpConf"
-        app:layout_constraintHorizontal_bias="0.868"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoMdp1"
-        app:layout_constraintVertical_bias="0.25"
-        app:srcCompat="@drawable/password_logo" />
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/creerCompteTitre"
         android:textColor="@color/black"
@@ -145,10 +45,64 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/etNom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.92" />
+        app:layout_constraintVertical_bias="0.936" />
+
+    <EditText
+        android:id="@+id/etMail"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/vertFonce"
+        android:textColorHighlight="@color/vertPale"
+        android:textColorHint="@color/vertFonce"
+        android:textColorLink="@color/vertPale"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/etMdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etMdp"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textColor="@color/vertFonce"
+        android:textColorHighlight="@color/vertPale"
+        android:textColorHint="@color/vertFonce"
+        android:textColorLink="@color/vertPale"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/etMdpConf"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etNom"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="@string/nom"
+        android:inputType="text"
+        android:textColor="@color/vertFonce"
+        android:textColorHighlight="@color/vertPale"
+        android:textColorHint="@color/vertFonce"
+        android:textColorLink="@color/vertPale"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/etMail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.642"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btSignIn"
@@ -157,6 +111,7 @@
         android:text="@string/inscrire"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:background="@color/vertFonce"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
