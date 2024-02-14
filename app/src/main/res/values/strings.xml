@@ -14,4 +14,6 @@
     <string name="creerCompteTitre">Créer un compte</string>
     <string name="reinitialisationMdp">Réinitialiser le mot de passe</string>
     <string name="reinitialiser">Réinitialiser</string>
+    <string name="nomApp">Alawan</string>
+
 </resources>
