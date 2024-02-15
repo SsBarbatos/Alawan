@@ -3,31 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/bg_log" />
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_log">
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="69dp"
         android:layout_height="75dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.053"
+        app:layout_constraintVertical_bias="0.033"
         app:srcCompat="@drawable/logo_1" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="160dp"
+        android:layout_height="92dp"
+        android:fontFamily="@font/inter_black"
+        android:text="Creer un compte "
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.219"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.347" />
 
     <EditText
         android:id="@+id/etMail"
@@ -48,12 +52,10 @@
         android:textStyle="bold"
         app:boxBackgroundMode="none"
 
-        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNom"
-        app:layout_constraintVertical_bias="0.003"
         app:underlineColorAndroid="transparent" />
 
     <EditText
@@ -75,12 +77,10 @@
         android:textColorLink="@color/GreenText"
         android:textStyle="bold"
         app:boxBackgroundMode="none"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPwd"
-        app:layout_constraintVertical_bias="0.0"
         app:underlineColorAndroid="transparent" />
 
     <EditText
@@ -102,13 +102,12 @@
         android:textColorLink="@color/GreenText"
         android:textStyle="bold"
         app:boxBackgroundMode="none"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etMail"
-        app:layout_constraintVertical_bias="0.003"
         app:underlineColorAndroid="transparent" />
+
 
     <EditText
         android:id="@+id/etNom"
@@ -129,28 +128,11 @@
 
         android:textStyle="bold"
         app:boxBackgroundMode="none"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.556"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.035"
         app:underlineColorAndroid="transparent" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="160dp"
-        android:layout_height="92dp"
-        android:fontFamily="@font/inter_black"
-        android:text="Creer un compte "
-        android:textColor="@color/black"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.219"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView8"
-        app:layout_constraintVertical_bias="0.348" />
 
     <Button
         android:id="@+id/button7"
