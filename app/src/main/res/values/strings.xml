@@ -17,5 +17,10 @@
     <string name="nomApp">Alawan</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="bonjour">Bonjour "nom",</string>
+    <string name="soustitreBonjour">Nous espérons que vos animaux se portent bien</string>
+    <string name="alerteEnCours">Alertes en cours : </string>
+    <string name="vosAnimaux">Vos animaux : </string>
+    <string name="compagnons">Compagnons</string>
+    <string name="alertes">Alertes</string>
 </resources>
