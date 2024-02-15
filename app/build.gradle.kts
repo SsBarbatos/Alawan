@@ -29,6 +29,7 @@ android {
 }
 
 dependencies {
+    implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     var nav_version = "2.5.3"
     implementation("androidx.appcompat:appcompat:1.6.1")
