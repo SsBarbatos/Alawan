@@ -34,4 +34,8 @@
     <string name="deconnexion">Déconnexion</string>
     <string name="modifierAdresse">Modifier l\'adresse</string>
     <string name="aide">Aide</string>
+    <string name="ville">Ville</string>
+    <string name="rue">Rue</string>
+    <string name="numeroRue">Numéro</string>
+    <string name="postal">Code postal</string>
 </resources>

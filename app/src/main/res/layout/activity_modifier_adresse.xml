@@ -33,55 +33,62 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/et_ville"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="108dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:text="@string/ville"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText2"
+        android:textStyle="bold"
+        android:drawableStart="@drawable/ic_pin_black"
+        android:drawablePadding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/et_rue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintVertical_bias="0.391" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/et_rue"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="12dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText3"
+        android:text="@string/rue"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/et_num"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/et_num"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="12dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText4"
+        android:text="@string/numeroRue"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/et_postal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText4"
+        android:id="@+id/et_postal"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:text="@string/postal"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="305dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
