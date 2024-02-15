@@ -39,7 +39,6 @@
         android:layout_height="50dp"
         android:layout_marginTop="352dp"
         android:drawableStart="@drawable/ic_mail"
-        android:drawableLeft="@drawable/ic_mail"
         android:drawablePadding="10dp"
         android:hint="@string/email"
         android:textColorHint="@color/GreenText"

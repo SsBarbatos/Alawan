@@ -8,13 +8,13 @@
 
     <ScrollView
         android:id="@+id/svAlerteAnimaux"
-        android:layout_width="413dp"
-        android:layout_height="510dp"
+        android:layout_width="407dp"
+        android:layout_height="700dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" >
+        app:layout_constraintVertical_bias="1.0">
 
     </ScrollView>
 
@@ -38,11 +38,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginBottom="40dp"
         android:text="@string/soustitreBonjour"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="43dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btCompagnons"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/ivSetting"
@@ -85,7 +86,7 @@
         app:layout_constraintBottom_toTopOf="@+id/svAlerteAnimaux"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.763" />
+        app:layout_constraintVertical_bias="0.806" />
 
     <ImageView
         android:id="@+id/imageView12"
