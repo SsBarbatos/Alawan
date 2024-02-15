@@ -3,11 +3,11 @@
     <string name="login">Se connecter</string>
     <string name="logo">Logo</string>
     <string name="user">Nom d\'utilisateur</string>
-    <string name="nom">Nom complet</string>
+    <string name="nomComplet">Nom complet</string>
     <string name="password">Mot de passe</string>
     <string name="confirmerPassword">Confirmer le mot de passe</string>
     <string name="background">Background</string>
-    <string name="email">Adresse courriel</string>
+    <string name="email">courriel@test.com</string>
     <string name="oublieMdp">Mot de passe oublié?</string>
     <string name="creerCompte">Vous n\'avez pas de compte?</string>
     <string name="inscrire">S\'inscrire</string>
@@ -22,5 +22,11 @@
     <string name="alerteEnCours">Alertes en cours : </string>
     <string name="vosAnimaux">Vos animaux : </string>
     <string name="compagnons">Compagnons</string>
-    <string name="alertes">Alertes</string>
+    <string name="prenom">Prénom</string>
+    <string name="nom">Nom de famille</string>
+    <string name="modifierProfil">Modifier le profil</string>
+    <string name="telephone">(000) 000\-0000</string>
+    <string name="deconnexion">Déconnexion</string>
+    <string name="modifierAdresse">Modifier l\'adresse</string>
+    <string name="aide">Aide</string>
 </resources>
