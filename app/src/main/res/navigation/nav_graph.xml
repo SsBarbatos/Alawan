@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/map">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.example.alawan.Map"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_map_to_recherche"
+            app:destination="@id/recherche" />
+    </fragment>
+    <fragment
+        android:id="@+id/recherche"
+        android:name="com.example.alawan.Recherche"
+        android:label="fragment_recherche"
+        tools:layout="@layout/fragment_recherche" />
+</navigation>
