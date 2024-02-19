@@ -176,11 +176,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-<<<<<<< Updated upstream
-        android:id="@+id/imageView8"
-=======
         android:id="@+id/iv_alerte_menu"
->>>>>>> Stashed changes
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginBottom="60dp"
