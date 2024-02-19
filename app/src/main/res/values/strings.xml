@@ -43,4 +43,6 @@
     <string name="nouveauCompagnon">Nouveau compagnon ?</string>
     <string name="adresseTrouve">Adresse</string>
     <string name="descriptionAnimal">Description de l\'animal</string>
+    <string name="chienPerdu">Chiens perdus dans la région</string>
+
 </resources>

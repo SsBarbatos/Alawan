@@ -8,7 +8,7 @@
     tools:context=".ModifierProfil">
 
     <TextView
-        android:id="@+id/tv_title_profil"
+        android:id="@+id/tv_title_modifierprofil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_prenom_profil"
+        android:id="@+id/et_prenom_modifierprofil"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="108dp"
@@ -34,7 +34,7 @@
         android:hint="@string/prenom"
         android:inputType="text"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_nom_profil"
+        app:layout_constraintBottom_toTopOf="@+id/et_nom_modifierprofil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
         app:layout_constraintVertical_bias="0.687" />
 
     <EditText
-        android:id="@+id/et_nom_profil"
+        android:id="@+id/et_nom_modifierprofil"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="12dp"
@@ -54,13 +54,13 @@
         android:hint="@string/nom"
         android:inputType="text"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_mail_profil"
+        app:layout_constraintBottom_toTopOf="@+id/et_mail_modifierprofil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/et_mail_profil"
+        android:id="@+id/et_mail_modifierprofil"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="12dp"
@@ -72,13 +72,13 @@
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_phone_profil"
+        app:layout_constraintBottom_toTopOf="@+id/et_phone_modifierprofil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/et_phone_profil"
+        android:id="@+id/et_phone_modifierprofil"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
@@ -90,13 +90,13 @@
         android:hint="@string/telephone"
         android:inputType="phone"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bt_modifier_adresse_profil"
+        app:layout_constraintBottom_toTopOf="@+id/bt_modifieradresse_modifierprofil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/iv_back_profil"
+        android:id="@+id/iv_back_modifierprofil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -106,7 +106,7 @@
         app:srcCompat="@drawable/ic_back" />
 
     <Button
-        android:id="@+id/bt_modifier_adresse_profil"
+        android:id="@+id/bt_modifieradresse_modifierprofil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
@@ -119,13 +119,13 @@
         android:textColor="@color/GreenText"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bt_aide_profil"
+        app:layout_constraintBottom_toTopOf="@+id/bt_aide_modifierprofil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.771"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/bt_aide_profil"
+        android:id="@+id/bt_aide_modifierprofil"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginBottom="420dp"
@@ -144,7 +144,8 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/bt_deconnexion_profil"
+
+        android:id="@+id/bt_deconnexion_modifierprofil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

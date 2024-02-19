@@ -9,7 +9,7 @@
     tools:layout_editor_absoluteY="4dp">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/iv_logo_login"
         android:layout_width="69dp"
         android:layout_height="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/logo_1" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_connecter_login"
         android:layout_width="245dp"
         android:layout_height="51dp"
         android:fontFamily="@font/inter_black"
@@ -36,7 +36,7 @@
         app:layout_constraintVertical_bias="0.331" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText2"
+        android:id="@+id/et_email_login"
         android:layout_width="314dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
@@ -47,10 +47,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_connecter_login" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/et_motdepasse_login"
         android:layout_width="311dp"
         android:layout_height="50dp"
         android:layout_marginTop="12dp"
@@ -65,10 +65,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_email_login" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/bt_connecter_longin"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="64dp"
@@ -80,20 +80,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/et_motdepasse_login" />
 
     <RelativeLayout
         android:layout_width="311dp"
         android:layout_height="37dp"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintBottom_toTopOf="@+id/bt_connecter_longin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/et_motdepasse_login"
         app:layout_constraintVertical_bias="0.296">
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/cb_rappeler_login"
             android:layout_width="173dp"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
@@ -101,11 +101,11 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="7dp"
 
-            android:layout_toStartOf="@+id/textView4"
+            android:layout_toStartOf="@+id/tv_motdepasseoublier_login"
             android:text="Se rappeler de moi" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tv_motdepasseoublier_login"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_alignParentEnd="true"
@@ -126,12 +126,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/bt_connecter_longin"
         app:layout_constraintVertical_bias="0.027">
 
 
         <TextView
-            android:id="@+id/button6"
+            android:id="@+id/bt_creercompte_login"
             android:layout_width="wrap_content"
             android:layout_height="27dp"
             android:layout_alignParentEnd="true"
@@ -146,7 +146,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_pascompte_login"
             android:layout_width="189dp"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
@@ -155,8 +155,8 @@
             android:layout_marginLeft="18dp"
             android:layout_marginEnd="13dp"
             android:layout_marginRight="13dp"
-            android:layout_toStartOf="@id/button6"
-            android:layout_toLeftOf="@id/button6"
+            android:layout_toStartOf="@id/bt_creercompte_login"
+            android:layout_toLeftOf="@id/bt_creercompte_login"
             android:gravity="center_horizontal"
             android:text="Vous n'avez pas de compte ?" />
 

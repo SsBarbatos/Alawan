@@ -7,7 +7,7 @@
     android:background="@drawable/bg_log">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/iv_logo_resetpwd"
         android:layout_width="69dp"
         android:layout_height="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,24 +19,24 @@
         app:srcCompat="@drawable/logo_1" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tv_renitialiser_resetpwd"
         android:layout_width="298dp"
         android:layout_height="105dp"
+        android:layout_marginBottom="24dp"
         android:fontFamily="@font/inter_black"
         android:text="Réinitialiser le mot de passe"
         android:textColor="@color/black"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/et_mail_resetpwd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/etMail"
+        android:id="@+id/et_mail_resetpwd"
         android:layout_width="314dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#000000"
         android:drawableStart="@drawable/ic_mail"
         android:drawableLeft="@drawable/ic_mail"
@@ -50,18 +50,16 @@
         android:textColorHint="@color/GreenText"
         android:textColorLink="@color/GreenText"
         android:textStyle="bold"
-        app:boxBackgroundMode="none"
 
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:boxBackgroundMode="none"
+        app:layout_constraintBottom_toTopOf="@+id/bt_renitialiser_resetpwd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.587"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.31"
         app:underlineColorAndroid="transparent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/bt_renitialiser_resetpwd"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="324dp"

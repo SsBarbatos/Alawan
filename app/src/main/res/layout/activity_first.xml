@@ -7,10 +7,10 @@
     android:background="@drawable/bg_simple">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_logo_fist"
         android:layout_width="182dp"
         android:layout_height="234dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button4"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_inviter_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/logo_1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_alawan_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_semibold"
@@ -27,14 +27,14 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/bt_connecter_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo_fist"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/bt_connecter_first"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="12dp"
@@ -43,13 +43,13 @@
         android:text="Se connecter"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/bt_inscrire_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/bt_inscrire_first"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="304dp"
@@ -64,7 +64,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/bt_inviter_first"
         android:layout_width="313dp"
         android:layout_height="50dp"
         android:background="#00FFFFFF"

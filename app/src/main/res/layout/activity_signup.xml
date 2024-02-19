@@ -7,7 +7,7 @@
     android:background="@drawable/bg_log">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/iv_logo_signup"
         android:layout_width="69dp"
         android:layout_height="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/logo_1" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tv_creer_compte_signup"
         android:layout_width="160dp"
         android:layout_height="92dp"
         android:fontFamily="@font/inter_black"
@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.347" />
 
     <EditText
-        android:id="@+id/etMail"
+        android:id="@+id/et_mail_signup"
         android:layout_width="314dp"
         android:layout_height="50dp"
         android:backgroundTint="#000000"
@@ -55,11 +55,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNom"
+        app:layout_constraintTop_toBottomOf="@+id/et_nom_signup"
         app:underlineColorAndroid="transparent" />
 
     <EditText
-        android:id="@+id/etCpwd"
+        android:id="@+id/et_confirmer_signup"
         android:layout_width="314dp"
         android:layout_height="50dp"
         android:backgroundTint="#000000"
@@ -80,11 +80,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPwd"
+        app:layout_constraintTop_toBottomOf="@+id/et_password_signup"
         app:underlineColorAndroid="transparent" />
 
     <EditText
-        android:id="@+id/etPwd"
+        android:id="@+id/et_password_signup"
         android:layout_width="314dp"
         android:layout_height="50dp"
         android:backgroundTint="#000000"
@@ -105,12 +105,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMail"
+        app:layout_constraintTop_toBottomOf="@+id/et_mail_signup"
         app:underlineColorAndroid="transparent" />
 
 
     <EditText
-        android:id="@+id/etNom"
+        android:id="@+id/et_nom_signup"
         android:layout_width="314dp"
         android:layout_height="50dp"
         android:backgroundTint="#000000"
@@ -131,11 +131,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/tv_creer_compte_signup"
         app:underlineColorAndroid="transparent" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/bt_creer_signup"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/bg_btnf"
@@ -147,11 +147,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCpwd"
+        app:layout_constraintTop_toBottomOf="@+id/et_confirmer_signup"
         app:layout_constraintVertical_bias="0.157" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tv_dejacompte_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -160,11 +160,12 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button7"
+        app:layout_constraintTop_toBottomOf="@+id/bt_creer_signup"
         app:layout_constraintVertical_bias="0.092" />
 
     <TextView
-        android:id="@+id/tv_titre_adresse"
+
+        android:id="@+id/tv_seconnecter_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_black"
@@ -175,8 +176,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.111"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/button7"
+        app:layout_constraintStart_toEndOf="@+id/tv_dejacompte_signup"
+        app:layout_constraintTop_toBottomOf="@+id/bt_creer_signup"
         app:layout_constraintVertical_bias="0.092" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
