@@ -8,22 +8,21 @@
     tools:context=".ModifierProfil">
 
     <TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/tv_title_profil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="204dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="188dp"
+        android:fontFamily="@font/inter_black"
         android:text="@string/modifierProfil"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/iv_back"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_prenom"
+        android:id="@+id/et_prenom_profil"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="108dp"
@@ -31,18 +30,19 @@
         android:drawableStart="@drawable/ic_person_black"
         android:drawablePadding="10dp"
         android:ems="10"
+        android:fontFamily="@font/inter_semibold"
+        android:hint="@string/prenom"
         android:inputType="text"
-        android:text="@string/prenom"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_nom"
+        app:layout_constraintBottom_toTopOf="@+id/et_nom_profil"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.441" />
+        app:layout_constraintVertical_bias="0.687" />
 
     <EditText
-        android:id="@+id/et_nom"
+        android:id="@+id/et_nom_profil"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="12dp"
@@ -50,16 +50,17 @@
         android:drawableStart="@drawable/ic_person_black"
         android:drawablePadding="10dp"
         android:ems="10"
+        android:fontFamily="@font/inter_semibold"
+        android:hint="@string/nom"
         android:inputType="text"
-        android:text="@string/nom"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_mail"
+        app:layout_constraintBottom_toTopOf="@+id/et_mail_profil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/et_mail"
+        android:id="@+id/et_mail_profil"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="12dp"
@@ -67,16 +68,17 @@
         android:drawableStart="@drawable/ic_mail_black"
         android:drawablePadding="10dp"
         android:ems="10"
+        android:fontFamily="@font/inter_semibold"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:text="@string/email"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_phone"
+        app:layout_constraintBottom_toTopOf="@+id/et_phone_profil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/et_phone"
+        android:id="@+id/et_phone_profil"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
@@ -84,16 +86,17 @@
         android:drawableStart="@drawable/ic_phone_black"
         android:drawablePadding="10dp"
         android:ems="10"
+        android:fontFamily="@font/inter_semibold"
+        android:hint="@string/telephone"
         android:inputType="phone"
-        android:text="@string/telephone"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bt_modifier_adresse"
+        app:layout_constraintBottom_toTopOf="@+id/bt_modifier_adresse_profil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/iv_back"
+        android:id="@+id/iv_back_profil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -102,25 +105,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />
 
-    <TextView
-        android:id="@+id/textView6"
+    <Button
+        android:id="@+id/bt_modifier_adresse_profil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="24dp"
-        android:text="@string/deconnexion"
-        android:textColor="@color/vertFonce"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/bt_modifier_adresse"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="12dp"
         android:background="#00FFFFFF"
+        android:fontFamily="@font/inter_black"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
         android:text="@string/modifierAdresse"
@@ -128,17 +119,18 @@
         android:textColor="@color/GreenText"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bt_aide"
+        app:layout_constraintBottom_toTopOf="@+id/bt_aide_profil"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.771"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/bt_aide"
-        android:layout_width="300dp"
+        android:id="@+id/bt_aide_profil"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginBottom="420dp"
         android:background="#00FFFFFF"
+        android:fontFamily="@font/inter_black"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
         android:text="@string/aide"
@@ -148,6 +140,24 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bt_deconnexion_profil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/inter_black"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="@string/deconnexion"
+        android:textAlignment="viewStart"
+        android:textColor="@color/vertFonce"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
