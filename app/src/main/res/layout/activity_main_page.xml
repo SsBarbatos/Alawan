@@ -8,15 +8,16 @@
 
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fcView"
+        android:id="@+id/fv_mainpage"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="642dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph" />
 
     <LinearLayout
@@ -38,6 +39,7 @@
             android:paddingRight="30dp">
 
             <LinearLayout
+                android:id="@+id/layout_acceuil_menu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -45,14 +47,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/iconAcceuil"
+                    android:id="@+id/iv_acceuil_menu"
                     android:layout_width="28dp"
                     android:layout_height="36dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/ic_home" />
 
                 <TextView
-                    android:id="@+id/textAcceuil"
+                    android:id="@+id/tv_acceuil_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -60,6 +62,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_recherche_menu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -67,14 +70,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/iconRecherche"
+                    android:id="@+id/iv_recherche_menu"
                     android:layout_width="28dp"
                     android:layout_height="36dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/ic_search" />
 
                 <TextView
-                    android:id="@+id/textRecherche"
+                    android:id="@+id/tv_recherche_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -92,6 +95,7 @@
             android:paddingLeft="30dp">
 
             <LinearLayout
+                android:id="@+id/layout_profil_menu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -99,14 +103,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/iconProfile"
+                    android:id="@+id/iv_profile_menu"
                     android:layout_width="28dp"
                     android:layout_height="36dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/ic_profile" />
 
                 <TextView
-                    android:id="@+id/textProfil"
+                    android:id="@+id/tv_profile_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -114,6 +118,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_chat_menu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -121,14 +126,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/iconChat"
+                    android:id="@+id/iv_chat_menu"
                     android:layout_width="28dp"
                     android:layout_height="36dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/ic_chat" />
 
                 <TextView
-                    android:id="@+id/textChat"
+                    android:id="@+id/tv_chat_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -140,7 +145,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/iv_background_menu"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:layout_marginBottom="28dp"
@@ -150,7 +155,7 @@
         app:srcCompat="@drawable/white_round" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/iv_buttoncentre_menu"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginBottom="33dp"
@@ -160,7 +165,7 @@
         app:srcCompat="@drawable/green_round" />
 
     <TextView
-        android:id="@+id/textAlerteMenu"
+        android:id="@+id/tv_alerte_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="47dp"
@@ -171,7 +176,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
+<<<<<<< Updated upstream
         android:id="@+id/imageView8"
+=======
+        android:id="@+id/iv_alerte_menu"
+>>>>>>> Stashed changes
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginBottom="60dp"
