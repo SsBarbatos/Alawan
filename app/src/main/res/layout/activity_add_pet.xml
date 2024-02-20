@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/white">
@@ -15,120 +14,127 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/iv_ajout_compagnon"
         android:layout_width="257dp"
         android:layout_height="237dp"
         android:layout_marginTop="88dp"
+        android:contentDescription="@string/image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bg_input_img" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/tv_ajout_compagnon"
         android:layout_width="128dp"
         android:layout_height="53dp"
         android:layout_marginBottom="80dp"
         android:fontFamily="@font/inter_semibold"
-        android:text="inserer une photo ici "
+        android:text="@string/insererPhoto"
         android:textAlignment="center"
         android:textColor="#D9D9D9"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
-        app:layout_constraintEnd_toEndOf="@+id/imageView9"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_ajout_compagnon"
+        app:layout_constraintEnd_toEndOf="@+id/iv_ajout_compagnon"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/imageView9" />
+        app:layout_constraintStart_toStartOf="@+id/iv_ajout_compagnon" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/iv_icone_ajout_compagnon"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView16"
-        app:layout_constraintEnd_toEndOf="@+id/textView16"
-        app:layout_constraintStart_toStartOf="@+id/textView16"
+        android:contentDescription="@string/image"
+        app:layout_constraintBottom_toTopOf="@+id/tv_ajout_compagnon"
+        app:layout_constraintEnd_toEndOf="@+id/tv_ajout_compagnon"
+        app:layout_constraintStart_toStartOf="@+id/tv_ajout_compagnon"
         app:srcCompat="@drawable/ic_plus" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/et_nom_ajout_compagnon"
         android:layout_width="308dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
+        android:autofillHints="@string/nomCompagnon"
         android:background="@drawable/bg_carte"
         android:ems="10"
+        android:hint="@string/nomCompagnon"
         android:inputType="text"
-        android:text="Name"
+        android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_ajout_compagnon" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/sp_race_ajout_compagnon"
         android:layout_width="147dp"
         android:layout_height="50dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="12dp"
         android:autofillHints="race"
         android:background="@drawable/bg_carte"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/sp_couleur_ajout_compagnon"
+        app:layout_constraintHorizontal_bias="0.87"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/et_nom_ajout_compagnon" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/sp_couleur_ajout_compagnon"
         android:layout_width="146dp"
         android:layout_height="50dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="48dp"
         android:autofillHints="couleur"
         android:background="@drawable/bg_carte"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/et_nom_ajout_compagnon" />
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/et_date_ajout_compagnon"
         android:layout_width="180dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:autofillHints="@string/dateNaissance"
         android:background="@drawable/bg_carte"
         android:ems="10"
+        android:hint="@string/dateNaissance"
         android:inputType="date"
+        android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintHorizontal_bias="0.233"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_race_ajout_compagnon" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/et_description_ajout_compagnon"
         android:layout_width="308dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-
         android:background="@drawable/bg_carte"
         android:ems="10"
-        android:hint="description"
+        android:hint="@string/description"
+        android:autofillHints="@string/description"
         android:inputType="text"
         android:padding="8dp"
-        android:text="Description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        app:layout_constraintTop_toBottomOf="@+id/et_date_ajout_compagnon" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/bt_ajout_compagnon"
         android:layout_width="310dp"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/bg_btnf"
-        android:text="Ajouter un compagnon"
+        android:fontFamily="@font/inter_black"
+        android:text="@string/ajouterCompagnon"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_description_ajout_compagnon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

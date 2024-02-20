@@ -8,8 +8,8 @@
     <string name="confirmerPassword">Confirmer le mot de passe</string>
     <string name="background">Background</string>
     <string name="email">courriel@test.com</string>
-    <string name="oublieMdp">Mot de passe oublié?</string>
-    <string name="creerCompte">Vous n\'avez pas de compte?</string>
+    <string name="oublieMdp">Mot de passe oublié ?</string>
+    <string name="creerCompte">Vous n\'avez pas de compte ?</string>
     <string name="inscrire">S\'inscrire</string>
     <string name="creerCompteTitre">Créer un compte</string>
     <string name="reinitialisationMdp">Réinitialiser le mot de passe</string>
@@ -43,6 +43,16 @@
     <string name="nouveauCompagnon">Nouveau compagnon ?</string>
     <string name="adresseTrouve">Adresse</string>
     <string name="descriptionAnimal">Description de l\'animal</string>
-    <string name="datePerdu">Date perdue</string>
+    <string name="datePerdue">Date perdue</string>
     <string name="lancerAlerte">Lancer l\'alerte</string>
+    <string name="title_activity_maps">Maps</string>
+    <string name="continuerInviter">Continuer en tant qu\'invité</string>
+    <string name="image">Image</string>
+    <string name="insererPhoto">Insérer une photo ici </string>
+    <string name="description">Description</string>
+    <string name="nomCompagnon">Nom de votre compagnon</string>
+    <string name="dateNaissance">Date de naissance</string>
+    <string name="ajouterCompagnon">Ajouter un compagnon</string>
+    <string name="textview">Text view</string>
+    <string name="rappeler">Se rappeler de moi</string>
 </resources>

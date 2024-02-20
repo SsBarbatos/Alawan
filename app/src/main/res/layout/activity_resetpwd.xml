@@ -7,7 +7,7 @@
     android:background="@drawable/bg_log">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/iv_alerte_front_main"
         android:layout_width="69dp"
         android:layout_height="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
