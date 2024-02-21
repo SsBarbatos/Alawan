@@ -47,6 +47,7 @@
         android:layout_height="14sp"
         android:layout_marginTop="88dp"
         android:src="@drawable/ic_local_pin"
+        android:contentDescription="@string/image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.179"
         app:layout_constraintStart_toEndOf="@+id/textView9"

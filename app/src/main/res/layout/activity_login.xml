@@ -141,6 +141,7 @@
         android:fontFamily="@font/inter_semibold"
         android:text="@string/rappeler"
         android:textColor="@color/gris"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintHorizontal_bias="0.419"
         app:layout_constraintStart_toStartOf="parent"

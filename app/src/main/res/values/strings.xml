@@ -10,15 +10,17 @@
     <string name="email">courriel@test.com</string>
     <string name="oublieMdp">Mot de passe oublié ?</string>
     <string name="creerCompte">Vous n\'avez pas de compte ?</string>
+    <string name="dejaCompte">Vous avez déjà un compte ?</string>
     <string name="inscrire">S\'inscrire</string>
     <string name="creerCompteTitre">Créer un compte</string>
+    <string name="creerMonCompte">Créer mon compte</string>
     <string name="reinitialisationMdp">Réinitialiser le mot de passe</string>
     <string name="reinitialiser">Réinitialiser</string>
     <string name="nomApp">Alawan</string>
     <string name="acceuilText">Acceuil</string>
     <string name="rechercheText">Recherche</string>
     <string name="chatText">Chat</string>
-    <string name="alerteText">Alerte</string>
+    <string name="alerteText">Alertes</string>
     <string name="profilText">Profil</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
