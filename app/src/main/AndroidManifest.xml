@@ -29,10 +29,6 @@
             android:value="YOUR_API_KEY" />
 
         <activity
-            android:name=".Maps"
-            android:exported="false"
-            android:label="@string/title_activity_maps" />
-        <activity
             android:name=".AjouterAlerte"
             android:exported="false" />
         <activity
@@ -57,7 +53,7 @@
             android:name=".MainPage"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

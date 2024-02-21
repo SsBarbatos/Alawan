@@ -3,7 +3,7 @@ package com.example.alawan;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainPage extends AppCompatActivity
+public class Login extends AppCompatActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
