@@ -56,4 +56,6 @@
     <string name="ajouterCompagnon">Ajouter un compagnon</string>
     <string name="textview">Text view</string>
     <string name="rappeler">Se rappeler de moi</string>
+    <string name="chienPerdu">Chiens perdus dans la région</string>
+
 </resources>

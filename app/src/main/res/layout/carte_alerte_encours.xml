@@ -63,7 +63,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_nom_comp_carte" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/tv_fin_alerte_alerte_encours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"

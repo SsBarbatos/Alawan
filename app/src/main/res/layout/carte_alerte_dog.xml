@@ -62,7 +62,6 @@
             app:layout_constraintStart_toEndOf="@id/iv_comp_carte"
             app:layout_constraintTop_toBottomOf="@id/tv_nom_comp_carte" />
 
-
         <ImageView
             android:id="@+id/iv_alerte_carte"
             android:layout_width="28dp"
