@@ -1,4 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_first" />
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_first"
+    app:startDestination="@id/first">
+
+    <fragment
+        android:id="@+id/first"
+        android:name="com.example.alawan.FirstPage"
+        android:label="First Page"
+        tools:layout="@layout/fragment_first_page"
+        >
+        <action
+            android:id="@+id/action_first_to_nav_graph"
+            app:destination="@id/nav_graph" />
+        <action
+            android:id="@+id/action_first_to_nav_login"
+            app:destination="@id/nav_login" />
+        <action
+            android:id="@+id/action_first_to_nav_signup"
+            app:destination="@id/nav_signup" />
+    </fragment>
+
+    <fragment
+        android:name="com.example.alawan.ResetPassword"
+        android:id="@+id/resetPassword"
+        android:label="Reset Passeword"
+        tools:layout="@layout/fragment_reset_password">
+        <action
+            android:id="@+id/action_resetPassword_to_nav_login"
+            app:destination="@id/nav_login" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.alawan.FragmentLogin"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_nav_login_to_nav_signup"
+            app:destination="@id/nav_signup" />
+        <action
+            android:id="@+id/action_nav_login_to_resetPassword"
+            app:destination="@id/resetPassword" />
+        <action
+            android:id="@+id/action_nav_login_to_nav_graph"
+            app:destination="@id/nav_graph" />
+        <action
+            android:id="@+id/action_nav_login_to_nav_main"
+            app:destination="@id/nav_main" />
+    </fragment>
+
+    <fragment
+        android:label="Signup"
+        android:name="com.example.alawan.Signup"
+        tools:layout="@layout/fragment_signup"
+        android:id="@+id/nav_signup">
+        <action
+            android:id="@+id/action_nav_signup_to_nav_login"
+            app:destination="@id/nav_login" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_main"
+        android:name="com.example.alawan.MainFragment"
+        tools:layout="@layout/fragment_main"
+        android:label="main Fragement"/>
+
+
+
+</navigation>

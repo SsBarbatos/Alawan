@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_log">
+    android:background="@drawable/bg_log"
+    tools:context=".Signup">
 
     <ImageView
         android:id="@+id/iv_alerte_front_main"
@@ -37,13 +39,14 @@
         android:id="@+id/et_mail_signup"
         android:layout_width="314dp"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/email"
         android:backgroundTint="#000000"
         android:drawableStart="@drawable/ic_mail"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
         android:hint="@string/email"
-        android:autofillHints="@string/email"
         android:inputType="text"
         android:textColor="@color/GreenText"
         android:textColorHighlight="@color/GreenText"
@@ -52,14 +55,16 @@
         android:textStyle="bold"
         app:boxBackgroundMode="none"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNom" />
+        app:layout_constraintTop_toBottomOf="@+id/et_nom_signup" />
 
     <EditText
         android:id="@+id/et_confirmer_signup"
         android:layout_width="314dp"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/confirmerPassword"
         android:backgroundTint="#000000"
         android:drawableStart="@drawable/ic_mdp"
         android:drawableEnd="@drawable/ic_hide"
@@ -67,7 +72,6 @@
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
         android:hint="@string/confirmerPassword"
-        android:autofillHints="@string/confirmerPassword"
         android:inputType="textPassword"
         android:textColor="@color/GreenText"
         android:textColorHighlight="@color/GreenText"
@@ -76,14 +80,16 @@
         android:textStyle="bold"
         app:boxBackgroundMode="none"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPwd" />
+        app:layout_constraintTop_toBottomOf="@+id/et_password_signup" />
 
     <EditText
         android:id="@+id/et_password_signup"
         android:layout_width="314dp"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/password"
         android:backgroundTint="#000000"
         android:drawableStart="@drawable/ic_mdp"
         android:drawableEnd="@drawable/ic_hide"
@@ -91,7 +97,6 @@
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
         android:hint="@string/password"
-        android:autofillHints="@string/password"
         android:inputType="textPassword"
         android:textColor="@color/GreenText"
         android:textColorHighlight="@color/GreenText"
@@ -100,21 +105,22 @@
         android:textStyle="bold"
         app:boxBackgroundMode="none"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMail" />
+        app:layout_constraintTop_toBottomOf="@+id/et_mail_signup" />
 
     <EditText
         android:id="@+id/et_nom_signup"
         android:layout_width="314dp"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/nom"
         android:backgroundTint="#000000"
         android:drawableStart="@drawable/ic_person"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
         android:hint="@string/nom"
-        android:autofillHints="@string/nom"
         android:inputType="text"
         android:textColor="@color/GreenText"
         android:textColorHighlight="@color/GreenText"
@@ -123,9 +129,9 @@
         android:textStyle="bold"
         app:boxBackgroundMode="none"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_creer_compte_signup" />
 
     <Button
         android:id="@+id/bt_creer_signup"
