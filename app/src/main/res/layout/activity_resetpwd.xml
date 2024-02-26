@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_log">
 
     <ImageView
-        android:id="@+id/iv_logo_resetpwd"
+        android:id="@+id/iv_alerte_front_main"
         android:layout_width="69dp"
         android:layout_height="75dp"
+        android:contentDescription="@string/image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
@@ -24,7 +24,7 @@
         android:layout_height="105dp"
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/inter_black"
-        android:text="Réinitialiser le mot de passe"
+        android:text="@string/reinitialisationMdp"
         android:textColor="@color/black"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/et_mail_resetpwd"
@@ -39,11 +39,11 @@
         android:layout_marginBottom="24dp"
         android:backgroundTint="#000000"
         android:drawableStart="@drawable/ic_mail"
-        android:drawableLeft="@drawable/ic_mail"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
         android:hint="@string/email"
+        android:autofillHints="@string/email"
         android:inputType="text"
         android:textColor="@color/GreenText"
         android:textColorHighlight="@color/GreenText"
@@ -56,14 +56,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.587"
         app:layout_constraintStart_toStartOf="parent"
-        app:underlineColorAndroid="transparent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.31" />
 
     <Button
         android:id="@+id/bt_renitialiser_resetpwd"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="324dp"
-        android:background="@drawable/btnSignup"
+        android:background="@drawable/btn_signup"
         android:text="@string/reinitialiser"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -72,4 +73,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
+        
 </androidx.constraintlayout.widget.ConstraintLayout>

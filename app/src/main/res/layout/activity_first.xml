@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_simple">
 
     <ImageView
-        android:id="@+id/iv_logo_fist"
+        android:id="@+id/iv_logo_first"
         android:layout_width="182dp"
         android:layout_height="234dp"
+        android:contentDescription="@string/image"
+
         app:layout_constraintBottom_toBottomOf="@+id/bt_inviter_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -19,7 +20,7 @@
         app:srcCompat="@drawable/logo_1" />
 
     <TextView
-        android:id="@+id/tv_alawan_first"
+        android:id="@+id/tv_logo_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_semibold"
@@ -27,10 +28,11 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="34sp"
+
         app:layout_constraintBottom_toTopOf="@+id/bt_connecter_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo_fist"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo_first"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -38,9 +40,9 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="12dp"
-        android:background="@drawable/btnSignIn"
-        android:fontFamily="@font/inter_semibold"
-        android:text="Se connecter"
+        android:background="@drawable/btn_signin"
+        android:fontFamily="@font/inter_black"
+        android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/bt_inscrire_first"
@@ -53,9 +55,9 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="304dp"
-        android:background="@drawable/btnSignup"
-        android:fontFamily="@font/inter_semibold"
-        android:text="S'inscrire"
+        android:background="@drawable/btn_signup"
+        android:fontFamily="@font/inter_black"
+        android:text="@string/inscrire"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,14 +72,13 @@
         android:background="#00FFFFFF"
         android:fontFamily="@font/inter_semibold"
         android:includeFontPadding="false"
-        android:text="Continuer en tant qu’inviter"
+        android:text="@string/continuerInviter"
         android:textColor="@color/gris"
-        android:textDecoration="underline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.981" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

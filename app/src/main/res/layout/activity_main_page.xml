@@ -10,7 +10,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fv_mainpage"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -26,6 +26,7 @@
         android:layout_height="91dp"
         android:background="@color/white"
         android:orientation="horizontal"
+        android:baselineAligned="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -36,7 +37,9 @@
             android:layout_weight="1"
             android:gravity="center|center_horizontal|center_vertical"
             android:orientation="horizontal"
-            android:paddingRight="30dp">
+            android:paddingEnd="30dp"
+            android:paddingStart="0dp"
+            android:baselineAligned="false" >
 
             <LinearLayout
                 android:id="@+id/layout_acceuil_menu"
@@ -74,6 +77,7 @@
                     android:layout_width="28dp"
                     android:layout_height="36dp"
                     android:layout_weight="1"
+                    android:contentDescription="@string/image"
                     app:srcCompat="@drawable/ic_search" />
 
                 <TextView
@@ -92,7 +96,7 @@
             android:layout_weight="1"
             android:gravity="center|center_horizontal"
             android:orientation="horizontal"
-            android:paddingLeft="30dp">
+            android:paddingStart="30dp">
 
             <LinearLayout
                 android:id="@+id/layout_profil_menu"
@@ -130,6 +134,7 @@
                     android:layout_width="28dp"
                     android:layout_height="36dp"
                     android:layout_weight="1"
+                    android:contentDescription="@string/image"
                     app:srcCompat="@drawable/ic_chat" />
 
                 <TextView
@@ -149,23 +154,25 @@
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:layout_marginBottom="28dp"
+        android:contentDescription="@string/image"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/white_round" />
 
     <ImageView
-        android:id="@+id/iv_buttoncentre_menu"
+        android:id="@+id/iv_alerte_front_main"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginBottom="33dp"
+        android:contentDescription="@string/image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/green_round" />
 
     <TextView
-        android:id="@+id/tv_alerte_menu"
+        android:id="@+id/tv_alerte_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="47dp"
@@ -176,10 +183,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/iv_alerte_menu"
+        android:id="@+id/iv_alerte_main"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginBottom="60dp"
+        android:contentDescription="@string/image"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

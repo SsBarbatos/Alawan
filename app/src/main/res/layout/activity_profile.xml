@@ -16,6 +16,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_compagnons_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </ScrollView>
 
     <TextView
@@ -24,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/inter_black"
         android:text="@string/bonjour"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -33,12 +38,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <Button
+        android:id="@+id/btCompagnons"
+        android:layout_width="180dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="16dp"
+        android:backgroundTint="@color/compagnonsProfile"
+        android:fontFamily="@font/inter_semibold"
+        android:gravity="bottom|start"
+        android:text="@string/compagnons"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/svAlerteAnimaux"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.806" />
+
     <TextView
         android:id="@+id/tv_sousbonjour_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="40dp"
+        android:fontFamily="@font/inter_semibold"
         android:text="@string/soustitreBonjour"
         android:textSize="12sp"
         android:textStyle="bold"
@@ -51,6 +73,7 @@
         android:layout_height="44dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_setting" />
@@ -60,8 +83,10 @@
         android:layout_width="180dp"
         android:layout_height="90dp"
         android:layout_marginTop="100dp"
-        android:backgroundTint="@color/vertPale"
-        android:text="@string/alertes"
+        android:backgroundTint="@color/alertesProfile"
+        android:fontFamily="@font/inter_semibold"
+        android:gravity="bottom|start"
+        android:text="@string/alerteText"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -87,6 +112,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.806" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

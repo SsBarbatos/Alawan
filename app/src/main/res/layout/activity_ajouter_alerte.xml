@@ -8,23 +8,130 @@
     tools:context=".AjouterAlerte">
 
     <EditText
-        android:id="@+id/editTextTextPostalAddress"
+        android:id="@+id/et_date_alerte"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:drawableEnd="@drawable/ic_calendar"
         android:ems="10"
-        android:hint="@string/adresseTrouve"
-        android:inputType="textPostalAddress"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="256dp" />
+        android:fontFamily="@font/inter_semibold"
+        android:hint="@string/datePerdue"
+        android:autofillHints="@string/datePerdue"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/et_phone_alerte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/et_adresse_alerte"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_marginTop="304dp"
         android:ems="10"
+        android:fontFamily="@font/inter_semibold"
+        android:hint="@string/adresseTrouve"
+        android:autofillHints="@string/adresseTrouve"
+        android:inputType="textPostalAddress"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/et_description_alerte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/et_description_alerte"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:fontFamily="@font/inter_semibold"
         android:gravity="start|top"
         android:hint="@string/descriptionAnimal"
+        android:autofillHints="@string/descriptionAnimal"
         android:inputType="textMultiLine"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="321dp" />
+        app:layout_constraintBottom_toTopOf="@+id/sp_race_alerte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/sp_race_alerte"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginBottom="12dp"
+        android:autofillHints="temps"
+        android:fontFamily="@font/inter_semibold"
+        app:layout_constraintBottom_toTopOf="@+id/et_date_alerte"
+        app:layout_constraintEnd_toStartOf="@+id/sp_couleur_alerte"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/sp_couleur_alerte"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/inter_semibold"
+        app:layout_constraintBottom_toTopOf="@+id/et_date_alerte"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/et_phone_alerte"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="56dp"
+        android:drawableEnd="@drawable/ic_phone_black"
+        android:ems="10"
+        android:fontFamily="@font/inter_semibold"
+        android:hint="@string/telephone"
+        android:autofillHints="@string/telephone"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/bt_lancer_alerte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_back_alerte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:contentDescription="@string/image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/tv_titre_alerte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/inter_black"
+        android:text="@string/alerteText"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_back_alerte"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bt_lancer_alerte"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="200dp"
+        android:background="@drawable/bg_btnf"
+        android:fontFamily="@font/inter_black"
+        android:text="@string/lancerAlerte"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
