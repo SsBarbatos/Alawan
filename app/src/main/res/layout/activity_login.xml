@@ -38,7 +38,7 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_email_login"
-        android:layout_width="300dp"
+        android:layout_width="314dp"
         android:layout_height="50dp"
         android:layout_marginTop="360dp"
         android:drawableStart="@drawable/ic_mail"
@@ -53,6 +53,7 @@
     <EditText
         android:id="@+id/et_password_login"
         android:layout_width="300dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_connecter_login" />
         android:layout_height="50dp"
         android:layout_marginTop="12dp"
         android:autofillHints="@string/password"
@@ -66,10 +67,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_email_login" />
+        app:layout_constraintTop_toBottomOf="@+id/et_mail_login" />
 
     <Button
         android:id="@+id/bt_connecter_login"
+        app:layout_constraintTop_toBottomOf="@+id/et_email_login"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="68dp"
@@ -83,21 +85,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password_login" />
 
-
     <TextView
-        android:id="@+id/tv_motdepasseoublier_login"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/et_motdepasse_login" />
 
-        android:text="Mot de passe oublie ?"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bt_connecter_login"
+    <RelativeLayout
+        android:layout_width="311dp"
+        android:layout_height="37dp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_connecter_longin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.794"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password_login"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/et_motdepasse_login"
+        app:layout_constraintVertical_bias="0.296">
+
+        <CheckBox
+            android:id="@+id/cb_rappeler_login"
+            android:layout_width="173dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="7dp"
+
+            android:layout_toStartOf="@+id/tv_motdepasseoublier_login"
+            android:text="Se rappeler de moi" />
+
+        <TextView
+            android:id="@+id/tv_motdepasseoublier_login"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+
+            android:text="Mot de passe oublie ?"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="342dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="56dp"
+        android:gravity="center"
+        android:text="@string/oublieMdp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_password_login" />
 
     <RelativeLayout
         android:layout_width="340dp"
@@ -129,6 +168,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="18dp"
             android:layout_marginEnd="13dp"
+            android:layout_toStartOf="@id/button6"
             android:gravity="center_horizontal"
             android:text="@string/creerCompte" />
 
