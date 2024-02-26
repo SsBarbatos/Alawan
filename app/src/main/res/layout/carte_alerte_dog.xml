@@ -16,18 +16,18 @@
         app:layout_constraintVertical_bias="0.019">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/iv_comp_carte"
             android:layout_width="76dp"
             android:layout_height="73dp"
             android:layout_marginStart="13dp"
-            android:src="@drawable/avatar_dog"
+            android:background="@drawable/avatar_dog"
             android:contentDescription="@string/image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/tv_nom_comp_carte"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -36,22 +36,22 @@
             android:text="Dogo"
             android:textColor="@color/black"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@id/imageView4"
-            app:layout_constraintTop_toTopOf="@id/imageView4" />
+            app:layout_constraintStart_toEndOf="@id/iv_comp_carte"
+            app:layout_constraintTop_toTopOf="@id/iv_comp_carte" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tv_age_comp_carte"
             android:layout_width="wrap_content"
             android:layout_height="34dp"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/inter_semibold"
             android:gravity="center"
             android:text="5ans"
-            app:layout_constraintStart_toEndOf="@id/textView12"
-            app:layout_constraintTop_toTopOf="@id/textView12" />
+            app:layout_constraintStart_toEndOf="@id/tv_nom_comp_carte"
+            app:layout_constraintTop_toTopOf="@id/tv_nom_comp_carte" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/tv_race_comp_carte"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -59,17 +59,16 @@
             android:fontFamily="@font/inter_semibold"
             android:text="Race : Berger allemand"
             android:textColor="@color/gris"
-            app:layout_constraintStart_toEndOf="@id/imageView4"
-            app:layout_constraintTop_toBottomOf="@id/textView12" />
+            app:layout_constraintStart_toEndOf="@id/iv_comp_carte"
+            app:layout_constraintTop_toBottomOf="@id/tv_nom_comp_carte" />
 
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/iv_alerte_carte"
             android:layout_width="28dp"
             android:layout_height="29dp"
             android:layout_marginEnd="28dp"
             android:background="@drawable/ic_warning"
-            android:src=""
             android:contentDescription="@string/image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

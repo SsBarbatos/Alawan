@@ -57,8 +57,7 @@
         app:layout_constraintHorizontal_bias="0.587"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.31"
-        app:underlineColorAndroid="transparent" />
+        app:layout_constraintVertical_bias="0.31" />
 
     <Button
         android:id="@+id/button"

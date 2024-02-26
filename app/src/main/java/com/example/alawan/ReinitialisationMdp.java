@@ -9,6 +9,6 @@ public class ReinitialisationMdp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reinitialisation_mdp);
+        setContentView(R.layout.activity_resetpwd);
     }
 }

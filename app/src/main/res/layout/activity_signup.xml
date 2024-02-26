@@ -55,8 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNom"
-        app:underlineColorAndroid="transparent" />
+        app:layout_constraintTop_toBottomOf="@+id/etNom" />
 
     <EditText
         android:id="@+id/etCpwd"
@@ -80,8 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPwd"
-        app:underlineColorAndroid="transparent" />
+        app:layout_constraintTop_toBottomOf="@+id/etPwd" />
 
     <EditText
         android:id="@+id/etPwd"
@@ -105,8 +103,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etMail"
-        app:underlineColorAndroid="transparent" />
+        app:layout_constraintTop_toBottomOf="@+id/etMail" />
 
 
     <EditText
@@ -130,8 +127,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:underlineColorAndroid="transparent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
         android:id="@+id/button7"
