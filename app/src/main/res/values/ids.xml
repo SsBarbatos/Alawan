@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="et_description_ajout_compagnon" type="id" />
+    <item name="bt_ajout_compagnon" type="id" />
+    <item name="et_date_ajout_compagnon" type="id" />
+    <item name="sp_race_ajout_compagnon" type="id" />
+    <item name="et_nom_ajout_compagnon" type="id" />
+    <item name="sp_couleur_ajout_compagnon" type="id" />
+    <item name="iv_ajout_compagnon" type="id" />
+    <item name="tv_ajout_compagnon" type="id" />
+    <item name="iv_icone_ajout_compagnon" type="id" />
+    <item name="guideline" type="id" />
+</resources>
