@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_vav_profil_to_map"
             app:destination="@id/map" />
+        <action
+            android:id="@+id/action_vav_profil_to_recherche"
+            app:destination="@id/recherche" />
     </fragment>
 
     <fragment
