@@ -20,9 +20,6 @@
         <action
             android:id="@+id/action_first_to_nav_signup"
             app:destination="@id/nav_signup" />
-        <action
-            android:id="@+id/action_first_to_nav_main"
-            app:destination="@id/nav_main" />
     </fragment>
 
     <fragment
@@ -49,9 +46,6 @@
         <action
             android:id="@+id/action_nav_login_to_nav_graph"
             app:destination="@id/nav_graph" />
-        <action
-            android:id="@+id/action_nav_login_to_nav_main"
-            app:destination="@id/nav_main" />
     </fragment>
 
     <fragment
@@ -63,17 +57,6 @@
             android:id="@+id/action_nav_signup_to_nav_login"
             app:destination="@id/nav_login" />
     </fragment>
-
-    <fragment
-        android:id="@+id/nav_main"
-        android:name="com.example.alawan.MainFragment"
-        tools:layout="@layout/fragment_main"
-        android:label="main Fragement">
-        <action
-            android:id="@+id/action_nav_main_to_first"
-            app:destination="@id/first" />
-    </fragment>
-
 
 
 </navigation>

@@ -51,7 +51,7 @@ public class FirstPage extends Fragment {
             public void onClick(View v) {
                 // --------- Code pour changer de la première page à la page invité --------------------------
                 // !!!!!!!!!!!!!! Il reste a rajouter le code ici pour dire que s'est un invité !!!!!!!!!!!!!!!
-                navController.navigate(R.id.action_first_to_nav_main);
+                //navController.navigate(R.id.action_first_to_menu);
             }
         });
 

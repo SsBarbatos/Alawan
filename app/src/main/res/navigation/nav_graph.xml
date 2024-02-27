@@ -21,7 +21,14 @@
         android:id="@+id/recherche"
         android:name="com.example.alawan.Recherche"
         android:label="fragment_recherche"
-        tools:layout="@layout/fragment_recherche" />
+        tools:layout="@layout/fragment_recherche" >
+        <action
+            android:id="@+id/action_recherche_to_map"
+            app:destination="@id/map" />
+        <action
+            android:id="@+id/action_recherche_to_vav_profil"
+            app:destination="@id/vav_profil" />
+    </fragment>
 
     <fragment
         tools:layout="@layout/fragment_profil"
@@ -34,6 +41,9 @@
         <action
             android:id="@+id/action_vav_profil_to_nav_add_pet"
             app:destination="@id/nav_add_pet" />
+        <action
+            android:id="@+id/action_vav_profil_to_map"
+            app:destination="@id/map" />
     </fragment>
 
     <fragment
