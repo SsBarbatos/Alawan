@@ -25,79 +25,77 @@
         android:id="@+id/et_prenom_modifierprofil"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="56dp"
+        android:autofillHints="@string/prenom"
         android:backgroundTint="@color/GreenText"
         android:drawableStart="@drawable/ic_person_black"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
         android:hint="@string/prenom"
-        android:autofillHints="@string/prenom"
         android:inputType="text"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_nom_modifierprofil"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.687" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_modifierprofil" />
 
     <EditText
         android:id="@+id/et_nom_modifierprofil"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints="@string/nom"
         android:backgroundTint="@color/GreenText"
         android:drawableStart="@drawable/ic_person_black"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
         android:hint="@string/nom"
-        android:autofillHints="@string/nom"
         android:inputType="text"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_mail_modifierprofil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_prenom_modifierprofil" />
 
     <EditText
         android:id="@+id/et_mail_modifierprofil"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints="@string/email"
         android:backgroundTint="@color/GreenText"
         android:drawableStart="@drawable/ic_mail_black"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
         android:hint="@string/email"
-        android:autofillHints="@string/email"
         android:inputType="textEmailAddress"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/et_phone_modifierprofil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_nom_modifierprofil" />
 
     <EditText
         android:id="@+id/et_phone_modifierprofil"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="32dp"
+        android:autofillHints="@string/telephone"
         android:backgroundTint="@color/GreenText"
         android:drawableStart="@drawable/ic_phone_black"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
         android:hint="@string/telephone"
-        android:autofillHints="@string/telephone"
         android:inputType="phone"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bt_modifieradresse_modifierprofil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_mail_modifierprofil" />
 
     <ImageView
         android:id="@+id/iv_back_modifierprofil"
@@ -114,7 +112,7 @@
         android:id="@+id/bt_modifieradresse_modifierprofil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="24dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/inter_black"
         android:paddingStart="5dp"
@@ -124,16 +122,16 @@
         android:textColor="@color/GreenText"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bt_aide_modifierprofil"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.771"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.769"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_phone_modifierprofil" />
 
     <Button
         android:id="@+id/bt_aide_modifierprofil"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginBottom="420dp"
+        android:layout_marginTop="28dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/inter_black"
         android:paddingStart="5dp"
@@ -143,10 +141,10 @@
         android:textColor="@color/GreenText"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.832"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_modifieradresse_modifierprofil" />
 
     <Button
 
