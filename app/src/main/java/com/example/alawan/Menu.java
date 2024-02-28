@@ -1,9 +1,15 @@
 package com.example.alawan;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -23,14 +29,16 @@ import com.example.alawan.databinding.ActivityMenuBinding;
 
 public class Menu extends AppCompatActivity {
 
+    public Menu(){}
     View view;
     LinearLayout layoutAccueil, layoutRecherche, layoutProfil, layout4;
     ImageView ivRecherche,ivProfile,ivAccueil;
     TextView tvProfil, tvRecherche, tvAccueil;
-
+    ActivityResultLauncher<Intent> resultLauncher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        retourActivity();
         setContentView(R.layout.activity_menu);
         layoutAccueil = findViewById(R.id.layout_acceuil_menu);
         layoutProfil = findViewById(R.id.layout_profil_menu);
@@ -94,4 +102,28 @@ public class Menu extends AppCompatActivity {
         imageView.setColorFilter(getResources().getColor(R.color.GreenText));
     }
 
+    private void retourActivity(){
+        resultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult o) {
+                if(o.getData().getIntExtra(("deconnexion"),0) == 1){
+                    setResult(RESULT_OK);
+                    finish();
+                }
+            }
+        });
+    }
+
+    public void changePage(Intent intent){
+        resultLauncher.launch(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        System.exit(0);
+    }
 }
