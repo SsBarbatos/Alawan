@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.sql.Date;
 
-public class User {
+public class Person {
     @SerializedName("id")
     int id;
     @SerializedName("idAddress")
@@ -26,7 +26,7 @@ public class User {
     @SerializedName("creationDate")
     Date creationDate;
 
-    public User(int id, int idAddress, String name, String lastName, String email, String password, String phone, boolean invite, boolean admin, Date creationDate) {
+    public Person(int id, int idAddress, String name, String lastName, String email, String password, String phone, boolean invite, boolean admin, Date creationDate) {
         this.id = id;
         this.idAddress = idAddress;
         this.name = name;
