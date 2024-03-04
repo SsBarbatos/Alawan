@@ -7,8 +7,8 @@ import java.sql.Date;
 public class Animal {
     @SerializedName("id")
     int id;
-    @SerializedName("idUser")
-    int idUser;
+    @SerializedName("idPerson")
+    int idPerson;
     @SerializedName("idRace")
     int idRace;
     @SerializedName("idNecklace")
@@ -24,7 +24,7 @@ public class Animal {
 
     public Animal(int id, int idUser, int idrace, int idNecklace, String name, String picture, Date birth, Boolean research) {
         this.id = id;
-        this.idUser = idUser;
+        this.idPerson = idUser;
         this.idRace = idrace;
         this.idNecklace = idNecklace;
         this.name = name;
@@ -42,11 +42,11 @@ public class Animal {
     }
 
     public int getIdUser() {
-        return idUser;
+        return idPerson;
     }
 
     public void setIdUser(int idUser) {
-        this.idUser = idUser;
+        this.idPerson = idUser;
     }
 
     public int getIdrace() {
