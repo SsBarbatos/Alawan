@@ -2,7 +2,8 @@ package com.example.alawan.Class;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.sql.Date;
+import java.util.Date;
+
 
 public class Person {
     @SerializedName("id")
@@ -37,6 +38,16 @@ public class Person {
         this.invite = invite;
         this.admin = admin;
         this.creationDate = creationDate;
+    }
+
+    public Person(String name, String lastName, String email, String password) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.invite = false;
+        this.admin = false;
+        this.creationDate = new Date();
     }
 
     public int getId() {

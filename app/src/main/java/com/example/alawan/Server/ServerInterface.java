@@ -16,44 +16,44 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ServerInterface {
-    @POST("/login")
+    @POST("/api/login")
     @FormUrlEncoded
     Call<Boolean> login(@Field("email") String email, @Field("password") String password);
 
-    @GET("/persons")
+    @GET("/api/persons")
     Call<List<Person>> getListPersons();
 
-    @GET("/user")
+    @GET("/api/user")
     Call<Person> getUser();
 
-    @POST("/person")
+    @POST("/api/person")
     @FormUrlEncoded
-    Call<Boolean> addPerson(@Field("name") String name, @Field("lastName") String lastName, @Field("email") String email, @Field("password") String password, @Field("phone") String phone, @Field("invite") Boolean invite, @Field("admin") Boolean admin, @Field("creationDate")Date creationDate);
+    Call<Boolean> addPerson(@Field("name") String name, @Field("lastName") String lastName, @Field("email") String email, @Field("password") String password,  @Field("invite") Boolean invite, @Field("admin") Boolean admin, @Field("creationDate")Date creationDate);
 
     //@POST("/logout")
     //@FormUrlEncoded
     //Call<Boolean> logout();
 
-    @DELETE("/person/{id}")
+    @DELETE("/api/person/{id}")
     Call<Boolean> deletePerson();
 
-    @GET("/animals")
+    @GET("/api/animals")
     Call<List<Animal>> getListAnimal();
 
-    @GET("/animals/person")
+    @GET("/api/animals/person")
     Call<List<Animal>> getAnimalsPerson();
 
-    @POST("/animal")
+    @POST("/api/animal")
     @FormUrlEncoded
     Call<Boolean> addAnimal(@Field("idPerson") int idPerson,@Field("idRace") int idRace, @Field("idNecklace") int idNecklace, @Field("name") String name, @Field("Picture") String picture, @Field("birth") Date birth, @Field("research") Boolean research);
 
-    @DELETE("/animal/{id}")
+    @DELETE("/api/animal/{id}")
     Call<Boolean> deleteAnimal();
 
-    @GET("/colors")
+    @GET("/api/colors")
     Call<List<Color>> getListColor();
 
-    @GET("/races")
+    @GET("/api/races")
     Call<List<Race>> getListRace();
 
 }
