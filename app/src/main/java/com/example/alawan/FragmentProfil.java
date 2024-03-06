@@ -3,7 +3,6 @@ package com.example.alawan;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,14 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import javax.crypto.spec.IvParameterSpec;
 
-
-public class Profil extends Fragment {
+public class FragmentProfil extends Fragment {
 
     ImageView ivSetting;
     View view;
-    public Profil() {
+    public FragmentProfil() {
         // Required empty public constructor
     }
 
@@ -37,7 +34,7 @@ public class Profil extends Fragment {
             public void onClick(View v) {
                 // Rajouter le code de deconnexion
                 Intent intent = new Intent(getActivity(), ActivityModifyProfil.class);
-                ((Menu)getActivity()).changePage(intent);
+                ((ActivityMenu)getActivity()).changePage(intent);
             }
         });
         return view;

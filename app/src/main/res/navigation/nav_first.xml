@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/first"
-        android:name="com.example.alawan.FirstPage"
+        android:name="com.example.alawan.FragmentFirstPage"
         android:label="First Page"
         tools:layout="@layout/fragment_first_page"
         >
@@ -23,7 +23,7 @@
     </fragment>
 
     <fragment
-        android:name="com.example.alawan.ResetPassword"
+        android:name="com.example.alawan.FragmentResetPassword"
         android:id="@+id/resetPassword"
         android:label="Reset Passeword"
         tools:layout="@layout/fragment_reset_password">
@@ -50,7 +50,7 @@
 
     <fragment
         android:label="Signup"
-        android:name="com.example.alawan.Signup"
+        android:name="com.example.alawan.FragmentSignup"
         tools:layout="@layout/fragment_signup"
         android:id="@+id/nav_signup">
         <action

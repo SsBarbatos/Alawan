@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.alawan.Class.Person;
 import com.example.alawan.Server.RetrofitInstance;
@@ -24,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Signup extends Fragment {
+public class FragmentSignup extends Fragment {
 
     View view;
     Button btSignup;
@@ -35,7 +34,7 @@ public class Signup extends Fragment {
     EditText etPassword;
     EditText etConfirmPassword;
 
-    public Signup() {
+    public FragmentSignup() {
         // Required empty public constructor
     }
 

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/modifyProfil"
-        android:name="com.example.alawan.ModifyProfil"
+        android:name="com.example.alawan.FragmentModifyProfil"
         android:label="fragment_modify_profil"
         tools:layout="@layout/fragment_modify_profil" >
         <action

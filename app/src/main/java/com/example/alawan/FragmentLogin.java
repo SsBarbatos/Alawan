@@ -44,7 +44,7 @@ public class FragmentLogin extends Fragment {
                 // --------- code pour changer de fragment se connecter à main ---------------
                 // !!!!!!!!!!! Rajouter le code de login !!!!!!!!!!!!!!!!!!!!!!!!!!!
                 //navController.navigate(R.id.action_nav_login_to_menu);
-                Intent intent = new Intent(getActivity(), Menu.class);
+                Intent intent = new Intent(getActivity(), ActivityMenu.class);
                 startActivity(intent);
             }
         });

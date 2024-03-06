@@ -16,13 +16,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 
-public class ModifyAddress extends Fragment {
-
+public class FragmentModifyAddress extends Fragment {
     View view;
     ImageView ivBack;
     Button btModifier;
     Button btDeconnexion;
-    public ModifyAddress() {
+
+    public FragmentModifyAddress() {
         // Required empty public constructor
     }
 

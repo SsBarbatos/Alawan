@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/map"
-        android:name="com.example.alawan.Map"
+        android:name="com.example.alawan.FragmentMap"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/recherche"
-        android:name="com.example.alawan.Recherche"
+        android:name="com.example.alawan.FragmentRecherche"
         android:label="fragment_recherche"
         tools:layout="@layout/fragment_recherche" >
         <action
@@ -33,23 +33,27 @@
     <fragment
         tools:layout="@layout/fragment_profil"
         android:label="profil"
-        android:name="com.example.alawan.Profil"
+        android:name="com.example.alawan.FragmentProfil"
         android:id="@+id/vav_profil">
-        <action
-            android:id="@+id/action_vav_profil_to_nav_add_pet"
-            app:destination="@id/nav_add_pet" />
+
         <action
             android:id="@+id/action_vav_profil_to_map"
             app:destination="@id/map" />
         <action
             android:id="@+id/action_vav_profil_to_recherche"
             app:destination="@id/recherche" />
+        <action
+            android:id="@+id/action_vav_profil_to_addPet"
+            app:destination="@id/addPet" />
     </fragment>
-
     <fragment
-        android:name="com.example.alawan.AddPet"
-        android:label="add_pet"
-        tools:layout="@layout/fragment_add_pet"
-        android:id="@+id/nav_add_pet"/>
+        android:id="@+id/addPet"
+        android:name="com.example.alawan.FragmentAddPet"
+        android:label="fragment_add_pet"
+        tools:layout="@layout/fragment_add_pet" >
+        <action
+            android:id="@+id/action_addPet_to_vav_profil"
+            app:destination="@id/vav_profil" />
+    </fragment>
 
 </navigation>

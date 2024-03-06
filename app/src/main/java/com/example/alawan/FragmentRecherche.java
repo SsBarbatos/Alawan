@@ -10,8 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 
-public class Recherche extends Fragment {
-    public Recherche(){
+public class FragmentRecherche extends Fragment {
+    public FragmentRecherche(){
 
     }
 
