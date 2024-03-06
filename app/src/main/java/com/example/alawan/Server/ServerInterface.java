@@ -1,5 +1,6 @@
 package com.example.alawan.Server;
 
+import com.example.alawan.Class.Animal;
 import com.example.alawan.FragmentAnimal;
 import com.example.alawan.Class.Color;
 import com.example.alawan.Class.Person;
@@ -38,10 +39,10 @@ public interface ServerInterface {
     Call<Boolean> deletePerson();
 
     @GET("/api/animals")
-    Call<List<FragmentAnimal>> getListAnimal();
+    Call<List<Animal>> getListAnimal();
 
     @GET("/api/animals/person")
-    Call<List<FragmentAnimal>> getAnimalsPerson();
+    Call<List<Animal>> getAnimalsPerson();
 
     @POST("/api/animal")
     @FormUrlEncoded
