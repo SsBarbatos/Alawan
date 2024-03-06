@@ -1,5 +1,6 @@
 package com.example.alawan;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -42,7 +43,9 @@ public class FragmentLogin extends Fragment {
             public void onClick(View v) {
                 // --------- code pour changer de fragment se connecter à main ---------------
                 // !!!!!!!!!!! Rajouter le code de login !!!!!!!!!!!!!!!!!!!!!!!!!!!
-                navController.navigate(R.id.action_nav_login_to_nav_main);
+                //navController.navigate(R.id.action_nav_login_to_menu);
+                Intent intent = new Intent(getActivity(), Menu.class);
+                startActivity(intent);
             }
         });
 

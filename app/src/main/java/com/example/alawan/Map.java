@@ -15,12 +15,7 @@ import android.widget.LinearLayout;
 
 public class Map extends Fragment {
 
-    View view;
-    FragmentContainerView fvmain;
-    LinearLayout layoutAccueil;
-    LinearLayout layoutRecherche;
-    LinearLayout layoutProfil;
-    LinearLayout layout4; // nom temporaire
+
     public Map(){
 
     }
@@ -31,13 +26,7 @@ public class Map extends Fragment {
     }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       view = inflater.inflate(R.layout.fragment_map,container,false);
-       fvmain = view.findViewById(R.id.fv_mainpage);
-       layoutAccueil = view.findViewById(R.id.layout_acceuil_menu);
-       layoutProfil = view.findViewById(R.id.layout_profil_menu);
-       layoutRecherche = view.findViewById(R.id.layout_recherche_menu);
-       // continuer a rajouter les onclicklistener pour faire la navigation
-
+       View view = inflater.inflate(R.layout.fragment_map,container,false);
        return view;
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragment">
+    tools:context=".Menu">
 
 
     <androidx.fragment.app.FragmentContainerView
@@ -54,6 +54,7 @@
                     android:layout_width="28dp"
                     android:layout_height="36dp"
                     android:layout_weight="1"
+                    android:tint="@color/gris"
                     app:srcCompat="@drawable/ic_home" />
 
                 <TextView
@@ -61,7 +62,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/accueilText" />
+                    android:text="@string/accueilText"
+                    android:textColor="@color/gris" />
             </LinearLayout>
 
             <LinearLayout
@@ -78,6 +80,7 @@
                     android:layout_height="36dp"
                     android:layout_weight="1"
                     android:contentDescription="@string/image"
+                    android:tint="@color/gris"
                     app:srcCompat="@drawable/ic_search" />
 
                 <TextView
@@ -85,7 +88,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/rechercheText" />
+                    android:text="@string/rechercheText"
+                    android:textColor="@color/gris" />
             </LinearLayout>
 
         </LinearLayout>
@@ -111,6 +115,7 @@
                     android:layout_width="28dp"
                     android:layout_height="36dp"
                     android:layout_weight="1"
+                    android:tint="@color/gris"
                     app:srcCompat="@drawable/ic_profile" />
 
                 <TextView
@@ -118,7 +123,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/profilText" />
+                    android:text="@string/profilText"
+                    android:textColor="@color/gris" />
             </LinearLayout>
 
             <LinearLayout
@@ -135,6 +141,7 @@
                     android:layout_height="36dp"
                     android:layout_weight="1"
                     android:contentDescription="@string/image"
+                    android:tint="@color/gris"
                     app:srcCompat="@drawable/ic_chat" />
 
                 <TextView
@@ -142,7 +149,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/chatText" />
+                    android:text="@string/chatText"
+                    android:textColor="@color/gris" />
             </LinearLayout>
 
         </LinearLayout>

@@ -15,6 +15,15 @@
         android:networkSecurityConfig="@xml/configuration_reseau"
         android:usesCleartextTraffic="true" >
 
+        <activity
+            android:name=".ActivityModifyProfil"
+            android:exported="false" />
+        <activity
+            android:name=".Menu"
+            android:exported="false"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/Theme.Alawan" />
+
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -31,11 +40,12 @@
             android:value="YOUR_API_KEY" />
 
         <activity
-            android:name="com.example.alawan.MainPage"
+            android:name=".MainPage"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
