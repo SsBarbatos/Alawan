@@ -2,7 +2,8 @@ package com.example.alawan.Class;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.sql.Date;
+import java.util.Date;
+
 
 public class Animal {
     @SerializedName("id")

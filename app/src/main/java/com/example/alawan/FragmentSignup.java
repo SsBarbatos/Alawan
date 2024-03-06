@@ -55,7 +55,6 @@ public class FragmentSignup extends Fragment {
         etPassword = view.findViewById(R.id.et_password_signup);
         etConfirmPassword = view.findViewById(R.id.et_confirmer_signup);
         ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
-
         NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
         NavController navController = navHostFragment.getNavController();
 
