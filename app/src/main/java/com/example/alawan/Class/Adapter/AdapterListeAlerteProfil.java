@@ -1,4 +1,4 @@
-package com.example.alawan.Class;
+package com.example.alawan.Class.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,24 +9,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.alawan.Class.Alert;
+import com.example.alawan.Class.Animal;
 import com.example.alawan.R;
 
 import java.util.List;
 
-public class AdapterListeAnimal extends RecyclerView.Adapter {
+public class AdapterListeAlerteProfil extends RecyclerView.Adapter {
 
     List<Animal> list;
 
-    public AdapterListeAnimal(List<Animal> l){
-        this.list = l;
+    public AdapterListeAlerteProfil(List<Animal> list) {
+        this.list = list;
     }
-
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.carte_companion,parent,false);
+        View view = inflater.inflate(R.layout.carte_alerte_encours,parent,false);
         return new MyViewHolder(view);
     }
 
@@ -34,7 +35,8 @@ public class AdapterListeAnimal extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         myViewHolder.tvNom.setText(list.get(position).getName());
-        //myViewHolder.tvRace.setText(list.get(position).ge); //Faire un truc global pour les races
+        //Reste du code
+
     }
 
     @Override
@@ -43,14 +45,16 @@ public class AdapterListeAnimal extends RecyclerView.Adapter {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView tvRace, tvNom, tvAge;
+        TextView tvNom,tvAge, tvRace, tvFin;
         ImageView ivPicture;
-        public MyViewHolder(@NonNull View view){
-            super(view);
-            tvNom = view.findViewById(R.id.tv_nom_comp_carte);
-            tvRace = view.findViewById(R.id.tv_race_comp_carte);
-            tvAge = view.findViewById(R.id.tv_age_comp_carte);
-            ivPicture = view.findViewById(R.id.iv_comp_carte);
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvFin = itemView.findViewById(R.id.tv_fin_alerte_alerte_encours);
+            tvAge = itemView.findViewById(R.id.tv_age_comp_carte);
+            tvNom = itemView.findViewById(R.id.tv_nom_comp_carte);
+            tvRace = itemView.findViewById(R.id.tv_race_comp_carte);
+            ivPicture = itemView.findViewById(R.id.iv_comp_carte);
         }
     }
 }

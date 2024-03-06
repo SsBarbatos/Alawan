@@ -1,7 +1,6 @@
 package com.example.alawan.Server;
 
 import com.example.alawan.Class.Animal;
-import com.example.alawan.FragmentAnimal;
 import com.example.alawan.Class.Color;
 import com.example.alawan.Class.Person;
 import com.example.alawan.Class.Race;
@@ -40,6 +39,13 @@ public interface ServerInterface {
 
     @GET("/api/animals")
     Call<List<Animal>> getListAnimal();
+
+    @POST("/api/animalAlertProfil")
+    @FormUrlEncoded
+    Call<List<Animal>> getAnimalsAlertProfil(@Field("id") int id);
+
+    @GET("/api/animalAlert")
+    Call<List<Animal>> getAnimalsAlert();
 
     @GET("/api/animals/person")
     Call<List<Animal>> getAnimalsPerson();

@@ -13,7 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.alawan.Class.AdapterListeAnimal;
+import com.example.alawan.Class.Adapter.AdapterListeAlerteProfil;
+import com.example.alawan.Class.Adapter.AdapterListeAnimalProfil;
 import com.example.alawan.Class.Animal;
 import com.example.alawan.Server.RetrofitInstance;
 import com.example.alawan.Server.ServerInterface;
@@ -28,8 +29,12 @@ import retrofit2.Response;
 
 public class FragmentProfil extends Fragment {
 
-    List<Animal> list = new ArrayList<>();
-    RecyclerView rv;
+    List<Animal> listCompagnon = new ArrayList<>();
+    List<Animal> listAlert = new ArrayList<>();
+
+    RecyclerView rv1;
+    RecyclerView rv2;
+
     ImageView ivSetting;
     View view;
     public FragmentProfil() {
@@ -46,18 +51,34 @@ public class FragmentProfil extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profil, container, false);
         ivSetting = view.findViewById(R.id.iv_setting_profile);
-        rv = view.findViewById(R.id.rv_compagnons_profile);
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        rv1 = view.findViewById(R.id.rv_compagnons_profile);
+        rv1.setHasFixedSize(true);
+        rv1.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        rv2 = view.findViewById(R.id.rv_alertes_profil);
+        rv2.setHasFixedSize(true);
+        rv2.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
-        Call<List<Animal>> call = serverInterface.getListAnimal();
-        call.enqueue(new Callback<List<Animal>>() {
+        serverInterface.getListAnimal().enqueue(new Callback<List<Animal>>() {
             @Override
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
-                list = response.body();
-                rv.setAdapter(new AdapterListeAnimal(list));
+                listCompagnon = response.body();
+                rv1.setAdapter(new AdapterListeAnimalProfil(listCompagnon));
             }
+            @Override
+            public void onFailure(Call<List<Animal>> call, Throwable t) {
+                Log.v("debug",t.toString());
+            }
+        });
 
+        serverInterface.getAnimalsAlertProfil(1).enqueue(new Callback<List<Animal>>() {
+            @Override
+            public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
+                listAlert = response.body();
+                rv2.setAdapter(new AdapterListeAlerteProfil(listAlert));
+            }
             @Override
             public void onFailure(Call<List<Animal>> call, Throwable t) {
                 Log.v("debug",t.toString());
