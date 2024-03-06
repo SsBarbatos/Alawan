@@ -14,15 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-public class ModifyProfil extends Fragment {
+public class FragmentModifyProfil extends Fragment {
 
     View view;
     ImageView ivBack;
     Button btModifierAddress;
     Button btDeconnexion;
-    public ModifyProfil() {
+    public FragmentModifyProfil() {
         // Required empty public constructor
     }
 

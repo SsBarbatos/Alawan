@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class AddPet extends Fragment {
+public class FragmentAddPet extends Fragment {
 
 
 
-    public AddPet() {
+    public FragmentAddPet() {
         // Required empty public constructor
     }
 

@@ -13,10 +13,16 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 
-public class Map extends Fragment {
+public class FragmentMap extends Fragment {
 
+    View view;
+    FragmentContainerView fvmain;
+    LinearLayout layoutAccueil;
+    LinearLayout layoutRecherche;
+    LinearLayout layoutProfil;
+    LinearLayout layout4; // nom temporaire
 
-    public Map(){
+        public FragmentMap(){
 
     }
 

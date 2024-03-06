@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class AddAlerte extends Fragment {
+public class FragmentAddAlerte extends Fragment {
 
 
 
-    public AddAlerte() {
+    public FragmentAddAlerte() {
         // Required empty public constructor
     }
 
