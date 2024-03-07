@@ -34,6 +34,10 @@ public interface ServerInterface {
     //@FormUrlEncoded
     //Call<Boolean> logout();
 
+    @POST("/api/finAlert")
+    @FormUrlEncoded
+    Call<Boolean> finAlerte(@Field("id") int id);
+
     @DELETE("/api/person/{id}")
     Call<Boolean> deletePerson();
 

@@ -1,5 +1,7 @@
 package com.example.alawan.Class.Adapter;
 
+import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.alawan.Class.Alert;
 import com.example.alawan.Class.Animal;
 import com.example.alawan.R;
+import com.example.alawan.Server.RetrofitInstance;
+import com.example.alawan.Server.ServerInterface;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AdapterListeAlerteProfil extends RecyclerView.Adapter {
 
@@ -32,11 +40,33 @@ public class AdapterListeAlerteProfil extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         myViewHolder.tvNom.setText(list.get(position).getName());
-        //Reste du code
+        myViewHolder.tvFin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
+                serverInterface.finAlerte(list.get(position).getId()).enqueue(new Callback<Boolean>() {
+                    @Override
+                    public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                        Log.d("debug","ca marche");
+                    }
+
+                    @Override
+                    public void onFailure(Call<Boolean> call, Throwable t) {
+                        Log.d("debug",t.toString());
+                    }
+                });
+                delete(position);
+            }
+        });
+    }
+
+    public void delete(int position){
+        list.remove(position);
+        notifyItemRemoved(position);
     }
 
     @Override
@@ -56,5 +86,7 @@ public class AdapterListeAlerteProfil extends RecyclerView.Adapter {
             tvRace = itemView.findViewById(R.id.tv_race_comp_carte);
             ivPicture = itemView.findViewById(R.id.iv_comp_carte);
         }
+
+
     }
 }

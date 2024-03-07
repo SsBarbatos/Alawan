@@ -1,5 +1,6 @@
 package com.example.alawan.Class.Adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,11 +33,16 @@ public class AdapterListeAnimalProfil extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         myViewHolder.tvNom.setText(list.get(position).getName());
         //myViewHolder.tvRace.setText(list.get(position).ge); //Faire un truc global pour les races
-
+        myViewHolder.ivDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //delete(position);
+            }
+        });
     }
 
     @Override
@@ -44,16 +50,21 @@ public class AdapterListeAnimalProfil extends RecyclerView.Adapter {
         return list.size();
     }
 
+    public void delete(int position) {
+        list.remove(position);
+        notifyItemRemoved(position);
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView tvRace, tvNom, tvAge;
-        ImageView ivPicture;
+        ImageView ivPicture, ivDelete;
         public MyViewHolder(@NonNull View view){
             super(view);
             tvNom = view.findViewById(R.id.tv_nom_comp_carte);
             tvRace = view.findViewById(R.id.tv_race_comp_carte);
             tvAge = view.findViewById(R.id.tv_age_comp_carte);
             ivPicture = view.findViewById(R.id.iv_comp_carte);
-
+            ivDelete = view.findViewById(R.id.iv_delete_companion);
         }
     }
 }
