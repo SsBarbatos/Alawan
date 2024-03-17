@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainPage extends AppCompatActivity
+public class ActivityMainPage extends AppCompatActivity
 {
-    MainPage mainPage = this;
+    ActivityMainPage mainPage = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

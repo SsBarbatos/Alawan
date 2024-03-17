@@ -1,9 +1,12 @@
 package com.example.alawan;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
-
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -11,26 +14,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.core.view.WindowCompat;
-import androidx.fragment.app.FragmentContainerView;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
-import com.example.alawan.databinding.ActivityMenuBinding;
+public class ActivityMenu extends AppCompatActivity {
 
-public class Menu extends AppCompatActivity {
-
+    public ActivityMenu(){}
     View view;
     LinearLayout layoutAccueil, layoutRecherche, layoutProfil, layout4;
     ImageView ivRecherche,ivProfile,ivAccueil;
     TextView tvProfil, tvRecherche, tvAccueil;
-
+    ActivityResultLauncher<Intent> resultLauncher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        retourActivity();
         setContentView(R.layout.activity_menu);
         layoutAccueil = findViewById(R.id.layout_acceuil_menu);
         layoutProfil = findViewById(R.id.layout_profil_menu);
@@ -49,10 +47,10 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 changeColor(tvRecherche,ivRecherche);
-                if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof Map){
+                if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap){
                     navController.navigate(R.id.action_map_to_recherche);
                 }
-                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof Profil){
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil){
                     navController.navigate(R.id.action_vav_profil_to_recherche);
                 }
             }
@@ -61,10 +59,10 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 changeColor(tvProfil,ivProfile);
-                if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof Map){
+                if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap){
                     navController.navigate(R.id.action_map_to_vav_profil);
                 }
-                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof Recherche){
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche){
                     navController.navigate(R.id.action_recherche_to_vav_profil);
                 }
             }
@@ -73,10 +71,10 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 changeColor(tvAccueil,ivAccueil);
-                if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof Profil){
+                if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil){
                     navController.navigate(R.id.action_vav_profil_to_map);
                 }
-                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof Recherche){
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche){
                     navController.navigate(R.id.action_recherche_to_map);
                 }
             }
@@ -94,4 +92,28 @@ public class Menu extends AppCompatActivity {
         imageView.setColorFilter(getResources().getColor(R.color.GreenText));
     }
 
+    private void retourActivity(){
+        resultLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult o) {
+                if(o.getData().getIntExtra(("deconnexion"),0) == 1){
+                    setResult(RESULT_OK);
+                    finish();
+                }
+            }
+        });
+    }
+
+    public void changePage(Intent intent){
+        resultLauncher.launch(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        System.exit(0);
+    }
 }

@@ -13,11 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-public class ResetPassword extends Fragment {
+public class FragmentResetPassword extends Fragment {
 
     Button btReset;
     View view;
-    public ResetPassword() {
+    public FragmentResetPassword() {
         // Required empty public constructor
     }
 

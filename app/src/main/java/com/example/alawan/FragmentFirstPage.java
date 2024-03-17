@@ -1,11 +1,11 @@
 package com.example.alawan;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.NavHost;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -14,9 +14,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-public class FirstPage extends Fragment {
+public class FragmentFirstPage extends Fragment {
 
-    public FirstPage() {
+    public FragmentFirstPage() {
         // Required empty public constructor
     }
 
@@ -51,7 +51,8 @@ public class FirstPage extends Fragment {
             public void onClick(View v) {
                 // --------- Code pour changer de la première page à la page invité --------------------------
                 // !!!!!!!!!!!!!! Il reste a rajouter le code ici pour dire que s'est un invité !!!!!!!!!!!!!!!
-                //navController.navigate(R.id.action_first_to_menu);
+                Intent intent = new Intent(getActivity(), ActivityMenu.class);
+                startActivity(intent);
             }
         });
 

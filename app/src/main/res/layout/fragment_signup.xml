@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_log"
-    tools:context=".Signup">
+    tools:context=".FragmentSignup">
 
     <ImageView
         android:id="@+id/iv_alerte_front_main"
@@ -30,10 +30,10 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.219"
+        app:layout_constraintHorizontal_bias="0.254"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.347" />
+        app:layout_constraintVertical_bias="0.297" />
 
     <EditText
         android:id="@+id/et_mail_signup"
@@ -57,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_nom_signup" />
+        app:layout_constraintTop_toBottomOf="@+id/et_nomfamille_signup" />
 
     <EditText
         android:id="@+id/et_confirmer_signup"
@@ -110,7 +110,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_mail_signup" />
 
     <EditText
-        android:id="@+id/et_nom_signup"
+        android:id="@+id/et_nomfamille_signup"
         android:layout_width="314dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -130,6 +130,29 @@
         app:boxBackgroundMode="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_nom_signup" />
+
+    <EditText
+        android:id="@+id/et_nom_signup"
+        android:layout_width="314dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/prenom"
+        android:backgroundTint="#000000"
+        android:drawableStart="@drawable/ic_person"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fontFamily="@font/inter_semibold"
+        android:hint="@string/prenom"
+        android:inputType="text"
+        android:textColor="@color/GreenText"
+        android:textColorHighlight="@color/GreenText"
+        android:textColorHint="@color/GreenText"
+        android:textColorLink="@color/GreenText"
+        android:textStyle="bold"
+        app:boxBackgroundMode="none"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_creer_compte_signup" />
 
