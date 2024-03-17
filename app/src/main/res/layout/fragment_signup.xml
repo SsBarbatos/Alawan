@@ -28,18 +28,19 @@
         android:text="@string/creerCompteTitre"
         android:textColor="@color/black"
         android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.254"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.297" />
+        app:layout_constraintVertical_bias="0.33" />
 
     <EditText
         android:id="@+id/et_mail_signup"
         android:layout_width="314dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:autofillHints="@string/email"
         android:backgroundTint="#000000"
         android:drawableStart="@drawable/ic_mail"
@@ -60,35 +61,10 @@
         app:layout_constraintTop_toBottomOf="@+id/et_nomfamille_signup" />
 
     <EditText
-        android:id="@+id/et_confirmer_signup"
-        android:layout_width="314dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:autofillHints="@string/confirmerPassword"
-        android:backgroundTint="#000000"
-        android:drawableStart="@drawable/ic_mdp"
-        android:drawableEnd="@drawable/ic_hide"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:fontFamily="@font/inter_semibold"
-        android:hint="@string/confirmerPassword"
-        android:inputType="textPassword"
-        android:textColor="@color/GreenText"
-        android:textColorHighlight="@color/GreenText"
-        android:textColorHint="@color/GreenText"
-        android:textColorLink="@color/GreenText"
-        android:textStyle="bold"
-        app:boxBackgroundMode="none"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password_signup" />
-
-    <EditText
         android:id="@+id/et_password_signup"
         android:layout_width="314dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:autofillHints="@string/password"
         android:backgroundTint="#000000"
         android:drawableStart="@drawable/ic_mdp"
@@ -113,14 +89,14 @@
         android:id="@+id/et_nomfamille_signup"
         android:layout_width="314dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:autofillHints="@string/nom"
         android:backgroundTint="#000000"
         android:drawableStart="@drawable/ic_person"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
-        android:hint="@string/nom"
+        android:hint="@string/prenom"
         android:inputType="text"
         android:textColor="@color/GreenText"
         android:textColorHighlight="@color/GreenText"
@@ -137,7 +113,7 @@
         android:id="@+id/et_nom_signup"
         android:layout_width="314dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:autofillHints="@string/prenom"
         android:backgroundTint="#000000"
         android:drawableStart="@drawable/ic_person"
@@ -153,8 +129,34 @@
         android:textStyle="bold"
         app:boxBackgroundMode="none"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_creer_compte_signup" />
+
+    <EditText
+        android:id="@+id/et_confirmer_signup"
+        android:layout_width="314dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:autofillHints="@string/confirmerPassword"
+        android:backgroundTint="#000000"
+        android:drawableStart="@drawable/ic_mdp"
+        android:drawableEnd="@drawable/ic_hide"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fontFamily="@font/inter_semibold"
+        android:hint="@string/confirmerPassword"
+        android:inputType="textPassword"
+        android:textColor="@color/GreenText"
+        android:textColorHighlight="@color/GreenText"
+        android:textColorHint="@color/GreenText"
+        android:textColorLink="@color/GreenText"
+        android:textStyle="bold"
+        app:boxBackgroundMode="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_password_signup" />
 
     <Button
         android:id="@+id/bt_creer_signup"
@@ -165,25 +167,13 @@
         android:text="@string/creerMonCompte"
         android:textColor="@color/white"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_confirmer_signup"
-        app:layout_constraintVertical_bias="0.157" />
-
-    <TextView
-        android:id="@+id/tv_dejacompte_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:fontFamily="@font/inter_semibold"
-        android:text="@string/dejaCompte"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_creer_signup"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintVertical_bias="0.338" />
 
     <TextView
         android:id="@+id/tv_seconnecter_signup"
@@ -193,11 +183,26 @@
         android:text="@string/login"
         android:textColor="@color/GreenText"
         android:textColorLink="@color/GreenText"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toEndOf="@+id/tv_dejacompte_signup"
         app:layout_constraintTop_toBottomOf="@+id/bt_creer_signup"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintVertical_bias="0.071" />
+
+    <TextView
+        android:id="@+id/tv_dejacompte_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/dejaCompte"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_creer_signup"
+        app:layout_constraintVertical_bias="0.071" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
