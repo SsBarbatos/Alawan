@@ -58,11 +58,14 @@
     <string name="rappeler">Se rappeler de moi</string>
     <string name="chienPerdu">Chiens perdus dans la région</string>
     <string name="title_activity_menu">Menu</string>
-    <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="approcherCollier">Approcher le collier Alawan</string>
+
+    <string name="text_alerts_profil">text_alerts_profil</string>
+    <string name="text_animaux_profil">text_animaux_profil</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
