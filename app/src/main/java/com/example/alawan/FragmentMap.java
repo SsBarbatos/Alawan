@@ -13,39 +13,26 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 
-
 public class FragmentMap extends Fragment {
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private String mParam1;
-    private String mParam2;
-    public FragmentMap(){
+    View view;
+    FragmentContainerView fvmain;
+    LinearLayout layoutAccueil;
+    LinearLayout layoutRecherche;
+    LinearLayout layoutProfil;
+    LinearLayout layout4; // nom temporaire
 
-    }
+        public FragmentMap(){
 
-    public static FragmentMap newInstance(String param1, String param2) {
-        FragmentMap fragment = new FragmentMap();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+       View view = inflater.inflate(R.layout.fragment_map,container,false);
+       return view;
     }
 }

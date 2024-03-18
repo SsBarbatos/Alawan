@@ -16,35 +16,8 @@ import android.widget.TextView;
 
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.annotation.NonNull;
 
-import androidx.core.app.ActivityCompat;
-
-import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-
-
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
-
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-
-import java.util.List;
-
-public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallback {
-
-    private static final int REQUEST_LOCATION_PERMISSION = 1;
-    private GoogleMap mMap;
-    private FusedLocationProviderClient fusedLocationClient;
+public class ActivityMenu extends AppCompatActivity {
 
     public ActivityMenu(){}
     View view;
@@ -81,7 +54,6 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
                     navController.navigate(R.id.action_vav_profil_to_recherche);
                 }
             }
-
         });
         layoutProfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,35 +79,6 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
                 }
             }
         });
-
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.mv_map);
-        mapFragment.getMapAsync(this);
-
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
-        // Demande de permission d'accès à la localisation si ce n'est pas déjà fait
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    REQUEST_LOCATION_PERMISSION);
-        } else {
-            // Afficher la localisation de l'utilisateur si la permission est déjà accordée
-            showUserLocation();
-        }
-    }
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_LOCATION_PERMISSION) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission accordée, afficher la localisation
-                showUserLocation();
-            } else {
-                // Permission refusée, gérer le cas où l'utilisateur refuse l'accès à la localisation
-            }
-        }
     }
 
     private void changeColor(TextView textView, ImageView imageView){
@@ -166,108 +109,6 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
     public void changePage(Intent intent){
         resultLauncher.launch(intent);
     }
-
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        // ajouter add (faut boucler)
-        LatLng address1 = getLocationFromAddress("7331 Rue Notre Dame O, Trois-Rivières, QC G9B 1L7");
-        if (address1 != null) {
-            mMap.addMarker(new MarkerOptions()
-                    .position(address1)
-                    .title("Address 1")
-                    .snippet("Votre adresse 1"));
-        }
-
-        LatLng address2 = getLocationFromAddress("3750 Rue de l'aéroport, Trois-Rivières QC G9B 2N8");
-        if (address2 != null) {
-            mMap.addMarker(new MarkerOptions()
-                    .position(address2)
-                    .title("Address 2")
-                    .snippet("Votre adresse 2"));
-        }
-
-        LatLng address3 = getLocationFromAddress("Pavillon des Sciences, 3500 Rue de Courval, Trois-Rivières, QC G8Z 1T2");
-        if (address3 != null) {
-            mMap.addMarker(new MarkerOptions()
-                    .position(address3)
-                    .title("Address 3")
-                    .snippet("Votre adresse 3"));
-        }
-
-        // montrser les add
-        LatLngBounds.Builder builder = new LatLngBounds.Builder();
-        if (address1 != null) {
-            builder.include(address1);
-        }
-        if (address2 != null) {
-            builder.include(address2);
-        }
-        if (address3 != null) {
-            builder.include(address3);
-        }
-        LatLngBounds bounds = builder.build();
-        mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
-
-    }
-
-    // Convertir l adresse en localisation
-    private LatLng getLocationFromAddress(String strAddress) {
-
-        Geocoder coder = new Geocoder(this);
-        List<Address> address;
-        LatLng p1 = null;
-
-        try {
-            // Getting a maximum of 1 Address that matches the input text
-            address = coder.getFromLocationName(strAddress, 1);
-
-            if (address == null || address.size() == 0) {
-                return null;
-            }
-
-            Address location = address.get(0);
-            p1 = new LatLng(location.getLatitude(), location.getLongitude());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return p1;
-    }
-
-    //localisation du telephone
-    private void showUserLocation() {
-        // Obtenir la dernière localisation connue de l'utilisateur
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        fusedLocationClient.getLastLocation()
-                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        if (location != null) {
-                            // localisation
-                            LatLng userLatLng = new LatLng(location.getLatitude(), location.getLongitude());
-                            // ajouter un marker
-                            mMap.addMarker(new MarkerOptions().position(userLatLng).title("Votre position"));
-                            // conrole cam
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 15));
-                        }
-                    }
-                });
-    }
-
-
-
 
     @Override
     public void onBackPressed() {
