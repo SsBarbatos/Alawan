@@ -1,6 +1,7 @@
 package com.example.alawan;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResult;
@@ -9,6 +10,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Debug;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,6 +20,16 @@ import android.widget.TextView;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.annotation.NonNull;
+
+
+import com.example.alawan.Server.RetrofitInstance;
+import com.example.alawan.Server.ServerInterface;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class ActivityMenu extends AppCompatActivity {
 
 import androidx.core.app.ActivityCompat;
 
@@ -46,16 +59,20 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationClient;
 
+
     public ActivityMenu(){}
     View view;
     LinearLayout layoutAccueil, layoutRecherche, layoutProfil, layout4;
     ImageView ivRecherche,ivProfile,ivAccueil;
     TextView tvProfil, tvRecherche, tvAccueil;
     ActivityResultLauncher<Intent> resultLauncher;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         retourActivity();
+        setIdAuth();
         setContentView(R.layout.activity_menu);
         layoutAccueil = findViewById(R.id.layout_acceuil_menu);
         layoutProfil = findViewById(R.id.layout_profil_menu);
@@ -274,5 +291,22 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
         super.onBackPressed();
         finish();
         System.exit(0);
+    }
+
+    private void setIdAuth(){
+        RetrofitInstance.getInstance().create(ServerInterface.class).getIdAuth().enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                SharedPreferences pref = getPreferences(MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                int id = response.body();
+                editor.putInt("id",id);
+                editor.commit();
+            }
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Log.v("error",t.toString());
+            }
+        });
     }
 }
