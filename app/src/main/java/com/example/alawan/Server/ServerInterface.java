@@ -28,7 +28,7 @@ public interface ServerInterface {
 
     @POST("/api/person")
     @FormUrlEncoded
-    Call<Boolean> addPerson(@Field("name") String name, @Field("lastName") String lastName, @Field("email") String email, @Field("password") String password,  @Field("invite") Boolean invite, @Field("admin") Boolean admin, @Field("creationDate")Date creationDate);
+    Call<Boolean> addPerson(@Field("name") String name, @Field("lastName") String lastName, @Field("email") String email, @Field("password") String password, @Field("creationDate")Date creationDate);
 
     //@POST("/logout")
     //@FormUrlEncoded
@@ -67,7 +67,12 @@ public interface ServerInterface {
     @GET("/api/races")
     Call<List<Race>> getListRace();
 
+
     @GET("/api/getIdAuth")
     Call<Integer> getIdAuth();
+
+    @GET("/api/emails")
+    Call<List<String>> getListEmails();
+
 
 }
