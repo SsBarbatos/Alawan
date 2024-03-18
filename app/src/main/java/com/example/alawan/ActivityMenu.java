@@ -28,9 +28,6 @@ import com.example.alawan.Server.ServerInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-public class ActivityMenu extends AppCompatActivity {
-
 import androidx.core.app.ActivityCompat;
 
 import android.content.pm.PackageManager;
@@ -53,6 +50,8 @@ import com.google.android.gms.location.LocationServices;
 
 import java.util.List;
 
+
+
 public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallback {
 
     private static final int REQUEST_LOCATION_PERMISSION = 1;
@@ -60,13 +59,15 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
     private FusedLocationProviderClient fusedLocationClient;
 
 
-    public ActivityMenu(){}
+    public ActivityMenu() {
+    }
+
     View view;
     LinearLayout layoutAccueil, layoutRecherche, layoutProfil, layout4;
-    ImageView ivRecherche,ivProfile,ivAccueil;
+    ImageView ivRecherche, ivProfile, ivAccueil;
     TextView tvProfil, tvRecherche, tvAccueil;
     ActivityResultLauncher<Intent> resultLauncher;
-
+    SupportMapFragment mapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,18 +84,19 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
         tvAccueil = findViewById(R.id.tv_acceuil_menu);
         tvProfil = findViewById(R.id.tv_profile_menu);
         tvRecherche = findViewById(R.id.tv_recherche_menu);
-        changeColor(tvAccueil,ivAccueil);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fv_mainpage);
         NavController navController = navHostFragment.getNavController();
+        mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.mv_map);
+        changeColor(tvAccueil, ivAccueil);
         // continuer a rajouter les onclicklistener pour faire la navigation
         layoutRecherche.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeColor(tvRecherche,ivRecherche);
-                if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap){
+                changeColor(tvRecherche, ivRecherche);
+                if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap) {
                     navController.navigate(R.id.action_map_to_recherche);
-                }
-                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil){
+                } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil) {
                     navController.navigate(R.id.action_vav_profil_to_recherche);
                 }
             }
@@ -103,11 +105,10 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
         layoutProfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeColor(tvProfil,ivProfile);
-                if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap){
+                changeColor(tvProfil, ivProfile);
+                if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap) {
                     navController.navigate(R.id.action_map_to_vav_profil);
-                }
-                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche){
+                } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
                     navController.navigate(R.id.action_recherche_to_vav_profil);
                 }
             }
@@ -115,18 +116,16 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
         layoutAccueil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeColor(tvAccueil,ivAccueil);
-                if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil){
+                changeColor(tvAccueil, ivAccueil);
+                if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil) {
                     navController.navigate(R.id.action_vav_profil_to_map);
-                }
-                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche){
+                } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
                     navController.navigate(R.id.action_recherche_to_map);
                 }
             }
         });
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.mv_map);
+
         mapFragment.getMapAsync(this);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -142,6 +141,7 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
             showUserLocation();
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -155,7 +155,7 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-    private void changeColor(TextView textView, ImageView imageView){
+    private void changeColor(TextView textView, ImageView imageView) {
         ivProfile.setColorFilter(getResources().getColor(R.color.gris));
         ivRecherche.setColorFilter(getResources().getColor(R.color.gris));
         ivAccueil.setColorFilter(getResources().getColor(R.color.gris));
@@ -164,23 +164,29 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
         tvRecherche.setTextColor(getResources().getColor(R.color.gris));
         textView.setTextColor(getResources().getColor(R.color.GreenText));
         imageView.setColorFilter(getResources().getColor(R.color.GreenText));
+        if (textView.equals(tvAccueil)){
+            mapFragment.getView().setVisibility(View.VISIBLE);
+        }
+        else {
+            mapFragment.getView().setVisibility(View.INVISIBLE);
+        }
     }
 
-    private void retourActivity(){
+    private void retourActivity() {
         resultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult o) {
-                if(o.getData().getIntExtra(("deconnexion"),0) == 1){
-                    setResult(RESULT_OK);
-                    finish();
-                }
-            }
-        });
+                    @Override
+                    public void onActivityResult(ActivityResult o) {
+                        if (o.getData().getIntExtra(("deconnexion"), 0) == 1) {
+                            setResult(RESULT_OK);
+                            finish();
+                        }
+                    }
+                });
     }
 
-    public void changePage(Intent intent){
+    public void changePage(Intent intent) {
         resultLauncher.launch(intent);
     }
 
@@ -284,8 +290,6 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -293,19 +297,20 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
         System.exit(0);
     }
 
-    private void setIdAuth(){
+    private void setIdAuth() {
         RetrofitInstance.getInstance().create(ServerInterface.class).getIdAuth().enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 SharedPreferences pref = getPreferences(MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
                 int id = response.body();
-                editor.putInt("id",id);
+                editor.putInt("id", id);
                 editor.commit();
             }
+
             @Override
             public void onFailure(Call<Integer> call, Throwable t) {
-                Log.v("error",t.toString());
+                Log.v("error", t.toString());
             }
         });
     }

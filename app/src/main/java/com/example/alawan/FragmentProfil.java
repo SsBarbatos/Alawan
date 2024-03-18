@@ -93,8 +93,8 @@ public class FragmentProfil extends Fragment {
             @Override
             public void onClick(View v) {
                 // Rajouter le code de deconnexion
-                Intent intent = new Intent(getActivity(), ActivityModifyProfil.class);
-                ((ActivityMenu)getActivity()).changePage(intent);
+                //Intent intent = new Intent(getActivity(), ActivityModifyProfil.class);
+                //((ActivityMenu)getActivity()).changePage(intent);
             }
         });
         return view;
