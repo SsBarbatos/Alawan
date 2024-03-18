@@ -7,66 +7,65 @@
     android:background="@drawable/bg_menu_top"
     tools:context=".FragmentAddAlerte">
 
-    <EditText
-        android:id="@+id/et_date_alerte"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:drawableEnd="@drawable/ic_calendar"
-        android:ems="10"
-        android:fontFamily="@font/inter_semibold"
-        android:hint="@string/datePerdue"
-        android:autofillHints="@string/datePerdue"
-        android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/et_phone_alerte"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/et_adresse_alerte"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="304dp"
-        android:ems="10"
-        android:fontFamily="@font/inter_semibold"
-        android:hint="@string/adresseTrouve"
-        android:autofillHints="@string/adresseTrouve"
-        android:inputType="textPostalAddress"
-        android:textColor="@color/black"
+    <ImageView
+        android:id="@+id/iv_inserer_photo_alerte"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/bg_input_img"
         app:layout_constraintBottom_toTopOf="@+id/et_description_alerte"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tv_inserer_photo"
+        android:layout_width="128dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/insererPhoto"
+        android:textAlignment="center"
+        android:textColor="#D9D9D9"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/iv_inserer_photo_alerte"
+        app:layout_constraintStart_toStartOf="@+id/iv_inserer_photo_alerte"
+        app:layout_constraintTop_toBottomOf="@+id/iv_icon_inserer_photo_alerte" />
 
     <EditText
         android:id="@+id/et_description_alerte"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="20dp"
+        android:autofillHints="@string/descriptionAnimal"
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
         android:gravity="start|top"
         android:hint="@string/descriptionAnimal"
-        android:autofillHints="@string/descriptionAnimal"
         android:inputType="textMultiLine"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/sp_race_alerte"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Spinner
-        android:id="@+id/sp_race_alerte"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/et_date_alerte"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="12dp"
-        android:autofillHints="temps"
+        android:layout_marginBottom="20dp"
+        android:autofillHints="@string/datePerdue"
+        android:drawableEnd="@drawable/ic_calendar"
+        android:ems="10"
         android:fontFamily="@font/inter_semibold"
-        app:layout_constraintBottom_toTopOf="@+id/et_date_alerte"
-        app:layout_constraintEnd_toStartOf="@+id/sp_couleur_alerte"
-        app:layout_constraintHorizontal_bias="0.462"
+        android:hint="@string/datePerdue"
+        android:inputType="date"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/et_phone_alerte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
@@ -74,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginEnd="56dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/inter_semibold"
         app:layout_constraintBottom_toTopOf="@+id/et_date_alerte"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -83,16 +82,45 @@
         android:id="@+id/et_phone_alerte"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="24dp"
+        android:autofillHints="@string/telephone"
         android:drawableEnd="@drawable/ic_phone_black"
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
         android:hint="@string/telephone"
-        android:autofillHints="@string/telephone"
         android:inputType="phone"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bt_lancer_alerte"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bt_lancer_alerte"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/bg_btnf"
+        android:fontFamily="@font/inter_black"
+        android:text="@string/lancerAlerte"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/sp_race_alerte"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:autofillHints="temps"
+        android:fontFamily="@font/inter_semibold"
+        app:layout_constraintBottom_toTopOf="@+id/et_date_alerte"
+        app:layout_constraintEnd_toStartOf="@+id/sp_couleur_alerte"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -119,19 +147,14 @@
         app:layout_constraintStart_toEndOf="@+id/iv_back_alerte"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/bt_lancer_alerte"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="200dp"
-        android:background="@drawable/bg_btnf"
-        android:fontFamily="@font/inter_black"
-        android:text="@string/lancerAlerte"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/iv_icon_inserer_photo_alerte"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="72dp"
+        android:src="@drawable/ic_plus"
+        app:layout_constraintEnd_toEndOf="@+id/iv_inserer_photo_alerte"
+        app:layout_constraintStart_toStartOf="@+id/iv_inserer_photo_alerte"
+        app:layout_constraintTop_toTopOf="@+id/iv_inserer_photo_alerte" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
