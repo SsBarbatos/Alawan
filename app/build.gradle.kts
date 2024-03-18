@@ -46,6 +46,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:$nav_version")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("junit:junit:4.13.2")
 
     //mapimport
     implementation ("com.google.android.gms:play-services-maps:18.1.0")

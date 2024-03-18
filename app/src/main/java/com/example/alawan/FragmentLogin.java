@@ -15,11 +15,12 @@ import android.widget.TextView;
 
 
 public class FragmentLogin extends Fragment {
-
+    
     View view;
     Button btConnecter;
     TextView tvInscrire;
     TextView tvMdpOublie;
+
     public FragmentLogin() {
         // Required empty public constructor
     }

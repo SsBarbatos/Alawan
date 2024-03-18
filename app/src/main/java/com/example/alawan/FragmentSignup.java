@@ -34,6 +34,10 @@ public class FragmentSignup extends Fragment {
     EditText etNom, etPrenom, etEmail, etPassword, etConfirmPassword;
     List<Person> listPerson;
 
+    ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
+    NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
+    NavController navController = navHostFragment.getNavController();
+
     public FragmentSignup() {
         // Required empty public constructor
     }
@@ -57,10 +61,6 @@ public class FragmentSignup extends Fragment {
         etPrenom = view.findViewById(R.id.et_nom_signup);
         etPassword = view.findViewById(R.id.et_password_signup);
         etConfirmPassword = view.findViewById(R.id.et_confirmer_signup);
-
-        ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
-        NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
-        NavController navController = navHostFragment.getNavController();
 
         btSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,37 +136,7 @@ public class FragmentSignup extends Fragment {
                 }
 
                 if(validation)
-                {
-                    try
-                    {
-                        Person person = new Person(
-                                etPrenom.getText().toString(),
-                                etNom.getText().toString(),
-                                etEmail.getText().toString(),
-                                etPassword.getText().toString()
-                        );
-
-                        Call<Boolean> call = serverInterface.addPerson(person.getName(),person.getLastName(),person.getEmail(),person.getPassword(),person.getCreationDate());
-                        call.enqueue(new Callback<Boolean>()
-                        {
-                            @Override
-                            public void onResponse(Call<Boolean> call, Response<Boolean> response)
-                            {
-                                navController.navigate(R.id.action_nav_signup_to_nav_login);
-                                Log.v("debug",call.toString());
-                            }
-                            @Override
-                            public void onFailure(Call<Boolean> call, Throwable t)
-                            {
-                                Log.v("debug error",t.toString());
-                            }
-                        });
-                    }
-                    catch (Exception e)
-                    {
-                        Log.v("debug catch", e.toString());
-                    }
-                }
+                    Signup( etPrenom.getText().toString(), etNom.getText().toString(), etEmail.getText().toString(), etPassword.getText().toString());
             }
         });
 
@@ -178,5 +148,33 @@ public class FragmentSignup extends Fragment {
         });
 
         return view;
+    }
+
+    private void Signup(String prenom, String nom, String email, String password)
+    {
+        try
+        {
+            Person person = new Person(prenom, nom, email, password);
+
+            Call<Boolean> call = serverInterface.addPerson(person.getName(),person.getLastName(),person.getEmail(),person.getPassword(),person.getCreationDate());
+            call.enqueue(new Callback<Boolean>()
+            {
+                @Override
+                public void onResponse(Call<Boolean> call, Response<Boolean> response)
+                {
+                    navController.navigate(R.id.action_nav_signup_to_nav_login);
+                    Log.v("debug",call.toString());
+                }
+                @Override
+                public void onFailure(Call<Boolean> call, Throwable t)
+                {
+                    Log.v("debug error",t.toString());
+                }
+            });
+        }
+        catch (Exception e)
+        {
+            Log.v("debug catch", e.toString());
+        }
     }
 }
