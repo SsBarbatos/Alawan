@@ -17,17 +17,18 @@
 
     <ImageView
         android:id="@+id/iv_ajout_compagnon"
-        android:layout_width="257dp"
-        android:layout_height="237dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="48dp"
         android:contentDescription="@string/image"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bg_input_img" />
 
     <TextView
-        android:id="@+id/tv_ajout_compagnon"
+        android:id="@+id/tv_inserer_photo"
         android:layout_width="128dp"
         android:layout_height="53dp"
         android:layout_marginBottom="80dp"
@@ -47,16 +48,16 @@
         android:layout_height="30dp"
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/image"
-        app:layout_constraintBottom_toTopOf="@+id/tv_ajout_compagnon"
-        app:layout_constraintEnd_toEndOf="@+id/tv_ajout_compagnon"
-        app:layout_constraintStart_toStartOf="@+id/tv_ajout_compagnon"
+        app:layout_constraintBottom_toTopOf="@+id/tv_inserer_photo"
+        app:layout_constraintEnd_toEndOf="@+id/tv_inserer_photo"
+        app:layout_constraintStart_toStartOf="@+id/tv_inserer_photo"
         app:srcCompat="@drawable/ic_plus" />
 
     <EditText
         android:id="@+id/et_nom_ajout_compagnon"
-        android:layout_width="308dp"
+        android:layout_width="310dp"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:autofillHints="@string/nomCompagnon"
         android:background="@drawable/bg_carte"
         android:ems="10"
@@ -70,33 +71,22 @@
 
     <Spinner
         android:id="@+id/sp_race_ajout_compagnon"
-        android:layout_width="147dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="12dp"
         android:autofillHints="race"
         android:background="@drawable/bg_carte"
         app:layout_constraintEnd_toStartOf="@+id/sp_couleur_ajout_compagnon"
-        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_nom_ajout_compagnon" />
-
-    <Spinner
-        android:id="@+id/sp_couleur_ajout_compagnon"
-        android:layout_width="146dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="48dp"
-        android:autofillHints="couleur"
-        android:background="@drawable/bg_carte"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_nom_ajout_compagnon" />
 
     <EditText
         android:id="@+id/et_date_ajout_compagnon"
-        android:layout_width="180dp"
+        android:layout_width="310dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:autofillHints="@string/dateNaissance"
         android:background="@drawable/bg_carte"
         android:ems="10"
@@ -104,38 +94,49 @@
         android:inputType="date"
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.233"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sp_race_ajout_compagnon" />
 
     <EditText
         android:id="@+id/et_description_ajout_compagnon"
-        android:layout_width="308dp"
+        android:layout_width="310dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints="@string/description"
         android:background="@drawable/bg_carte"
         android:ems="10"
         android:hint="@string/description"
-        android:autofillHints="@string/description"
         android:inputType="text"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_date_ajout_compagnon" />
+
+    <Spinner
+        android:id="@+id/sp_couleur_ajout_compagnon"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="48dp"
+        android:autofillHints="couleur"
+        android:background="@drawable/bg_carte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_nom_ajout_compagnon" />
 
     <Button
         android:id="@+id/bt_ajout_compagnon"
         android:layout_width="310dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/bg_btnf"
         android:fontFamily="@font/inter_black"
         android:text="@string/ajouterCompagnon"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_description_ajout_compagnon" />
 

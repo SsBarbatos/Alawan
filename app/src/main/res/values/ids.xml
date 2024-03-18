@@ -7,7 +7,7 @@
     <item name="et_nom_ajout_compagnon" type="id" />
     <item name="sp_couleur_ajout_compagnon" type="id" />
     <item name="iv_ajout_compagnon" type="id" />
-    <item name="tv_ajout_compagnon" type="id" />
+    <item name="tv_inserer_photo" type="id" />
     <item name="iv_icone_ajout_compagnon" type="id" />
     <item name="guideline" type="id" />
 </resources>
