@@ -1,11 +1,9 @@
 package com.example.alawan;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.example.alawan.Class.Adapter.AdapterListeAnimalProfil;
-import com.example.alawan.Class.Animal;
 import com.example.alawan.Class.Person;
 import com.example.alawan.Server.RetrofitInstance;
 import com.example.alawan.Server.ServerInterface;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,7 +28,7 @@ public class FragmentSignup extends Fragment {
     List<Person> listPerson;
 
     ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
-    NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
+    NavHostFragment navHostFragment = (NavHostFragment) requireActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
     NavController navController = navHostFragment.getNavController();
 
     public FragmentSignup() {
@@ -150,7 +143,7 @@ public class FragmentSignup extends Fragment {
         return view;
     }
 
-    private void Signup(String prenom, String nom, String email, String password)
+    public boolean Signup(String prenom, String nom, String email, String password)
     {
         try
         {
@@ -171,10 +164,14 @@ public class FragmentSignup extends Fragment {
                     Log.v("debug error",t.toString());
                 }
             });
+
+            return true;
         }
         catch (Exception e)
         {
             Log.v("debug catch", e.toString());
+
+            return false;
         }
     }
 }
