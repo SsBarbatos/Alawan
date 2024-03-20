@@ -20,12 +20,17 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
 import com.example.alawan.Class.Alert;
+import com.example.alawan.Class.Animal;
 import com.example.alawan.Class.Color;
 import com.example.alawan.Class.Person;
+import com.example.alawan.Class.Race;
 import com.example.alawan.Server.RetrofitInstance;
 import com.example.alawan.Server.ServerInterface;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -40,6 +45,10 @@ public class FragmentAddAlerte extends Fragment {
     EditText etDescription, etDate, etPhone;
     Spinner spRaces, spColors;
     Button btAddAlert;
+
+    ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
+    NavHostFragment navHostFragment = (NavHostFragment) requireActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
+    NavController navController = navHostFragment.getNavController();
 
     public FragmentAddAlerte()
     {
@@ -93,27 +102,109 @@ public class FragmentAddAlerte extends Fragment {
             @Override
             public void onClick(View v)
             {
-                boolean validation = true;
+                boolean validation;
 
-                if (etDate.getText().toString().trim().length() == 0)
-                {
+                if (etDate.getText().toString().trim().length() == 0) {
                     etDate.setError("Le champ est vide");
                     validation = false;
-                }
-
-                if (etDescription.getText().toString().trim().length() == 0)
+                }else if (etDescription.getText().toString().trim().length() == 0)
                 {
                     etDescription.setError("Le champ est vide");
                     validation = false;
-                }
-
-                if (etPhone.getText().toString().trim().length() == 0)
+                }else if (etPhone.getText().toString().trim().length() == 0)
                 {
                     etPhone.setError("Le champ est vide");
                     validation = false;
                 }
+                else
+                    validation = true;
+
+                if (validation)
+                {
+                    try {
+                        Date date = DateFormat.getDateInstance().parse(etDate.getText().toString());
+                        AddAlert(etDescription.getText().toString(), spRaces.getSelectedItem().toString(), spColors.getSelectedItem().toString(), date, etPhone.getText().toString());
+                    } catch (ParseException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
             }
         });
-        return null;
+        return view;
+    }
+
+    public void AddAlert(String description, String race, String color, Date date, String phone)
+    {
+        // __ GET USER ID __________________________________________________________________________
+        Person user;
+
+        Call<Person> callUser = serverInterface.getUser();
+        callUser.enqueue(new Callback<Person>()
+        {
+            @Override
+            public void onResponse(Call<Person> call, Response<Person> response)
+            {
+                user = response.body();
+            }
+            @Override
+            public void onFailure(Call<Person> call, Throwable t)
+            {
+                Log.v("debug error",t.toString());
+            }
+        });
+
+
+        // __ GET RACE ID __________________________________________________________________________
+        Call<List<Race>> callRace = serverInterface.getListRace();
+        callRace.enqueue(new Callback<List<Race>>()
+        {
+            List<Race> listRace;
+            Race useRace;
+            @Override
+            public void onResponse(Call<List<Race>> call, Response<List<Race>> response)
+            {
+                listRace = response.body();
+                for(Race race: listRace)
+                {
+                    if(race.getRace().toString() == spRaces.getSelectedItem().toString())
+                    {
+                        useRace = race;
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Race>> call, Throwable t)
+            {
+                Log.v("debug error",t.toString());
+            }
+        });
+        // _________________________________________________________________________________________
+
+        Animal animal = new Animal(user.getId(), useRace[0].getId(), String picture, True);
+
+        Call<Boolean> callAlert = serverInterface.addAlert(alert.get.getName(),person.getLastName(),person.getEmail(),person.getPassword(),person.getCreationDate());
+        callAlert.enqueue(new Callback<Boolean>()
+        {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response)
+            {
+                navController.navigate(R.id.action_nav_signup_to_nav_login);
+                Log.v("debug",call.toString());
+            }
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t)
+            {
+                Log.v("debug error",t.toString());
+            }
+        });
+
+        return true;
+    }
+        catch (Exception e)
+    {
+        Log.v("debug catch", e.toString());
+
+        return false;
+    }
     }
 }

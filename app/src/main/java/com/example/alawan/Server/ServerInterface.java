@@ -70,4 +70,8 @@ public interface ServerInterface {
     @GET("/api/emails")
     Call<List<String>> getListEmails();
 
+    @POST("/api/alert")
+    @FormUrlEncoded
+    Call<Boolean> addAlert(@Field("picture") String picture, @Field("description") String description, @Field("race") String race, @Field("color") String color, @Field("date") Date date, @Field("phone") String phone);
+
 }

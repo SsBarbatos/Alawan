@@ -8,10 +8,18 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.example.alawan.Server.RetrofitInstance;
+import com.example.alawan.Server.ServerInterface;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class FragmentFirstPage extends Fragment {
@@ -25,6 +33,10 @@ public class FragmentFirstPage extends Fragment {
     Button btInvite;
     View view;
 
+    ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
+    NavHostFragment navHostFragment = (NavHostFragment) requireActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
+    NavController navController = navHostFragment.getNavController();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +47,6 @@ public class FragmentFirstPage extends Fragment {
         btConnecter = view.findViewById(R.id.bt_connecter_first);
         btInscrire = view.findViewById(R.id.bt_inscrire_first);
         btInvite = view.findViewById(R.id.bt_inviter_first);
-        NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
-        NavController navController = navHostFragment.getNavController();
 
         btConnecter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,10 +59,21 @@ public class FragmentFirstPage extends Fragment {
         btInvite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // --------- Code pour changer de la première page à la page invité --------------------------
-                // !!!!!!!!!!!!!! Il reste a rajouter le code ici pour dire que s'est un invité !!!!!!!!!!!!!!!
-                Intent intent = new Intent(getActivity(), ActivityMenu.class);
-                startActivity(intent);
+                Call<Boolean> call = serverInterface.login("invite", "invite");
+                call.enqueue(new Callback<Boolean>()
+                {
+                    @Override
+                    public void onResponse(Call<Boolean> call, Response<Boolean> response)
+                    {
+                        Intent intent = new Intent(getActivity(), ActivityMenu.class);
+                        startActivity(intent);
+                    }
+                    @Override
+                    public void onFailure(Call<Boolean> call, Throwable t)
+                    {
+                        Log.v("debug error",t.toString());
+                    }
+                });
             }
         });
 
