@@ -26,12 +26,13 @@ import retrofit2.Response;
 
 
 public class FragmentLogin extends Fragment {
-
+    
     View view;
     Button btConnecter;
     TextView tvInscrire;
     TextView tvMdpOublie;
     EditText etEmail, etPassword;
+
     public FragmentLogin() {
         // Required empty public constructor
     }
