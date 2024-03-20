@@ -303,9 +303,11 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 SharedPreferences pref = getPreferences(MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
-                int id = response.body();
-                editor.putInt("id", id);
-                editor.commit();
+                if (response.body() != null) {
+                    int id = response.body();
+                    editor.putInt("id", id);
+                    editor.commit();
+                }
             }
 
             @Override
