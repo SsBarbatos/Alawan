@@ -1,11 +1,9 @@
 package com.example.alawan;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.example.alawan.Class.Adapter.AdapterListeAnimalProfil;
-import com.example.alawan.Class.Animal;
 import com.example.alawan.Class.Person;
 import com.example.alawan.Server.RetrofitInstance;
 import com.example.alawan.Server.ServerInterface;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,6 +26,10 @@ public class FragmentSignup extends Fragment {
     TextView tvConnecter;
     EditText etNom, etPrenom, etEmail, etPassword, etConfirmPassword;
     List<Person> listPerson;
+
+    ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
+    NavHostFragment navHostFragment = (NavHostFragment) requireActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
+    NavController navController = navHostFragment.getNavController();
 
     public FragmentSignup() {
         // Required empty public constructor
@@ -57,10 +54,6 @@ public class FragmentSignup extends Fragment {
         etPrenom = view.findViewById(R.id.et_nom_signup);
         etPassword = view.findViewById(R.id.et_password_signup);
         etConfirmPassword = view.findViewById(R.id.et_confirmer_signup);
-
-        ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
-        NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
-        NavController navController = navHostFragment.getNavController();
 
         btSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,37 +129,7 @@ public class FragmentSignup extends Fragment {
                 }
 
                 if(validation)
-                {
-                    try
-                    {
-                        Person person = new Person(
-                                etPrenom.getText().toString(),
-                                etNom.getText().toString(),
-                                etEmail.getText().toString(),
-                                etPassword.getText().toString()
-                        );
-
-                        Call<Boolean> call = serverInterface.addPerson(person.getName(),person.getLastName(),person.getEmail(),person.getPassword(),person.getCreationDate());
-                        call.enqueue(new Callback<Boolean>()
-                        {
-                            @Override
-                            public void onResponse(Call<Boolean> call, Response<Boolean> response)
-                            {
-                                navController.navigate(R.id.action_nav_signup_to_nav_login);
-                                Log.v("debug",call.toString());
-                            }
-                            @Override
-                            public void onFailure(Call<Boolean> call, Throwable t)
-                            {
-                                Log.v("debug error",t.toString());
-                            }
-                        });
-                    }
-                    catch (Exception e)
-                    {
-                        Log.v("debug catch", e.toString());
-                    }
-                }
+                    Signup( etPrenom.getText().toString(), etNom.getText().toString(), etEmail.getText().toString(), etPassword.getText().toString());
             }
         });
 
@@ -178,5 +141,37 @@ public class FragmentSignup extends Fragment {
         });
 
         return view;
+    }
+
+    public boolean Signup(String prenom, String nom, String email, String password)
+    {
+        try
+        {
+            Person person = new Person(prenom, nom, email, password);
+
+            Call<Boolean> call = serverInterface.addPerson(person.getName(),person.getLastName(),person.getEmail(),person.getPassword(),person.getCreationDate());
+            call.enqueue(new Callback<Boolean>()
+            {
+                @Override
+                public void onResponse(Call<Boolean> call, Response<Boolean> response)
+                {
+                    navController.navigate(R.id.action_nav_signup_to_nav_login);
+                    Log.v("debug",call.toString());
+                }
+                @Override
+                public void onFailure(Call<Boolean> call, Throwable t)
+                {
+                    Log.v("debug error",t.toString());
+                }
+            });
+
+            return true;
+        }
+        catch (Exception e)
+        {
+            Log.v("debug catch", e.toString());
+
+            return false;
+        }
     }
 }
