@@ -69,7 +69,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="288dp"
             android:text="Je n’ai pas de collier alawan"
-            android:textDecoration="underline"
             app:layout_constraintTop_toBottomOf="@+id/tv_search_med"
             tools:layout_editor_absoluteX="118dp" />
 
