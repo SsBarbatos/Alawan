@@ -66,8 +66,8 @@ public class FragmentAddPet extends Fragment
         btAddPet = view.findViewById(R.id.bt_ajout_compagnon);
 
         ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
-        NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
-        NavController navController = navHostFragment.getNavController();
+        //NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
+        //NavController navController = navHostFragment.getNavController();
 
         // GET COLORS FOR THE SPINNER
         Call<List<Color>> callColor = serverInterface.getListColor();
@@ -128,6 +128,6 @@ public class FragmentAddPet extends Fragment
 
             }
         });
-        return null;
+        return view;
     }
 }

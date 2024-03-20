@@ -68,7 +68,7 @@ public class FragmentAddAlerte extends Fragment {
 
         ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
         NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
-        NavController navController = navHostFragment.getNavController();
+        //NavController navController = navHostFragment.getNavController();
 
         // FILL THE COLORS SPINNER
         ArrayAdapter<CharSequence> adapterColors = ArrayAdapter.createFromResource(
@@ -114,6 +114,6 @@ public class FragmentAddAlerte extends Fragment {
                 }
             }
         });
-        return null;
+        return view;
     }
 }
