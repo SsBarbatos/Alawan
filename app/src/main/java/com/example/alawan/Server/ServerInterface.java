@@ -67,7 +67,12 @@ public interface ServerInterface {
     @GET("/api/races")
     Call<List<Race>> getListRace();
 
+
+    @GET("/api/getIdAuth")
+    Call<Integer> getIdAuth();
+
     @GET("/api/emails")
     Call<List<String>> getListEmails();
+
 
 }
