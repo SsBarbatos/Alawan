@@ -1,8 +1,6 @@
 package com.example.alawan;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,8 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.alawan.Server.RetrofitInstance;
-import com.example.alawan.Server.ServerInterface;
+import com.example.alawan.Class.Server.RetrofitInstance;
+import com.example.alawan.Class.Server.ServerInterface;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -67,18 +65,17 @@ public class FragmentLogin extends Fragment {
                     validation = false;
                 }
                 if (validation){
-                    RetrofitInstance.getInstance().create(ServerInterface.class).login(etEmail.getText().toString(), etPassword.getText().toString()).enqueue(new Callback<Boolean>() {
+                    RetrofitInstance.getInstance().create(ServerInterface.class).login(etEmail.getText().toString(), etPassword.getText().toString()).enqueue(new Callback<Integer>() {
                         @Override
-                        public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                            if(response.body()){
+                        public void onResponse(Call<Integer> call, Response<Integer> response) {
+                            if(response.body() != 0){
                                 Intent intent = new Intent(getActivity(), ActivityMenu.class);
                                 startActivity(intent);
                             }
-
                         }
 
                         @Override
-                        public void onFailure(Call<Boolean> call, Throwable t) {
+                        public void onFailure(Call<Integer> call, Throwable t) {
                             Log.v("debug",t.toString());
                         }
                     });
