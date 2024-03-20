@@ -57,6 +57,7 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     private GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationClient;
+    private LatLngBounds bounds;
 
 
     public ActivityMenu() {
@@ -195,7 +196,6 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // ajouter add (faut boucler)
         LatLng address1 = getLocationFromAddress("7331 Rue Notre Dame O, Trois-Rivières, QC G9B 1L7");
         if (address1 != null) {
             mMap.addMarker(new MarkerOptions()
@@ -220,7 +220,6 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
                     .snippet("Votre adresse 3"));
         }
 
-        // montrser les add
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         if (address1 != null) {
             builder.include(address1);
@@ -231,10 +230,18 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
         if (address3 != null) {
             builder.include(address3);
         }
-        LatLngBounds bounds = builder.build();
-        mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
-
+        bounds = builder.build();
     }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus && mMap != null && bounds != null) {
+            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
+        }
+    }
+
+
 
     // Convertir l adresse en localisation
     private LatLng getLocationFromAddress(String strAddress) {
@@ -304,9 +311,13 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
                 SharedPreferences pref = getPreferences(MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
                 if (response.body() != null) {
-                    int id = response.body();
+
+                    int id = response.body().intValue();
                     editor.putInt("id", id);
-                    editor.commit();
+                    editor.apply();
+                } else {
+                    // Gérer le cas où le corps de la réponse est null
+
                 }
             }
 
@@ -316,4 +327,5 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
     }
+
 }
