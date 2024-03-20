@@ -2,8 +2,8 @@ package com.example.alawan.Class;
 
 import android.util.Log;
 
-import com.example.alawan.Server.RetrofitInstance;
-import com.example.alawan.Server.ServerInterface;
+import com.example.alawan.Class.Server.RetrofitInstance;
+import com.example.alawan.Class.Server.ServerInterface;
 
 import java.util.List;
 

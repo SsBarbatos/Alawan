@@ -1,7 +1,6 @@
 package com.example.alawan;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,8 +19,8 @@ import android.widget.ImageView;
 import com.example.alawan.Class.Adapter.AdapterListeAlerteProfil;
 import com.example.alawan.Class.Adapter.AdapterListeAnimalProfil;
 import com.example.alawan.Class.Animal;
-import com.example.alawan.Server.RetrofitInstance;
-import com.example.alawan.Server.ServerInterface;
+import com.example.alawan.Class.Server.RetrofitInstance;
+import com.example.alawan.Class.Server.ServerInterface;
 
 import java.util.ArrayList;
 import java.util.List;

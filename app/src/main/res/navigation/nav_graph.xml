@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_map_to_fragmentAddAlerte"
             app:destination="@id/fragmentAddAlerte" />
+        <action
+            android:id="@+id/action_map_to_fragment_find_med"
+            app:destination="@id/fragment_find_med" />
     </fragment>
     <fragment
         android:id="@+id/recherche"
@@ -34,6 +37,9 @@
         <action
             android:id="@+id/action_recherche_to_fragmentAddAlerte"
             app:destination="@id/fragmentAddAlerte" />
+        <action
+            android:id="@+id/action_recherche_to_fragment_find_med"
+            app:destination="@id/fragment_find_med" />
     </fragment>
 
     <fragment
@@ -54,6 +60,9 @@
         <action
             android:id="@+id/action_vav_profil_to_fragmentAddAlerte"
             app:destination="@id/fragmentAddAlerte" />
+        <action
+            android:id="@+id/action_vav_profil_to_fragment_find_med"
+            app:destination="@id/fragment_find_med" />
     </fragment>
     <fragment
         android:id="@+id/addPet"
@@ -75,6 +84,9 @@
         <action
             android:id="@+id/action_addPet_to_map"
             app:destination="@id/map" />
+        <action
+            android:id="@+id/action_addPet_to_fragment_find_med"
+            app:destination="@id/fragment_find_med" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAddAlerte"
@@ -90,6 +102,30 @@
         <action
             android:id="@+id/action_fragmentAddAlerte_to_recherche"
             app:destination="@id/recherche" />
+        <action
+            android:id="@+id/action_fragmentAddAlerte_to_fragment_find_med"
+            app:destination="@id/fragment_find_med" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_find_med"
+        android:name="com.example.alawan.FragmentFindMed"
+        android:label="fragment_find_med"
+        tools:layout="@layout/fragment_find_med" >
+        <action
+            android:id="@+id/action_fragment_find_med_to_recherche"
+            app:destination="@id/recherche" />
+        <action
+            android:id="@+id/action_fragment_find_med_to_map"
+            app:destination="@id/map" />
+        <action
+            android:id="@+id/action_fragment_find_med_to_fragmentAddAlerte"
+            app:destination="@id/fragmentAddAlerte" />
+        <action
+            android:id="@+id/action_fragment_find_med_to_vav_profil"
+            app:destination="@id/vav_profil" />
+        <action
+            android:id="@+id/action_fragment_find_med_to_addPet"
+            app:destination="@id/addPet" />
     </fragment>
 
 </navigation>

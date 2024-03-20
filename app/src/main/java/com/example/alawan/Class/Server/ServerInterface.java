@@ -1,4 +1,4 @@
-package com.example.alawan.Server;
+package com.example.alawan.Class.Server;
 
 import com.example.alawan.Class.Animal;
 import com.example.alawan.Class.Color;
@@ -18,7 +18,7 @@ import retrofit2.http.POST;
 public interface ServerInterface {
     @POST("/api/login")
     @FormUrlEncoded
-    Call<Boolean> login(@Field("email") String email, @Field("password") String password);
+    Call<Integer> login(@Field("email") String email, @Field("password") String password);
 
     @GET("/api/persons")
     Call<List<Person>> getListPersons();
