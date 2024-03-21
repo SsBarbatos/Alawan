@@ -4,8 +4,10 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +25,7 @@ import com.example.alawan.Class.AnimalColor;
 import com.example.alawan.Class.Color;
 import com.example.alawan.Class.Person;
 import com.example.alawan.Class.Race;
-import com.example.alawan.Server.RetrofitInstance;
-import com.example.alawan.Server.ServerInterface;
+
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -149,67 +150,60 @@ public class FragmentAddAlerte extends Fragment {
         return view;
     }
 
-    public void AddAlert(String description, String race, String color, Date date, String phone)
-    {
+    public void AddAlert(String description, String race, String color, Date date, String phone) {
 
-    // __ GET USER ID ______________________________________________________________________________
+        // __ GET USER ID ______________________________________________________________________________
 
         Call<Person> callUser = serverInterface.getUser();
-        callUser.enqueue(new Callback<Person>()
-        {
+        callUser.enqueue(new Callback<Person>() {
             @Override
-            public void onResponse(Call<Person> call, Response<Person> response)
-            {
+            public void onResponse(Call<Person> call, Response<Person> response) {
                 user = response.body();
             }
+
             @Override
-            public void onFailure(Call<Person> call, Throwable t)
-            {
-                Log.v("debug error",t.toString());
+            public void onFailure(Call<Person> call, Throwable t) {
+                Log.v("debug error", t.toString());
             }
         });
 
-    // __ CREATE ANIMAL COLOR ______________________________________________________________________
+        // __ CREATE ANIMAL COLOR ______________________________________________________________________
 
         Animal animal = new Animal(user.getId(), useRace.getId(), tvPicture.getText().toString(), true);
 
         Call<Boolean> callAnimalColor = serverInterface.addAnimalColor(animal.getId(), useColor.getId());
-        callAnimalColor.enqueue(new Callback<Boolean>()
-        {
+        callAnimalColor.enqueue(new Callback<Boolean>() {
             @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response)
-            {
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                 animalColor = new AnimalColor(animal.getId(), useColor.getId());
             }
+
             @Override
-            public void onFailure(Call<Boolean> call, Throwable t)
-            {
-                Log.v("debug error",t.toString());
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                Log.v("debug error", t.toString());
             }
         });
 
-    // _____________________________________________________________________________________________
+        // _____________________________________________________________________________________________
 
         Date currentDate = new Date();
 
-        Call<Boolean> callAlert = serverInterface.addAlert( animal.getPicture(),
-                                                            description,
-                                                            race,
-                                                            color,
-                                                            date,
-                                                            phone);
-        callAlert.enqueue(new Callback<Boolean>()
-        {
+        Call<Boolean> callAlert = serverInterface.addAlert(animal.getPicture(),
+                description,
+                race,
+                color,
+                date,
+                phone);
+        callAlert.enqueue(new Callback<Boolean>() {
             @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response)
-            {
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                 navController.navigate(R.id.action_addAlerteInvite_to_map);
             }
+
             @Override
-            public void onFailure(Call<Boolean> call, Throwable t)
-            {
-                Log.v("debug error",t.toString());
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                Log.v("debug error", t.toString());
             }
         });
-
+    }
 }
