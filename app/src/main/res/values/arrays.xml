@@ -14,16 +14,6 @@
     </string-array>
 
     <string-array name="list_races">
-        <item>Blanc</item>
-        <item>Bringé</item>
-        <item>Crème</item>
-        <item>Doré</item>
-        <item>Feu</item>
-        <item>Gris</item>
-        <item>Marron</item>
-        <item>Noir</item>
-        <item>Rouge</item>
-        <item>Sable</item>
         <item>Affenpinscher</item>
         <item>Airedale Terrier</item>
         <item>Akita</item>
