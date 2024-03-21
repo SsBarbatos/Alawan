@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link fragment_zoom_alert#newInstance} factory method to
+ * Use the {@link FragmentLinkPet#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_zoom_alert extends Fragment {
+public class FragmentLinkPet extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class fragment_zoom_alert extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public fragment_zoom_alert() {
+    public FragmentLinkPet() {
         // Required empty public constructor
     }
 
@@ -34,11 +34,11 @@ public class fragment_zoom_alert extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_zoom_alert.
+     * @return A new instance of fragment fragment_link_pet.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragment_zoom_alert newInstance(String param1, String param2) {
-        fragment_zoom_alert fragment = new fragment_zoom_alert();
+    public static FragmentLinkPet newInstance(String param1, String param2) {
+        FragmentLinkPet fragment = new FragmentLinkPet();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +59,6 @@ public class fragment_zoom_alert extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_zoom_alert, container, false);
+        return inflater.inflate(R.layout.fragment_link_pet, container, false);
     }
 }

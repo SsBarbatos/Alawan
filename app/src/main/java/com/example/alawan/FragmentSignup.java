@@ -157,7 +157,7 @@ public class FragmentSignup extends Fragment {
                 public void onResponse(Call<Boolean> call, Response<Boolean> response)
                 {
                     navController.navigate(R.id.action_nav_signup_to_nav_login);
-                    Log.v("debug",call.toString());
+                    Log.v("debug",response.toString());
                 }
                 @Override
                 public void onFailure(Call<Boolean> call, Throwable t)

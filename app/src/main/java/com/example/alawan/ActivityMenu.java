@@ -21,6 +21,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.annotation.NonNull;
 
 
+import com.example.alawan.Class.Adapter.AdapterAlertRecherche;
 import com.example.alawan.Class.Server.RetrofitInstance;
 import com.example.alawan.Class.Server.ServerInterface;
 
@@ -52,7 +53,7 @@ import java.util.List;
 
 
 
-public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallback {
+public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallback, AdapterAlertRecherche.InterfaceAlertRecherche {
 
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     private GoogleMap mMap;
@@ -64,6 +65,8 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     View view;
+    NavController navController;
+    NavHostFragment navHostFragment;
     LinearLayout layoutAccueil, layoutRecherche, layoutProfil, layout4;
     ImageView ivRecherche, ivProfile, ivAccueil, ivAlerte, iv4;
     TextView tvProfil, tvRecherche, tvAccueil, tv4;
@@ -93,10 +96,32 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
         ivAlerte = findViewById(R.id.iv_alerte_front_main);
         tv4 = findViewById(R.id.tv_chat_menu);
 
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fv_mainpage);
-        NavController navController = navHostFragment.getNavController();
+        navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fv_mainpage);
+        navController = navHostFragment.getNavController();
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mv_map);
+        Navigation();
+
+
+        mapFragment.getMapAsync(this);
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        // Demande de permission d'accès à la localisation si ce n'est pas déjà fait
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_LOCATION_PERMISSION);
+        } else {
+            // Afficher la localisation de l'utilisateur si la permission est déjà accordée
+            showUserLocation();
+        }
+
+
+    }
+
+    private void Navigation() {
         // Met la couleur de base de à accueil
         changeColor(tvAccueil, ivAccueil);
         layoutRecherche.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +141,9 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
                 }
                 else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentFindMed){
                     navController.navigate(R.id.action_fragment_find_med_to_recherche);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
+                    navController.navigate(R.id.action_fragmentZoomAlert_to_recherche);
                 }
             }
 
@@ -138,6 +166,9 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
                 else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentFindMed){
                     navController.navigate(R.id.action_fragment_find_med_to_vav_profil);
                 }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
+                    navController.navigate(R.id.action_fragmentZoomAlert_to_vav_profil);
+                }
             }
         });
         layoutAccueil.setOnClickListener(new View.OnClickListener() {
@@ -157,6 +188,9 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
                 }
                 else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentFindMed){
                     navController.navigate(R.id.action_fragment_find_med_to_map);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
+                    navController.navigate(R.id.action_fragmentZoomAlert_to_map);
                 }
             }
         });
@@ -178,24 +212,11 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
                 else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap){
                     navController.navigate(R.id.action_map_to_fragment_find_med);
                 }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
+                    navController.navigate(R.id.action_fragmentZoomAlert_to_fragment_find_med);
+                }
             }
         });
-
-
-        mapFragment.getMapAsync(this);
-
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
-        // Demande de permission d'accès à la localisation si ce n'est pas déjà fait
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    REQUEST_LOCATION_PERMISSION);
-        } else {
-            // Afficher la localisation de l'utilisateur si la permission est déjà accordée
-            showUserLocation();
-        }
 
         ivAlerte.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,6 +235,9 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
                 }
                 else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentFindMed){
                     navController.navigate(R.id.action_fragment_find_med_to_fragmentAddAlerte);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
+                    navController.navigate(R.id.action_fragmentZoomAlert_to_fragmentAddAlerte);
                 }
             }
         });
@@ -417,4 +441,12 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 
+    public void zoomAlert(int i){
+        SharedPreferences pref = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt("idZoom", i);
+        editor.apply();
+        editor.commit();
+        navController.navigate(R.id.action_recherche_to_fragmentZoomAlert);
+    }
 }
