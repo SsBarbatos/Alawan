@@ -418,7 +418,24 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void setIdAuth() {
-        RetrofitInstance.getInstance().create(ServerInterface.class).getIdAuth().enqueue(new Callback<Integer>() {
+        Intent intent = getIntent();
+        int id;
+        if(intent.hasExtra("id")){
+            id = intent.getIntExtra("id",0);
+            if(id != 0){
+                SharedPreferences pref = getPreferences(MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putInt("id", id);
+                editor.apply();
+                editor.commit();
+            }
+            else {
+                setResult(RESULT_CANCELED);
+                finish();
+            }
+        }
+
+       /* RetrofitInstance.getInstance().create(ServerInterface.class).getIdAuth().enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 SharedPreferences pref = getPreferences(MODE_PRIVATE);
@@ -438,7 +455,7 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
             public void onFailure(Call<Integer> call, Throwable t) {
                 Log.v("error", t.toString());
             }
-        });
+        });*/
     }
 
     public void zoomAlert(int i){
