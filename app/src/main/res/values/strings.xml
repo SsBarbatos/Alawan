@@ -63,7 +63,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="approcherCollier">Approcher le collier Alawan</string>
-    <string name="text_alerts_profil">text_alerts_profil</string>
-    <string name="text_animaux_profil">text_animaux_profil</string>
+    <string name="text_alerts_profil">Alertes profil</string>
+    <string name="text_animaux_profil">Animaux profil</string>
     <string name="bouton_add_pet">Ajouter un compagnon</string>
 </resources>

@@ -68,12 +68,26 @@ public class FragmentProfil extends Fragment {
         rv2.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
+        /*
         serverInterface.getListAnimal().enqueue(new Callback<List<Animal>>() {
             @Override
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
                 listCompagnon = response.body();
                 rv1.setAdapter(new AdapterListeAnimalProfil(listCompagnon));
             }
+            @Override
+            public void onFailure(Call<List<Animal>> call, Throwable t) {
+                Log.v("debug",t.toString());
+            }
+        });*/
+
+        serverInterface.getUserAnimal(idAuth).enqueue(new Callback<List<Animal>>() {
+            @Override
+            public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
+                listCompagnon = response.body();
+                rv1.setAdapter(new AdapterListeAnimalProfil(listCompagnon));
+            }
+
             @Override
             public void onFailure(Call<List<Animal>> call, Throwable t) {
                 Log.v("debug",t.toString());
