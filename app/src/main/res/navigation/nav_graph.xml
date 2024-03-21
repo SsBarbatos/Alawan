@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_recherche_to_fragment_find_med"
             app:destination="@id/fragment_find_med" />
+        <action
+            android:id="@+id/action_recherche_to_fragmentZoomAlert"
+            app:destination="@id/fragmentZoomAlert" />
     </fragment>
 
     <fragment
@@ -126,6 +129,30 @@
         <action
             android:id="@+id/action_fragment_find_med_to_addPet"
             app:destination="@id/addPet" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentZoomAlert"
+        android:name="com.example.alawan.FragmentZoomAlert"
+        android:label="fragment_zoom_alert"
+        tools:layout="@layout/fragment_zoom_alert" >
+        <action
+            android:id="@+id/action_fragmentZoomAlert_to_fragment_find_med"
+            app:destination="@id/fragment_find_med" />
+        <action
+            android:id="@+id/action_fragmentZoomAlert_to_fragmentAddAlerte"
+            app:destination="@id/fragmentAddAlerte" />
+        <action
+            android:id="@+id/action_fragmentZoomAlert_to_vav_profil"
+            app:destination="@id/vav_profil" />
+        <action
+            android:id="@+id/action_fragmentZoomAlert_to_addPet"
+            app:destination="@id/addPet" />
+        <action
+            android:id="@+id/action_fragmentZoomAlert_to_map"
+            app:destination="@id/map" />
+        <action
+            android:id="@+id/action_fragmentZoomAlert_to_recherche"
+            app:destination="@id/recherche" />
     </fragment>
 
 </navigation>

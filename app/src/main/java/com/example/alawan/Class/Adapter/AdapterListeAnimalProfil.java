@@ -46,7 +46,18 @@ public class AdapterListeAnimalProfil extends RecyclerView.Adapter {
         LocalDate date1 =list.get(position).getBirth().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate date2 = (new Date(miliseconds)).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int age = Period.between(date1,date2).getYears();
-        myViewHolder.tvAge.setText(age + " ans");
+        int ageMois = Period.between(date1,date2).getMonths();
+        int ageDay = Period.between(date1,date2).getDays();
+        if(age != 0){
+            myViewHolder.tvAge.setText(age + " ans");
+        }
+        else if(ageMois != 0){
+            myViewHolder.tvAge.setText(ageMois + " mois");
+        }
+        else {
+            myViewHolder.tvAge.setText(ageDay + " jours");
+        }
+
         myViewHolder.ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
