@@ -26,10 +26,9 @@ public class FragmentSignup extends Fragment {
     TextView tvConnecter;
     EditText etNom, etPrenom, etEmail, etPassword, etConfirmPassword;
     List<Person> listPerson;
-
+    NavController navController;
     ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
-    NavHostFragment navHostFragment = (NavHostFragment) requireActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
-    NavController navController = navHostFragment.getNavController();
+
 
     public FragmentSignup() {
         // Required empty public constructor
@@ -55,6 +54,8 @@ public class FragmentSignup extends Fragment {
         etPassword = view.findViewById(R.id.et_password_signup);
         etConfirmPassword = view.findViewById(R.id.et_confirmer_signup);
 
+        NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
+        navController = navHostFragment.getNavController();
         btSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

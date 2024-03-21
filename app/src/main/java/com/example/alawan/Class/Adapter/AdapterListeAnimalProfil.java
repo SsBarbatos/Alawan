@@ -13,6 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.alawan.Class.Animal;
 import com.example.alawan.R;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
+
+import java.time.ZoneId;
 import java.util.List;
 
 public class AdapterListeAnimalProfil extends RecyclerView.Adapter {
@@ -37,6 +42,11 @@ public class AdapterListeAnimalProfil extends RecyclerView.Adapter {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         myViewHolder.tvNom.setText(list.get(position).getName());
         //myViewHolder.tvRace.setText(list.get(position).ge); //Faire un truc global pour les races
+        long miliseconds = System.currentTimeMillis();
+        LocalDate date1 =list.get(position).getBirth().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate date2 = (new Date(miliseconds)).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int age = Period.between(date1,date2).getYears();
+        myViewHolder.tvAge.setText(age + " ans");
         myViewHolder.ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
