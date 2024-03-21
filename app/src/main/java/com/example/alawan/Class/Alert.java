@@ -30,6 +30,15 @@ public class Alert {
         this.alerteFound = alerteFound;
     }
 
+    // CONSTRUCTEUR POUR ALERTE INVITE
+    public Alert(int idAnimal, Date dateLost, String place, String description, boolean alerteFound) {
+        this.idAnimal = idAnimal;
+        this.dateLost = dateLost;
+        this.place = place;
+        this.description = description;
+        this.alerteFound = alerteFound;
+    }
+
     public int getId() {
         return id;
     }

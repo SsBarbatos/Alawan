@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_map_to_vav_profil"
             app:destination="@id/vav_profil" />
+        <action
+            android:id="@+id/action_map_to_addAlerteInvite"
+            app:destination="@id/addAlerteInvite" />
     </fragment>
     <fragment
         android:id="@+id/recherche"
@@ -54,6 +57,15 @@
         <action
             android:id="@+id/action_addPet_to_vav_profil"
             app:destination="@id/vav_profil" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAlerteInvite"
+        android:name="com.example.alawan.FragmentAddAlerte"
+        android:label="fragment_add_alerte"
+        tools:layout="@layout/fragment_add_alerte" >
+        <action
+            android:id="@+id/action_addAlerteInvite_to_map"
+            app:destination="@id/map" />
     </fragment>
 
 </navigation>

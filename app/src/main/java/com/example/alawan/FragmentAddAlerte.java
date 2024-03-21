@@ -18,9 +18,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 
 import com.example.alawan.Class.Alert;
 import com.example.alawan.Class.Animal;
+import com.example.alawan.Class.AnimalColor;
 import com.example.alawan.Class.Color;
 import com.example.alawan.Class.Person;
 import com.example.alawan.Class.Race;
@@ -29,26 +31,35 @@ import com.example.alawan.Server.ServerInterface;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Field;
 
 
 public class FragmentAddAlerte extends Fragment {
 
+    Person user;
+    Race useRace;
+    Color useColor;
+    AnimalColor animalColor;
+
     View view;
+    TextView tvPicture;
     EditText etDescription, etDate, etPhone;
     Spinner spRaces, spColors;
     Button btAddAlert;
 
-    ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
-    NavHostFragment navHostFragment = (NavHostFragment) requireActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
-    NavController navController = navHostFragment.getNavController();
+    ServerInterface serverInterface ;
+    NavHostFragment navHostFragment ;
+    NavController navController;
 
     public FragmentAddAlerte()
     {
@@ -66,6 +77,8 @@ public class FragmentAddAlerte extends Fragment {
     {
         view = inflater.inflate(R.layout.fragment_add_alerte, container, false);
 
+        tvPicture = view.findViewById(R.id.tv_inserer_photo);
+
         etDescription = view.findViewById(R.id.et_description_alerte);
         etDate = view.findViewById(R.id.et_date_alerte);
         etPhone = view.findViewById(R.id.et_phone_alerte);
@@ -75,9 +88,9 @@ public class FragmentAddAlerte extends Fragment {
 
         btAddAlert = view.findViewById(R.id.bt_lancer_alerte);
 
-        ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
-        NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
-        NavController navController = navHostFragment.getNavController();
+        serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
+        navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
+        navController = navHostFragment.getNavController();
 
         // FILL THE COLORS SPINNER
         ArrayAdapter<CharSequence> adapterColors = ArrayAdapter.createFromResource(
@@ -135,8 +148,8 @@ public class FragmentAddAlerte extends Fragment {
 
     public void AddAlert(String description, String race, String color, Date date, String phone)
     {
-        // __ GET USER ID __________________________________________________________________________
-        Person user;
+
+    // __ GET USER ID ______________________________________________________________________________
 
         Call<Person> callUser = serverInterface.getUser();
         callUser.enqueue(new Callback<Person>()
@@ -153,43 +166,17 @@ public class FragmentAddAlerte extends Fragment {
             }
         });
 
+    // __ CREATE ANIMAL COLOR ______________________________________________________________________
 
-        // __ GET RACE ID __________________________________________________________________________
-        Call<List<Race>> callRace = serverInterface.getListRace();
-        callRace.enqueue(new Callback<List<Race>>()
-        {
-            List<Race> listRace;
-            Race useRace;
-            @Override
-            public void onResponse(Call<List<Race>> call, Response<List<Race>> response)
-            {
-                listRace = response.body();
-                for(Race race: listRace)
-                {
-                    if(race.getRace().toString() == spRaces.getSelectedItem().toString())
-                    {
-                        useRace = race;
-                    }
-                }
-            }
-            @Override
-            public void onFailure(Call<List<Race>> call, Throwable t)
-            {
-                Log.v("debug error",t.toString());
-            }
-        });
-        // _________________________________________________________________________________________
+        Animal animal = new Animal(user.getId(), useRace.getId(), tvPicture.getText().toString(), true);
 
-        Animal animal = new Animal(user.getId(), useRace[0].getId(), String picture, True);
-
-        Call<Boolean> callAlert = serverInterface.addAlert(alert.get.getName(),person.getLastName(),person.getEmail(),person.getPassword(),person.getCreationDate());
-        callAlert.enqueue(new Callback<Boolean>()
+        Call<Boolean> callAnimalColor = serverInterface.addAnimalColor(animal.getId(), useColor.getId());
+        callAnimalColor.enqueue(new Callback<Boolean>()
         {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response)
             {
-                navController.navigate(R.id.action_nav_signup_to_nav_login);
-                Log.v("debug",call.toString());
+                animalColor = new AnimalColor(animal.getId(), useColor.getId());
             }
             @Override
             public void onFailure(Call<Boolean> call, Throwable t)
@@ -198,13 +185,28 @@ public class FragmentAddAlerte extends Fragment {
             }
         });
 
-        return true;
-    }
-        catch (Exception e)
-    {
-        Log.v("debug catch", e.toString());
+    // _____________________________________________________________________________________________
 
-        return false;
-    }
+        Date currentDate = new Date();
+
+        Call<Boolean> callAlert = serverInterface.addAlert( animal.getPicture(),
+                                                            description,
+                                                            race,
+                                                            color,
+                                                            date,
+                                                            phone);
+        callAlert.enqueue(new Callback<Boolean>()
+        {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response)
+            {
+                navController.navigate(R.id.action_addAlerteInvite_to_map);
+            }
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t)
+            {
+                Log.v("debug error",t.toString());
+            }
+        });
     }
 }

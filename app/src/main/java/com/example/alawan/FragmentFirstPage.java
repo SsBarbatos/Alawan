@@ -33,9 +33,9 @@ public class FragmentFirstPage extends Fragment {
     Button btInvite;
     View view;
 
-    ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
-    NavHostFragment navHostFragment = (NavHostFragment) requireActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
-    NavController navController = navHostFragment.getNavController();
+    ServerInterface serverInterface;
+    NavHostFragment navHostFragment;
+    NavController navController;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +47,9 @@ public class FragmentFirstPage extends Fragment {
         btConnecter = view.findViewById(R.id.bt_connecter_first);
         btInscrire = view.findViewById(R.id.bt_inscrire_first);
         btInvite = view.findViewById(R.id.bt_inviter_first);
-
+        navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_main_page);
+        navController = navHostFragment.getNavController();
+        serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
         btConnecter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,17 +61,17 @@ public class FragmentFirstPage extends Fragment {
         btInvite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<Boolean> call = serverInterface.login("invite", "invite");
-                call.enqueue(new Callback<Boolean>()
+                Call<Integer> call = serverInterface.login("invite", "invite");
+                call.enqueue(new Callback<Integer>()
                 {
                     @Override
-                    public void onResponse(Call<Boolean> call, Response<Boolean> response)
+                    public void onResponse(Call<Integer> call, Response<Integer> response)
                     {
                         Intent intent = new Intent(getActivity(), ActivityMenu.class);
                         startActivity(intent);
                     }
                     @Override
-                    public void onFailure(Call<Boolean> call, Throwable t)
+                    public void onFailure(Call<Integer> call, Throwable t)
                     {
                         Log.v("debug error",t.toString());
                     }

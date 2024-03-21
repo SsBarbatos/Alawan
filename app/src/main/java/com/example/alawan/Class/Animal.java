@@ -34,6 +34,14 @@ public class Animal {
         this.research = research;
     }
 
+    // CONSTRUCTEUR ANIMAL INVITE POUR ALERTE
+    public Animal(int idUser, int idrace, String picture, Boolean research) {
+        this.idPerson = idUser;
+        this.idRace = idrace;
+        this.picture = picture;
+        this.research = research;
+    }
+
     public int getId() {
         return id;
     }

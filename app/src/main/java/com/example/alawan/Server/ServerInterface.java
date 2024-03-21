@@ -18,7 +18,7 @@ import retrofit2.http.POST;
 public interface ServerInterface {
     @POST("/api/login")
     @FormUrlEncoded
-    Call<Boolean> login(@Field("email") String email, @Field("password") String password);
+    Call<Integer> login(@Field("email") String email, @Field("password") String password);
 
     @GET("/api/persons")
     Call<List<Person>> getListPersons();
@@ -77,4 +77,8 @@ public interface ServerInterface {
     @POST("/api/alert")
     @FormUrlEncoded
     Call<Boolean> addAlert(@Field("picture") String picture, @Field("description") String description, @Field("race") String race, @Field("color") String color, @Field("date") Date date, @Field("phone") String phone);
+
+    @POST("/api/animalColor")
+    @FormUrlEncoded
+    Call<Boolean> addAnimalColor(@Field("idAnimal") int idAnimal, @Field("idColor") int idColor);
 }

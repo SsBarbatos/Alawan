@@ -16,6 +16,12 @@ public class AnimalColor {
         this.idColor = idColor;
     }
 
+    // CONSTRUCTEUR POUR ALERTE INVITE
+    public AnimalColor(int idAnimal, int idColor) {
+        this.idAnimal = idAnimal;
+        this.idColor = idColor;
+    }
+
     public int getId() {
         return id;
     }
