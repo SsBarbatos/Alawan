@@ -15,6 +15,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ServerInterface {
     @POST("/api/login")
@@ -26,6 +27,10 @@ public interface ServerInterface {
 
     @GET("/api/user")
     Call<Person> getUser();
+
+    @POST("/api/animals/person")
+    @FormUrlEncoded
+    Call<List<Animal>> getUserAnimal(@Field("id") int id);
 
     @POST("/api/person")
     @FormUrlEncoded
@@ -40,7 +45,7 @@ public interface ServerInterface {
     Call<Boolean> finAlerte(@Field("id") int id);
 
     @DELETE("/api/person/{id}")
-    Call<Boolean> deletePerson();
+    Call<Boolean> deletePerson(@Path("id") int id);
 
     @GET("/api/animals")
     Call<List<Animal>> getListAnimal();
@@ -60,7 +65,7 @@ public interface ServerInterface {
     Call<Boolean> addAnimal(@Field("idPerson") int idPerson,@Field("idRace") int idRace, @Field("idNecklace") int idNecklace, @Field("name") String name, @Field("Picture") String picture, @Field("birth") Date birth, @Field("research") Boolean research);
 
     @DELETE("/api/animal/{id}")
-    Call<Boolean> deleteAnimal();
+    Call<Boolean> deleteAnimal(@Path("id") int id);
 
     @GET("/api/colors")
     Call<List<Color>> getListColor();
@@ -95,5 +100,9 @@ public interface ServerInterface {
     @POST("/api/getMaster")
     @FormUrlEncoded
     Call<Person> getMaster(@Field("id") int id);
+
+    @POST("/api/getRaceAnimal")
+    @FormUrlEncoded
+    Call<Race> getRaceAnimal(@Field("id") int id);
 
 }

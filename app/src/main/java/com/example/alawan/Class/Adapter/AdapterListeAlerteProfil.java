@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,12 +51,23 @@ public class AdapterListeAlerteProfil extends RecyclerView.Adapter {
                 serverInterface.finAlerte(list.get(position).getId()).enqueue(new Callback<Boolean>() {
                     @Override
                     public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                        Log.d("debug","ca marche");
+
+                        if(response.body() != null){
+                            if (response.body()){
+                                Toast.makeText(v.getContext(), "Votre alerte est fini",Toast.LENGTH_LONG);
+                            }
+                            else{
+                                Toast.makeText(v.getContext(), "Erreur",Toast.LENGTH_LONG);
+                            }
+                        }
+                        else{
+                            Toast.makeText(v.getContext(), "Erreur",Toast.LENGTH_LONG);
+                        }
                     }
 
                     @Override
                     public void onFailure(Call<Boolean> call, Throwable t) {
-                        Log.d("debug",t.toString());
+                        Log.d("debug error",t.toString());
                     }
                 });
                 delete(position);

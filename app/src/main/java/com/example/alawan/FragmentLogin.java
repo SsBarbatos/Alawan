@@ -68,15 +68,20 @@ public class FragmentLogin extends Fragment {
                     RetrofitInstance.getInstance().create(ServerInterface.class).login(etEmail.getText().toString(), etPassword.getText().toString()).enqueue(new Callback<Integer>() {
                         @Override
                         public void onResponse(Call<Integer> call, Response<Integer> response) {
-                            if(response.body() != 0){
-                                Intent intent = new Intent(getActivity(), ActivityMenu.class);
-                                startActivity(intent);
+                            Log.v("debug",response.toString());
+                            if(response.body() != null){
+                                if(response.body() != 0){
+                                    Intent intent = new Intent(getActivity(), ActivityMenu.class);
+                                    intent.putExtra("id",response.body());
+                                    startActivity(intent);
+                                }
+
                             }
                         }
 
                         @Override
                         public void onFailure(Call<Integer> call, Throwable t) {
-                            Log.v("debug",t.toString());
+                            Log.v("debug error",t.toString());
                         }
                     });
 
