@@ -1,10 +1,11 @@
 package com.example.alawan;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,13 +13,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.alawan.Class.Adapter.AdapterListeAlerteProfil;
 import com.example.alawan.Class.Adapter.AdapterListeAnimalProfil;
 import com.example.alawan.Class.Animal;
-import com.example.alawan.Server.RetrofitInstance;
-import com.example.alawan.Server.ServerInterface;
+import com.example.alawan.Class.Server.RetrofitInstance;
+import com.example.alawan.Class.Server.ServerInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +37,9 @@ public class FragmentProfil extends Fragment {
     int idAuth;
     RecyclerView rv1;
     RecyclerView rv2;
-
     ImageView ivSetting;
     View view;
+    Button btAddPet;
     public FragmentProfil() {
         // Required empty public constructor
     }
@@ -54,6 +56,7 @@ public class FragmentProfil extends Fragment {
 
         idAuth = getActivity().getPreferences(Context.MODE_PRIVATE).getInt("id",0);
 
+        btAddPet = view.findViewById(R.id.bt_ajouter_compagnon_profil);
         ivSetting = view.findViewById(R.id.iv_setting_profile);
 
         rv1 = view.findViewById(R.id.rv_compagnons_profile);
@@ -95,6 +98,15 @@ public class FragmentProfil extends Fragment {
                 // Rajouter le code de deconnexion
                 //Intent intent = new Intent(getActivity(), ActivityModifyProfil.class);
                 //((ActivityMenu)getActivity()).changePage(intent);
+            }
+        });
+
+        btAddPet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_mainpage);
+                NavController navController = navHostFragment.getNavController();
+                navController.navigate(R.id.action_vav_profil_to_addPet);
             }
         });
         return view;

@@ -1,5 +1,6 @@
-package com.example.alawan.Server;
+package com.example.alawan.Class.Server;
 
+import com.example.alawan.Class.Alert;
 import com.example.alawan.Class.Animal;
 import com.example.alawan.Class.Color;
 import com.example.alawan.Class.Person;
@@ -74,6 +75,7 @@ public interface ServerInterface {
     @GET("/api/emails")
     Call<List<String>> getListEmails();
 
+
     @POST("/api/alert")
     @FormUrlEncoded
     Call<Boolean> addAlert(@Field("picture") String picture, @Field("description") String description, @Field("race") String race, @Field("color") String color, @Field("date") Date date, @Field("phone") String phone);
@@ -81,4 +83,17 @@ public interface ServerInterface {
     @POST("/api/animalColor")
     @FormUrlEncoded
     Call<Boolean> addAnimalColor(@Field("idAnimal") int idAnimal, @Field("idColor") int idColor);
+
+    @POST("/api/animalFromAlert")
+    @FormUrlEncoded
+    Call<Animal> getAnimalFromAlert(@Field("id") int id);
+
+    @POST("/api/getAlert")
+    @FormUrlEncoded
+    Call<Alert> getAlert(@Field("id") int id);
+
+    @POST("/api/getMaster")
+    @FormUrlEncoded
+    Call<Person> getMaster(@Field("id") int id);
+
 }

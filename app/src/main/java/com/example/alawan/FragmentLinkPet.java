@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link fragment_link_pet#newInstance} factory method to
+ * Use the {@link FragmentLinkPet#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_link_pet extends Fragment {
+public class FragmentLinkPet extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +24,7 @@ public class fragment_link_pet extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public fragment_link_pet() {
+    public FragmentLinkPet() {
         // Required empty public constructor
     }
 
@@ -37,8 +37,8 @@ public class fragment_link_pet extends Fragment {
      * @return A new instance of fragment fragment_link_pet.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragment_link_pet newInstance(String param1, String param2) {
-        fragment_link_pet fragment = new fragment_link_pet();
+    public static FragmentLinkPet newInstance(String param1, String param2) {
+        FragmentLinkPet fragment = new FragmentLinkPet();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

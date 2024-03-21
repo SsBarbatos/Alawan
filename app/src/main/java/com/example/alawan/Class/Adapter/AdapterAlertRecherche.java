@@ -6,17 +6,26 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.alawan.ActivityMenu;
 import com.example.alawan.Class.Animal;
 import com.example.alawan.R;
 
 import java.util.List;
 public class AdapterAlertRecherche extends RecyclerView.Adapter{
 
+    public interface  InterfaceAlertRecherche{
+        public void zoomAlert(int i);
+    }
     List<Animal> list;
+    InterfaceAlertRecherche interfaceAlertRecherche;
 
-    public AdapterAlertRecherche(List<Animal> list) {
+    public AdapterAlertRecherche(List<Animal> list,InterfaceAlertRecherche interfaceAlertRecherche) {
         this.list = list;
+        this.interfaceAlertRecherche = interfaceAlertRecherche;
     }
 
     @NonNull
@@ -45,6 +54,15 @@ public class AdapterAlertRecherche extends RecyclerView.Adapter{
             tvMedaillon = itemView.findViewById(R.id.tv_medaillons_carte_alerte);
             tvRace = itemView.findViewById(R.id.tv_race_carte_alerte);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    interfaceAlertRecherche.zoomAlert(list.get(getLayoutPosition()).getId());
+                }
+            });
         }
+
+
+
     }
 }

@@ -51,7 +51,7 @@
             android:paddingEnd="30dp"
             android:paddingStart="0dp"
             android:baselineAligned="false" >
-
+<!-- icon ceeuil-->
             <LinearLayout
                 android:id="@+id/layout_acceuil_menu"
                 android:layout_width="match_parent"
@@ -76,7 +76,7 @@
                     android:text="@string/accueilText"
                     android:textColor="@color/gris" />
             </LinearLayout>
-
+<!-- icon ceeuil-->
             <LinearLayout
                 android:id="@+id/layout_recherche_menu"
                 android:layout_width="match_parent"
@@ -104,7 +104,7 @@
             </LinearLayout>
 
         </LinearLayout>
-
+<!-- icon ceeuil-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -137,7 +137,7 @@
                     android:text="@string/profilText"
                     android:textColor="@color/gris" />
             </LinearLayout>
-
+            <!-- icon ceeuil-->
             <LinearLayout
                 android:id="@+id/layout_chat_menu"
                 android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.example.alawan.Server;
+package com.example.alawan.Class.Server;
 
 import java.security.cert.CertificateException;
 

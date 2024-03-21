@@ -10,7 +10,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Debug;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,8 +21,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.annotation.NonNull;
 
 
-import com.example.alawan.Server.RetrofitInstance;
-import com.example.alawan.Server.ServerInterface;
+import com.example.alawan.Class.Adapter.AdapterAlertRecherche;
+import com.example.alawan.Class.Server.RetrofitInstance;
+import com.example.alawan.Class.Server.ServerInterface;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,6 +34,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+
 
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -52,20 +53,23 @@ import java.util.List;
 
 
 
-public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallback {
+public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallback, AdapterAlertRecherche.InterfaceAlertRecherche {
 
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     private GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationClient;
+    private LatLngBounds bounds;
 
 
     public ActivityMenu() {
     }
 
     View view;
+    NavController navController;
+    NavHostFragment navHostFragment;
     LinearLayout layoutAccueil, layoutRecherche, layoutProfil, layout4;
-    ImageView ivRecherche, ivProfile, ivAccueil;
-    TextView tvProfil, tvRecherche, tvAccueil;
+    ImageView ivRecherche, ivProfile, ivAccueil, ivAlerte, iv4;
+    TextView tvProfil, tvRecherche, tvAccueil, tv4;
     ActivityResultLauncher<Intent> resultLauncher;
     SupportMapFragment mapFragment;
 
@@ -75,55 +79,28 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
         retourActivity();
         setIdAuth();
         setContentView(R.layout.activity_menu);
+        // Layout
         layoutAccueil = findViewById(R.id.layout_acceuil_menu);
         layoutProfil = findViewById(R.id.layout_profil_menu);
         layoutRecherche = findViewById(R.id.layout_recherche_menu);
+        layout4 = findViewById(R.id.layout_chat_menu);
+        // Image view
         ivProfile = findViewById(R.id.iv_profile_menu);
         ivRecherche = findViewById(R.id.iv_recherche_menu);
         ivAccueil = findViewById(R.id.iv_acceuil_menu);
+        iv4 = findViewById(R.id.iv_chat_menu);
+        // Text view
         tvAccueil = findViewById(R.id.tv_acceuil_menu);
         tvProfil = findViewById(R.id.tv_profile_menu);
         tvRecherche = findViewById(R.id.tv_recherche_menu);
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fv_mainpage);
-        NavController navController = navHostFragment.getNavController();
+        ivAlerte = findViewById(R.id.iv_alerte_front_main);
+        tv4 = findViewById(R.id.tv_chat_menu);
+
+        navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fv_mainpage);
+        navController = navHostFragment.getNavController();
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.mv_map);
-        changeColor(tvAccueil, ivAccueil);
-        // continuer a rajouter les onclicklistener pour faire la navigation
-        layoutRecherche.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeColor(tvRecherche, ivRecherche);
-                if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap) {
-                    navController.navigate(R.id.action_map_to_recherche);
-                } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil) {
-                    navController.navigate(R.id.action_vav_profil_to_recherche);
-                }
-            }
-
-        });
-        layoutProfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeColor(tvProfil, ivProfile);
-                if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap) {
-                    navController.navigate(R.id.action_map_to_vav_profil);
-                } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
-                    navController.navigate(R.id.action_recherche_to_vav_profil);
-                }
-            }
-        });
-        layoutAccueil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeColor(tvAccueil, ivAccueil);
-                if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil) {
-                    navController.navigate(R.id.action_vav_profil_to_map);
-                } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
-                    navController.navigate(R.id.action_recherche_to_map);
-                }
-            }
-        });
+        Navigation();
 
 
         mapFragment.getMapAsync(this);
@@ -140,6 +117,130 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
             // Afficher la localisation de l'utilisateur si la permission est déjà accordée
             showUserLocation();
         }
+
+
+    }
+
+    private void Navigation() {
+        // Met la couleur de base de à accueil
+        changeColor(tvAccueil, ivAccueil);
+        layoutRecherche.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeColor(tvRecherche, ivRecherche);
+                if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap) {
+                    navController.navigate(R.id.action_map_to_recherche);
+                } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil) {
+                    navController.navigate(R.id.action_vav_profil_to_recherche);
+                }
+                else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddAlerte) {
+                    navController.navigate(R.id.action_fragmentAddAlerte_to_recherche);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddPet){
+                    navController.navigate(R.id.action_addPet_to_recherche);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentFindMed){
+                    navController.navigate(R.id.action_fragment_find_med_to_recherche);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
+                    navController.navigate(R.id.action_fragmentZoomAlert_to_recherche);
+                }
+            }
+
+        });
+        layoutProfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeColor(tvProfil, ivProfile);
+                if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap) {
+                    navController.navigate(R.id.action_map_to_vav_profil);
+                } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
+                    navController.navigate(R.id.action_recherche_to_vav_profil);
+                }
+                else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddAlerte) {
+                    navController.navigate(R.id.action_fragmentAddAlerte_to_vav_profil);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddPet){
+                    navController.navigate(R.id.action_addPet_to_vav_profil);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentFindMed){
+                    navController.navigate(R.id.action_fragment_find_med_to_vav_profil);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
+                    navController.navigate(R.id.action_fragmentZoomAlert_to_vav_profil);
+                }
+            }
+        });
+        layoutAccueil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeColor(tvAccueil, ivAccueil);
+                if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil) {
+                    navController.navigate(R.id.action_vav_profil_to_map);
+                } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
+                    navController.navigate(R.id.action_recherche_to_map);
+                }
+                else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddAlerte) {
+                    navController.navigate(R.id.action_fragmentAddAlerte_to_map);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddPet){
+                    navController.navigate(R.id.action_addPet_to_map);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentFindMed){
+                    navController.navigate(R.id.action_fragment_find_med_to_map);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
+                    navController.navigate(R.id.action_fragmentZoomAlert_to_map);
+                }
+            }
+        });
+        layout4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeColor(tv4, iv4);
+                if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil) {
+                    navController.navigate(R.id.action_vav_profil_to_fragment_find_med);
+                } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
+                    navController.navigate(R.id.action_recherche_to_fragment_find_med);
+                }
+                else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddAlerte) {
+                    navController.navigate(R.id.action_fragmentAddAlerte_to_fragment_find_med);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddPet){
+                    navController.navigate(R.id.action_addPet_to_fragment_find_med);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap){
+                    navController.navigate(R.id.action_map_to_fragment_find_med);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
+                    navController.navigate(R.id.action_fragmentZoomAlert_to_fragment_find_med);
+                }
+            }
+        });
+
+        ivAlerte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeColor(null,null);
+                if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil) {
+                    navController.navigate(R.id.action_vav_profil_to_fragmentAddAlerte);
+                } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
+                    navController.navigate(R.id.action_recherche_to_fragmentAddAlerte);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap){
+                    navController.navigate(R.id.action_map_to_fragmentAddAlerte);
+                }
+                else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddPet) {
+                    navController.navigate(R.id.action_addPet_to_fragmentAddAlerte);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentFindMed){
+                    navController.navigate(R.id.action_fragment_find_med_to_fragmentAddAlerte);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
+                    navController.navigate(R.id.action_fragmentZoomAlert_to_fragmentAddAlerte);
+                }
+            }
+        });
     }
 
     @Override
@@ -156,20 +257,32 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void changeColor(TextView textView, ImageView imageView) {
+        //Change la couleur de toutes les image en gris
         ivProfile.setColorFilter(getResources().getColor(R.color.gris));
         ivRecherche.setColorFilter(getResources().getColor(R.color.gris));
         ivAccueil.setColorFilter(getResources().getColor(R.color.gris));
+        iv4.setColorFilter(getResources().getColor(R.color.gris));
+        //Change la couleur de toutes les texts en gris
         tvProfil.setTextColor(getResources().getColor(R.color.gris));
         tvAccueil.setTextColor(getResources().getColor(R.color.gris));
         tvRecherche.setTextColor(getResources().getColor(R.color.gris));
-        textView.setTextColor(getResources().getColor(R.color.GreenText));
-        imageView.setColorFilter(getResources().getColor(R.color.GreenText));
-        if (textView.equals(tvAccueil)){
-            mapFragment.getView().setVisibility(View.VISIBLE);
+        tv4.setTextColor(getResources().getColor(R.color.gris));
+        //Code pour changer la couleur en vert de lui cliquer
+        if(textView != null){
+            textView.setTextColor(getResources().getColor(R.color.GreenText));
+            imageView.setColorFilter(getResources().getColor(R.color.GreenText));
+            // Cache la map si on est pas sur le fragment de map
+            if (textView.equals(tvAccueil)){
+                mapFragment.getView().setVisibility(View.VISIBLE);
+            }
+            else {
+                mapFragment.getView().setVisibility(View.INVISIBLE);
+            }
         }
-        else {
+        else { // Cache la map quand on clique sur le bouton alerte
             mapFragment.getView().setVisibility(View.INVISIBLE);
         }
+
     }
 
     private void retourActivity() {
@@ -195,7 +308,6 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // ajouter add (faut boucler)
         LatLng address1 = getLocationFromAddress("7331 Rue Notre Dame O, Trois-Rivières, QC G9B 1L7");
         if (address1 != null) {
             mMap.addMarker(new MarkerOptions()
@@ -220,7 +332,6 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
                     .snippet("Votre adresse 3"));
         }
 
-        // montrser les add
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         if (address1 != null) {
             builder.include(address1);
@@ -231,10 +342,19 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
         if (address3 != null) {
             builder.include(address3);
         }
-        LatLngBounds bounds = builder.build();
-        mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
-
+        bounds = builder.build();
     }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus && mMap != null && bounds != null) {
+            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
+        }
+    }
+
+
+
 
     // Convertir l adresse en localisation
     private LatLng getLocationFromAddress(String strAddress) {
@@ -303,9 +423,15 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 SharedPreferences pref = getPreferences(MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
-                int id = response.body();
-                editor.putInt("id", id);
-                editor.commit();
+                if (response.body() != null) {
+
+                    int id = response.body().intValue();
+                    editor.putInt("id", id);
+                    editor.apply();
+                } else {
+                    // Gérer le cas où le corps de la réponse est null
+
+                }
             }
 
             @Override
@@ -313,5 +439,14 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
                 Log.v("error", t.toString());
             }
         });
+    }
+
+    public void zoomAlert(int i){
+        SharedPreferences pref = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt("idZoom", i);
+        editor.apply();
+        editor.commit();
+        navController.navigate(R.id.action_recherche_to_fragmentZoomAlert);
     }
 }
