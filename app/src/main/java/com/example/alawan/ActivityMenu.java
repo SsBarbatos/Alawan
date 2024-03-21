@@ -243,6 +243,7 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
+
     // Convertir l adresse en localisation
     private LatLng getLocationFromAddress(String strAddress) {
 
