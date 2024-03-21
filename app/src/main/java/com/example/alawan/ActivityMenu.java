@@ -312,11 +312,13 @@ public class ActivityMenu extends AppCompatActivity implements OnMapReadyCallbac
                 SharedPreferences pref = getPreferences(MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
                 if (response.body() != null) {
+
                     int id = response.body().intValue();
                     editor.putInt("id", id);
                     editor.apply();
                 } else {
                     // Gérer le cas où le corps de la réponse est null
+
                 }
             }
 
