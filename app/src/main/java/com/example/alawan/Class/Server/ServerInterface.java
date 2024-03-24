@@ -1,30 +1,23 @@
 package com.example.alawan.Class.Server;
 
 import android.graphics.Bitmap;
-import android.media.Image;
-
 import com.example.alawan.Class.Alert;
 import com.example.alawan.Class.Animal;
 import com.example.alawan.Class.Color;
 import com.example.alawan.Class.Person;
 import com.example.alawan.Class.Race;
-
 import java.util.Date;
 import java.util.List;
-
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
 import retrofit2.http.Path;
 
-public interface ServerInterface {
+public interface ServerInterface
+{
     @POST("/api/login")
     @FormUrlEncoded
     Call<Integer> login(@Field("email") String email, @Field("password") String password);
@@ -42,10 +35,6 @@ public interface ServerInterface {
     @POST("/api/person")
     @FormUrlEncoded
     Call<Boolean> addPerson(@Field("name") String name, @Field("lastName") String lastName, @Field("email") String email, @Field("password") String password, @Field("creationDate")Date creationDate);
-
-    //@POST("/logout")
-    //@FormUrlEncoded
-    //Call<Boolean> logout();
 
     @POST("/api/finAlert")
     @FormUrlEncoded
@@ -80,13 +69,11 @@ public interface ServerInterface {
     @GET("/api/races")
     Call<List<Race>> getListRace();
 
-
     @GET("/api/getIdAuth")
     Call<Integer> getIdAuth();
 
     @GET("/api/emails")
     Call<List<String>> getListEmails();
-
 
     @POST("/api/alert")
     @FormUrlEncoded
@@ -111,12 +98,6 @@ public interface ServerInterface {
     @POST("/api/getRaceAnimal")
     @FormUrlEncoded
     Call<Race> getRaceAnimal(@Field("id") int id);
-
-    @POST("/api/getColor")
-    Call<Color> getColor(@Field("color") String color);
-
-    @POST("/api/getRace")
-    Call<Race> getRace(@Field("race") String race);
 
     @POST("/api/uploadImage")
     Call<String> uploadImage(@Field("bitmap") Bitmap bitmap);
