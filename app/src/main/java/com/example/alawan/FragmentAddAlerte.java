@@ -14,7 +14,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,12 +28,19 @@ import android.widget.TextView;
 import com.example.alawan.Class.Animal;
 import com.example.alawan.Class.AnimalColor;
 import com.example.alawan.Class.Color;
-import com.example.alawan.Class.Person;
 import com.example.alawan.Class.Race;
+
+import java.io.File;
 import java.util.Date;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+
 import com.example.alawan.Class.Server.RetrofitInstance;
 import com.example.alawan.Class.Server.ServerInterface;
 
@@ -49,10 +55,11 @@ public class FragmentAddAlerte extends Fragment {
     Spinner spRaces, spColors;
     Button btAddAlert;
     ImageView ivImageAlert, ivIconImageAlert;
-    Integer userId;
     ServerInterface serverInterface ;
-    NavHostFragment navHostFragment ;
     NavController navController;
+    Animal animal;
+    String filePath = "";
+    Bitmap imageBitmap;
 
     public FragmentAddAlerte()
     {
@@ -76,11 +83,11 @@ public class FragmentAddAlerte extends Fragment {
                     Intent data = result.getData();
                     Bundle extras = data.getExtras();
 
-                    Bitmap imageBitmap = (Bitmap) extras.get("data");
+                    imageBitmap = (Bitmap) extras.get("data");
                     ivImageAlert.setImageBitmap(imageBitmap);
 
-                    ivIconImageAlert.setVisibility(view.INVISIBLE);
-                    tvPicture.setVisibility(view.INVISIBLE);
+                    ivIconImageAlert.setVisibility(View.INVISIBLE);
+                    tvPicture.setVisibility(View.INVISIBLE);
                 }
                 else
                     Log.v("debug error", result.toString());
@@ -155,9 +162,20 @@ public class FragmentAddAlerte extends Fragment {
                 {
                     etDescription.setError("Le champ est vide");
                     validation = false;
-                }else if (etPhone.getText().toString().trim().length() == 0)
+                }
+                else if (etPhone.getText().toString().trim().length() == 0)
                 {
                     etPhone.setError("Le champ est vide");
+                    validation = false;
+                }
+                else if (spColors.getSelectedItem().toString().equals("Couleur"))
+                {
+                    ((TextView)spColors.getSelectedView()).setError("Choisissez une couleur");
+                    validation = false;
+                }
+                else if (spRaces.getSelectedItem().toString().equals("Race"))
+                {
+                    ((TextView)spRaces.getSelectedView()).setError("Choisissez une race");
                     validation = false;
                 }
                 else
@@ -173,21 +191,67 @@ public class FragmentAddAlerte extends Fragment {
 
     public void AddAlert(String description, String race, String color, String phone) {
     // __ GET USER ID ______________________________________________________________________________
-        Call<Integer> callUser = serverInterface.getIdAuth();
-        callUser.enqueue(new Callback<Integer>() {
+        /*
+            Call<Integer> callUser = serverInterface.getIdAuth();
+            callUser.enqueue(new Callback<Integer>() {
+                @Override
+                public void onResponse(Call<Integer> call, Response<Integer> response) {
+                    userId = response.body();
+                }
+                @Override
+                public void onFailure(Call<Integer> call, Throwable t) {
+                    Log.v("debug error", t.toString());
+                }
+            });
+        */
+    // _____________________________________________________________________________________________
+    // __ GET RACE ID _____________________________________________________________________________
+        Call<Race> callRace = serverInterface.getRace(spRaces.getSelectedItem().toString());
+        callRace.enqueue(new Callback<Race>() {
             @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                userId = response.body();
+            public void onResponse(Call<Race> call, Response<Race> response) {
+                useRace = response.body();
             }
             @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
+            public void onFailure(Call<Race> call, Throwable t) {
+                Log.v("debug error", t.toString());
+            }
+        });
+    // _____________________________________________________________________________________________
+    // __ CREATE ANIMAL ____________________________________________________________________________
+        if(tvPicture.getText().toString().equals("Insérer une photo ici"))
+            animal = new Animal(4, useRace.getId(), true);
+        else
+        {
+            Call<String> callImage = serverInterface.uploadImage(imageBitmap);
+            callImage.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    filePath = response.body();
+                }
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Log.v("debug error", t.toString());
+                }
+            });
+
+            animal = new Animal(4, useRace.getId(), filePath, true); // RESTE A ALLER CHERCHER LA PHOTO SUR LE SERVEUR
+        }
+    // _____________________________________________________________________________________________
+    // __ GET COLOR ID _____________________________________________________________________________
+        Call<Color> callColor = serverInterface.getColor(spColors.getSelectedItem().toString());
+        callColor.enqueue(new Callback<Color>() {
+            @Override
+            public void onResponse(Call<Color> call, Response<Color> response) {
+                useColor = response.body();
+            }
+            @Override
+            public void onFailure(Call<Color> call, Throwable t) {
                 Log.v("debug error", t.toString());
             }
         });
     // _____________________________________________________________________________________________
     // __ CREATE ANIMAL COLOR ______________________________________________________________________
-        Animal animal = new Animal(userId, useRace.getId(), "ALLER CHERCHER LA PHOTO", true); // RESTE A ALLER CHERCHER LA PHOTO SUR LE SERVEUR
-
         Call<Boolean> callAnimalColor = serverInterface.addAnimalColor(animal.getId(), useColor.getId());
         callAnimalColor.enqueue(new Callback<Boolean>() {
             @Override
@@ -213,7 +277,6 @@ public class FragmentAddAlerte extends Fragment {
         callAlert.enqueue(new Callback<Boolean>() {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                Log.v("debug", response.toString());
                 navController.navigate(R.id.action_addAlerteInvite_to_map);
             }
             @Override
