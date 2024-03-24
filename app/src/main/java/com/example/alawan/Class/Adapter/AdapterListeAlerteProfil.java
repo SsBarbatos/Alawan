@@ -42,6 +42,7 @@ public class AdapterListeAlerteProfil extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         myViewHolder.tvNom.setText(list.get(position).getName());
+
         myViewHolder.tvFin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

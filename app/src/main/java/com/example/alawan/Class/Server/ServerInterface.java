@@ -1,5 +1,6 @@
 package com.example.alawan.Class.Server;
 
+import com.example.alawan.Class.Alert;
 import com.example.alawan.Class.Animal;
 import com.example.alawan.Class.Color;
 import com.example.alawan.Class.Person;
@@ -48,8 +49,11 @@ public interface ServerInterface {
     @FormUrlEncoded
     Call<List<Animal>> getAnimalsAlertProfil(@Field("id") int id);
 
-    @GET("/api/animalAlert")
+    @GET("/api/animalAlert")  //je ne comprends pas la logic
     Call<List<Animal>> getAnimalsAlert();
+
+    @GET("/ap/alerts")
+    Call<List<Alert>> getAlert();
 
     @GET("/api/animals/person")
     Call<List<Animal>> getAnimalsPerson();

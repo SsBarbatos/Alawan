@@ -57,7 +57,7 @@
         android:id="@+id/et_nom_ajout_compagnon"
         android:layout_width="310dp"
         android:layout_height="50dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:autofillHints="@string/nomCompagnon"
         android:background="@drawable/bg_carte"
         android:ems="10"
@@ -65,7 +65,7 @@
         android:inputType="text"
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_ajout_compagnon" />
 
@@ -73,13 +73,10 @@
         android:id="@+id/sp_race_ajout_compagnon"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="28dp"
         android:autofillHints="race"
         android:background="@drawable/bg_carte"
-        app:layout_constraintEnd_toStartOf="@+id/sp_couleur_ajout_compagnon"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/et_nom_ajout_compagnon"
         app:layout_constraintTop_toBottomOf="@+id/et_nom_ajout_compagnon" />
 
     <EditText
@@ -118,11 +115,10 @@
         android:id="@+id/sp_couleur_ajout_compagnon"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginTop="28dp"
         android:autofillHints="couleur"
         android:background="@drawable/bg_carte"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_nom_ajout_compagnon"
         app:layout_constraintTop_toBottomOf="@+id/et_nom_ajout_compagnon" />
 
     <Button

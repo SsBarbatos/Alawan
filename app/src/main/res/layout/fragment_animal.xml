@@ -35,35 +35,33 @@
         android:id="@+id/tv_hint_animaux"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/detailAnimaux"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/rv_liste_animaux"
+        app:layout_constraintTop_toBottomOf="@+id/tv_titre_animaux" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_liste_animaux"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="405dp"
+        android:layout_height="519dp"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/bt_nouveaux_animaux"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hint_animaux"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_hint_animaux" />
 
     <Button
         android:id="@+id/bt_nouveaux_animaux"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="188dp"
+        android:layout_marginBottom="136dp"
         android:background="@drawable/bg_btnf"
         android:fontFamily="@font/inter_black"
         android:text="@string/nouveauCompagnon"

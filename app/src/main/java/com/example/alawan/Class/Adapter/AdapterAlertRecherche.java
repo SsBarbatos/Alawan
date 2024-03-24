@@ -31,6 +31,8 @@ public class AdapterAlertRecherche extends RecyclerView.Adapter{
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         myViewHolder.tvMedaillon.setText(list.get(position).getName());
+
+
     }
 
     @Override

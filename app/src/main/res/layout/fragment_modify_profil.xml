@@ -11,7 +11,7 @@
         android:id="@+id/tv_title_modifierprofil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="188dp"
         android:fontFamily="@font/inter_black"
         android:text="@string/modifierProfil"
@@ -19,6 +19,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/iv_back_modifierprofil"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -112,7 +114,7 @@
         android:id="@+id/bt_modifieradresse_modifierprofil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/inter_black"
         android:paddingStart="5dp"
@@ -122,16 +124,14 @@
         android:textColor="@color/GreenText"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.769"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_phone_modifierprofil"
         app:layout_constraintTop_toBottomOf="@+id/et_phone_modifierprofil" />
 
     <Button
         android:id="@+id/bt_aide_modifierprofil"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="12dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/inter_black"
         android:paddingStart="5dp"
@@ -141,9 +141,7 @@
         android:textColor="@color/GreenText"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.832"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/bt_modifieradresse_modifierprofil"
         app:layout_constraintTop_toBottomOf="@+id/bt_modifieradresse_modifierprofil" />
 
     <Button

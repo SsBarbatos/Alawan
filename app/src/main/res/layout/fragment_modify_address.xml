@@ -14,8 +14,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="38dp"
         android:contentDescription="@string/image"
-        app:layout_constraintEnd_toStartOf="@+id/tv_titre_adresse"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />
@@ -25,20 +23,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="172dp"
         android:fontFamily="@font/inter_black"
         android:text="@string/modifierAdresse"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toEndOf="@+id/iv_alerte_main"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_ville_adresse"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:autofillHints="@string/ville"
         android:backgroundTint="@color/GreenText"
         android:drawableStart="@drawable/ic_pin_black"
@@ -50,7 +49,6 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_titre_adresse" />
 
@@ -69,9 +67,9 @@
         android:paddingEnd="0dp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_ville_adresse"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/et_ville_adresse"
         app:layout_constraintTop_toBottomOf="@+id/et_ville_adresse" />
 
     <EditText
@@ -89,9 +87,9 @@
         android:paddingEnd="0dp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_rue_adresse"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/et_rue_adresse"
         app:layout_constraintTop_toBottomOf="@+id/et_rue_adresse" />
 
     <EditText
@@ -109,9 +107,9 @@
         android:paddingEnd="0dp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_num_adresse"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/et_num_adresse"
         app:layout_constraintTop_toBottomOf="@+id/et_num_adresse" />
 
     <Button
@@ -128,16 +126,13 @@
         android:textColor="@color/GreenText"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.826"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_postal_adresse"
         app:layout_constraintTop_toBottomOf="@+id/et_postal_adresse" />
 
     <Button
         android:id="@+id/bt_deconnecter_adresse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginBottom="16dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/inter_black"
@@ -149,6 +144,8 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
