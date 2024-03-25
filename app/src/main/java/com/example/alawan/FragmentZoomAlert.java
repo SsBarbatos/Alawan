@@ -102,7 +102,6 @@ public class FragmentZoomAlert extends Fragment {
                     Log.v("debug",response.toString());
                 }
             }
-
             @Override
             public void onFailure(Call<Alert> call, Throwable t) {
                 Log.v("debug error",t.toString());

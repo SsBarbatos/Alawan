@@ -52,8 +52,10 @@ public class FragmentRecherche extends Fragment {
         serverInterface.getAnimalsAlert().enqueue(new Callback<List<Animal>>() {
             @Override
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
-                list = response.body();
-                rv.setAdapter(new AdapterAlertRecherche(list,(ActivityMenu) activityMenu));
+                if(response.body() != null){
+                    list = response.body();
+                    rv.setAdapter(new AdapterAlertRecherche(list,(ActivityMenu) activityMenu));
+                }
             }
 
             @Override
