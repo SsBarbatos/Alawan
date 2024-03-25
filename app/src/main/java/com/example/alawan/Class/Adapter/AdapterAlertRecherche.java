@@ -1,5 +1,6 @@
 package com.example.alawan.Class.Adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,20 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alawan.ActivityMenu;
+import com.example.alawan.Class.Alert;
 import com.example.alawan.Class.Animal;
+import com.example.alawan.Class.Race;
+import com.example.alawan.Class.Server.RetrofitInstance;
+import com.example.alawan.Class.Server.ServerInterface;
 import com.example.alawan.R;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class AdapterAlertRecherche extends RecyclerView.Adapter{
 
     public interface  InterfaceAlertRecherche{
@@ -40,6 +51,36 @@ public class AdapterAlertRecherche extends RecyclerView.Adapter{
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         myViewHolder.tvMedaillon.setText(list.get(position).getName());
+        RetrofitInstance.getInstance().create(ServerInterface.class).getRaceAnimal(list.get(position).getIdrace()).enqueue(new Callback<Race>() {
+            @Override
+            public void onResponse(Call<Race> call, Response<Race> response) {
+                if(response.body() != null){
+                    myViewHolder.tvRace.setText("Race : " + response.body().getRace());
+                }
+                else {
+
+                }
+            }
+            @Override
+            public void onFailure(Call<Race> call, Throwable t) {
+                Log.v("debug error", t.toString());
+            }
+        });
+        RetrofitInstance.getInstance().create(ServerInterface.class).getAlert(list.get(position).getId()).enqueue(new Callback<Alert>() {
+            @Override
+            public void onResponse(Call<Alert> call, Response<Alert> response) {
+                if(response.body() != null){
+                    myViewHolder.tvAddress.setText(response.body().getPlace());
+                }
+                else {
+                    Log.v("debug",response.toString());
+                }
+            }
+            @Override
+            public void onFailure(Call<Alert> call, Throwable t) {
+                Log.v("debug error",t.toString());
+            }
+        });
     }
 
     @Override
