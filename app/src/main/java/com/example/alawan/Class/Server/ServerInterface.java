@@ -6,6 +6,9 @@ import com.example.alawan.Class.Animal;
 import com.example.alawan.Class.Color;
 import com.example.alawan.Class.Person;
 import com.example.alawan.Class.Race;
+
+import org.checkerframework.checker.units.qual.C;
+
 import java.util.Date;
 import java.util.List;
 import retrofit2.Call;
@@ -90,6 +93,9 @@ public interface ServerInterface
     @POST("/api/getAlert")
     @FormUrlEncoded
     Call<Alert> getAlert(@Field("id") int id);
+
+    @GET("/api/Alerts")
+    Call<List<Alert>> getAllAlert();
 
     @POST("/api/getMaster")
     @FormUrlEncoded
