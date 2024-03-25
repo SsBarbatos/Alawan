@@ -122,9 +122,9 @@
         android:textColor="@color/GreenText"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.769"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_phone_modifierprofil"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/et_phone_modifierprofil"
         app:layout_constraintTop_toBottomOf="@+id/et_phone_modifierprofil" />
 
     <Button
@@ -141,9 +141,9 @@
         android:textColor="@color/GreenText"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.832"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/bt_modifieradresse_modifierprofil"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/bt_modifieradresse_modifierprofil"
         app:layout_constraintTop_toBottomOf="@+id/bt_modifieradresse_modifierprofil" />
 
     <Button

@@ -36,36 +36,34 @@
         android:id="@+id/tv_chienperdu_recherche"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:text="Animaux perdus dans la région"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.091"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_region_recherche"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_region_recherche"
         app:layout_constraintTop_toBottomOf="@+id/tv_region_recherche" />
 
     <ImageView
         android:id="@+id/iv_ping_recherche"
         android:layout_width="14sp"
         android:layout_height="14sp"
-        android:layout_marginTop="88dp"
-        android:src="@drawable/ic_local_pin"
+        android:layout_marginStart="16dp"
         android:contentDescription="@string/image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.179"
+        android:src="@drawable/ic_local_pin"
         app:layout_constraintStart_toEndOf="@+id/tv_chienperdu_recherche"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="88dp" />
 
     <TextView
         android:id="@+id/tv_ville_recherche"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="24dp"
         android:text="Trois-rivières - 4km"
         android:textColor="@color/GreenText"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintEnd_toEndOf="@+id/tv_region_recherche"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/iv_ping_recherche"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_region_recherche" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,14 +42,14 @@
         android:id="@+id/et_email_login"
         android:layout_width="314dp"
         android:layout_height="50dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="60dp"
         android:drawableStart="@drawable/ic_mail"
         android:drawablePadding="10dp"
         android:hint="@string/email"
         android:textColorHint="@color/GreenText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.577"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_titre_login"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_titre_login"
         app:layout_constraintTop_toBottomOf="@+id/tv_titre_login" />
 
     <EditText
@@ -65,18 +65,18 @@
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textColorHint="@color/GreenText"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_email_login"
         app:layout_constraintHorizontal_bias="0.577"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/et_email_login"
         app:layout_constraintTop_toBottomOf="@+id/et_email_login" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="311dp"
         android:layout_height="37dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_password_login"
         app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/et_password_login"
         app:layout_constraintTop_toBottomOf="@+id/et_password_login">
 
         <CheckBox
@@ -111,9 +111,9 @@
         android:layout_width="340dp"
         android:layout_height="30dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/bt_connecter_login"
         app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/bt_connecter_login"
         app:layout_constraintTop_toBottomOf="@+id/bt_connecter_login">
 
         <TextView
@@ -151,8 +151,8 @@
         android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
 
