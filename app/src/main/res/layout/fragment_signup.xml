@@ -30,11 +30,11 @@
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.254"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_nom_signup"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_nom_signup"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33" />
+        app:layout_constraintVertical_bias="0.329" />
 
     <EditText
         android:id="@+id/et_mail_signup"
@@ -169,40 +169,36 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_confirmer_signup"
+        app:layout_constraintStart_toStartOf="@+id/et_confirmer_signup"
         app:layout_constraintTop_toBottomOf="@+id/et_confirmer_signup"
-        app:layout_constraintVertical_bias="0.338" />
+        app:layout_constraintVertical_bias="0.094" />
 
     <TextView
         android:id="@+id/tv_seconnecter_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/inter_black"
         android:text="@string/login"
         android:textColor="@color/GreenText"
         android:textColorLink="@color/GreenText"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintEnd_toEndOf="@+id/bt_creer_signup"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/tv_dejacompte_signup"
-        app:layout_constraintTop_toBottomOf="@+id/bt_creer_signup"
-        app:layout_constraintVertical_bias="0.071" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_creer_signup" />
 
     <TextView
         android:id="@+id/tv_dejacompte_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/dejaCompte"
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_creer_signup"
-        app:layout_constraintVertical_bias="0.071" />
+        app:layout_constraintStart_toStartOf="@+id/bt_creer_signup"
+        app:layout_constraintTop_toBottomOf="@+id/bt_creer_signup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
