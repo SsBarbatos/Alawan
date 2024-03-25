@@ -154,14 +154,5 @@
             android:id="@+id/action_fragmentZoomAlert_to_recherche"
             app:destination="@id/recherche" />
     </fragment>
-    <fragment
-        android:id="@+id/addAlerteInvite"
-        android:name="com.example.alawan.FragmentAddAlerte"
-        android:label="fragment_add_alerte"
-        tools:layout="@layout/fragment_add_alerte" >
-        <action
-            android:id="@+id/action_addAlerteInvite_to_map"
-            app:destination="@id/map" />
-    </fragment>
 
 </navigation>

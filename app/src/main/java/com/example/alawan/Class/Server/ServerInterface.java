@@ -61,7 +61,7 @@ public interface ServerInterface
 
     @POST("/api/animal")
     @FormUrlEncoded
-    Call<Boolean> addAnimal(@Field("idPerson") int idPerson,@Field("idRace") int idRace, @Field("idNecklace") int idNecklace, @Field("name") String name, @Field("Picture") String picture, @Field("birth") Date birth, @Field("research") Boolean research);
+    Call<Integer> addAnimal(@Field("idPerson") int idPerson,@Field("idRace") int idRace, @Field("idNecklace") int idNecklace, @Field("name") String name, @Field("Picture") String picture, @Field("birth") Date birth, @Field("research") Boolean research);
 
     @DELETE("/api/animal/{id}")
     Call<Boolean> deleteAnimal(@Path("id") int id);
@@ -106,5 +106,6 @@ public interface ServerInterface
     Call<Race> getRaceAnimal(@Field("id") int id);
 
     @POST("/api/uploadImage")
+    @FormUrlEncoded
     Call<String> uploadImage(@Field("bitmap") Bitmap bitmap);
 }
