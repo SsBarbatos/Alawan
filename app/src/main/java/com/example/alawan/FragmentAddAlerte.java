@@ -14,6 +14,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,16 +29,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import com.example.alawan.Class.Animal;
 import com.example.alawan.Class.AnimalColor;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Field;
+
 import com.example.alawan.Class.Server.RetrofitInstance;
 import com.example.alawan.Class.Server.ServerInterface;
 
 public class FragmentAddAlerte extends Fragment
 {
-    AnimalColor animalColor;
     View view;
     TextView tvPicture;
     EditText etDescription, etPhone;
@@ -44,10 +52,11 @@ public class FragmentAddAlerte extends Fragment
     Button btAddAlert;
     ImageView ivImageAlert, ivIconImageAlert;
     ServerInterface serverInterface ;
-    NavController navController;
-    Animal animal;
+    Integer animalId;
     String filePath = "";
     Bitmap imageBitmap;
+    Date currentDate;
+    NavController navController;
 
     public FragmentAddAlerte()
     {
@@ -86,6 +95,9 @@ public class FragmentAddAlerte extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+        NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_mainpage);
+        navController = navHostFragment.getNavController();
+
         view = inflater.inflate(R.layout.fragment_add_alerte, container, false);
 
         tvPicture = view.findViewById(R.id.tv_inserer_photo);
@@ -102,6 +114,10 @@ public class FragmentAddAlerte extends Fragment
         btAddAlert = view.findViewById(R.id.bt_lancer_alerte);
 
         serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
+
+        currentDate = new Date();
+
+        animalId = 0;
 
     // __ FILL THE COLORS SPINNER __________________________________________________________________
         ArrayAdapter<CharSequence> adapterColors = ArrayAdapter.createFromResource(
@@ -170,18 +186,20 @@ public class FragmentAddAlerte extends Fragment
                     validation = true;
 
                 if (validation)
-                    AddAlert(etDescription.getText().toString(), spRaces.getSelectedItem().toString(), spColors.getSelectedItem().toString(), etPhone.getText().toString());
+                    AddAlert();
             }
         });
 
         return view;
     }
 
-    public void AddAlert(String description, String race, String color, String phone)
+    public void AddAlert()
     {
     // __ CREATE ANIMAL ____________________________________________________________________________
-        if(tvPicture.getText().toString().equals("Insérer une photo ici"))
-            animal = new Animal(4, spRaces.getSelectedItemPosition(), true);
+        Call<Integer> callAddAnimal;
+
+        if(tvPicture.getVisibility() == View.VISIBLE)
+            callAddAnimal = serverInterface.addAnimal(4, spRaces.getSelectedItemPosition() - 1, 0, "Inconnu", null, null, true);
         else
         {
             Call<String> callImage = serverInterface.uploadImage(imageBitmap);
@@ -196,29 +214,43 @@ public class FragmentAddAlerte extends Fragment
                 }
             });
 
-            animal = new Animal(4, spRaces.getSelectedItemPosition(), filePath, true);
+            callAddAnimal = serverInterface.addAnimal(4, spRaces.getSelectedItemPosition() - 1, 0, "Inconnu", filePath, null, true);
         }
-    // _____________________________________________________________________________________________
-    // __ CREATE ANIMAL COLOR ______________________________________________________________________
-        Call<Boolean> callAnimalColor = serverInterface.addAnimalColor(animal.getId(), spColors.getSelectedItemPosition());
-        callAnimalColor.enqueue(new Callback<Boolean>() {
+
+        callAddAnimal.enqueue(new Callback<Integer>() {
             @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                animalColor = new AnimalColor(animal.getId(), spColors.getSelectedItemPosition());
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                animalId = response.body();
             }
             @Override
-            public void onFailure(Call<Boolean> call, Throwable t) {
-                Log.v("debug error", t.toString());
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Log.v("Temporary animal", t.toString());
             }
         });
     // _____________________________________________________________________________________________
-        Date currentDate = new Date();
-
-        Call<Boolean> callAlert = serverInterface.addAlert(animal.getPicture(), description, race, color, currentDate, phone);
-        callAlert.enqueue(new Callback<Boolean>() {
+    // __ CREATE ANIMAL COLOR ______________________________________________________________________
+        Call<Boolean> callAnimalColor = serverInterface.addAnimalColor(1, spColors.getSelectedItemPosition() - 1);
+        callAnimalColor.enqueue(new Callback<Boolean>() {
             @Override
             public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                navController.navigate(R.id.action_addAlerteInvite_to_map);
+                Log.v("Temporary animal/color", "Created successfully");
+            }
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                Log.v("Temporary animal/color", t.toString());
+            }
+        });
+    // _____________________________________________________________________________________________
+        Call<Boolean> callAddAlert = serverInterface.addAlert(  filePath,
+                                                                etDescription.getText().toString(),
+                                                                spRaces.getSelectedItem().toString(),
+                                                                spColors.getSelectedItem().toString(),
+                                                                currentDate,
+                                                                etPhone.getText().toString());
+        callAddAlert.enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                navController.navigate(R.id.action_fragmentAddAlerte_to_map);
             }
             @Override
             public void onFailure(Call<Boolean> call, Throwable t) {

@@ -29,7 +29,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/fv_mainpage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_graph" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -65,7 +66,7 @@
                     android:layout_width="28dp"
                     android:layout_height="36dp"
                     android:layout_weight="1"
-                    android:tint="@color/gris"
+                    app:tint="@color/gris"
                     app:srcCompat="@drawable/ic_home" />
 
                 <TextView
@@ -91,7 +92,7 @@
                     android:layout_height="36dp"
                     android:layout_weight="1"
                     android:contentDescription="@string/image"
-                    android:tint="@color/gris"
+                    app:tint="@color/gris"
                     app:srcCompat="@drawable/ic_search" />
 
                 <TextView
@@ -126,7 +127,7 @@
                     android:layout_width="28dp"
                     android:layout_height="36dp"
                     android:layout_weight="1"
-                    android:tint="@color/gris"
+                    app:tint="@color/gris"
                     app:srcCompat="@drawable/ic_profile" />
 
                 <TextView
@@ -152,7 +153,7 @@
                     android:layout_height="36dp"
                     android:layout_weight="1"
                     android:contentDescription="@string/image"
-                    android:tint="@color/gris"
+                    app:tint="@color/gris"
                     app:srcCompat="@drawable/ic_chat" />
 
                 <TextView
