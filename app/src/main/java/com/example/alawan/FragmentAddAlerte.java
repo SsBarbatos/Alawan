@@ -27,18 +27,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import com.example.alawan.Class.Animal;
-import com.example.alawan.Class.AnimalColor;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Field;
 
 import com.example.alawan.Class.Server.RetrofitInstance;
 import com.example.alawan.Class.Server.ServerInterface;
@@ -50,13 +48,15 @@ public class FragmentAddAlerte extends Fragment
     EditText etDescription, etPhone;
     Spinner spRaces, spColors;
     Button btAddAlert;
-    ImageView ivImageAlert, ivIconImageAlert;
+    ImageView ivImageAlert;
     ServerInterface serverInterface ;
     Integer animalId;
-    String filePath = "";
+    String filePath;
     Bitmap imageBitmap;
-    Date currentDate;
     NavController navController;
+    Date currentDate;
+    Call<Integer> callAddAnimal;
+
 
     public FragmentAddAlerte()
     {
@@ -82,9 +82,8 @@ public class FragmentAddAlerte extends Fragment
 
                     imageBitmap = (Bitmap) extras.get("data");
                     ivImageAlert.setImageBitmap(imageBitmap);
+                    ivImageAlert.setAutofillHints("picture");
 
-                    ivIconImageAlert.setVisibility(View.INVISIBLE);
-                    tvPicture.setVisibility(View.INVISIBLE);
                 }
                 else
                     Log.v("debug error", result.toString());
@@ -102,22 +101,20 @@ public class FragmentAddAlerte extends Fragment
 
         tvPicture = view.findViewById(R.id.tv_inserer_photo);
 
-        etDescription = view.findViewById(R.id.et_description_alerte);
-        etPhone = view.findViewById(R.id.et_phone_alerte);
+        etDescription = view.findViewById(R.id.et_description_alerte_invite);
+        etPhone = view.findViewById(R.id.et_phone_alerte_invite);
 
-        spColors = view.findViewById(R.id.sp_couleur_alerte);
-        spRaces = view.findViewById(R.id.sp_race_alerte);
+        spColors = view.findViewById(R.id.sp_couleur_alerte_invite);
+        spRaces = view.findViewById(R.id.sp_race_alerte_invite);
 
-        ivImageAlert = view.findViewById(R.id.iv_inserer_photo_alerte);
-        ivIconImageAlert = view.findViewById(R.id.iv_icon_inserer_photo_alerte);
+        ivImageAlert = view.findViewById(R.id.iv_logo_image_add_alerte_invite);
+        ivImageAlert.setAutofillHints("no_picture");
 
-        btAddAlert = view.findViewById(R.id.bt_lancer_alerte);
+        btAddAlert = view.findViewById(R.id.bt_lancer_alerte_invite);
 
         serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
 
         currentDate = new Date();
-
-        animalId = 0;
 
     // __ FILL THE COLORS SPINNER __________________________________________________________________
         ArrayAdapter<CharSequence> adapterColors = ArrayAdapter.createFromResource(
@@ -138,7 +135,7 @@ public class FragmentAddAlerte extends Fragment
         spRaces.setAdapter(adapterRaces);
     // _____________________________________________________________________________________________
 
-        tvPicture.setOnClickListener(new View.OnClickListener()
+        ivImageAlert.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -195,11 +192,10 @@ public class FragmentAddAlerte extends Fragment
 
     public void AddAlert()
     {
-    // __ CREATE ANIMAL ____________________________________________________________________________
-        Call<Integer> callAddAnimal;
-
-        if(tvPicture.getVisibility() == View.VISIBLE)
+        if(ivImageAlert.getAutofillHints().toString().equals("no_picture"))
+        {
             callAddAnimal = serverInterface.addAnimal(4, spRaces.getSelectedItemPosition() - 1, 0, "Inconnu", null, null, true);
+        }
         else
         {
             Call<String> callImage = serverInterface.uploadImage(imageBitmap);
@@ -207,55 +203,52 @@ public class FragmentAddAlerte extends Fragment
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
                     filePath = response.body();
+                    callAddAnimal = serverInterface.addAnimal(4, spRaces.getSelectedItemPosition() - 1, 0, "Inconnu", filePath, null, true);
+                    callAddAnimal.enqueue(new Callback<Integer>() {
+                        @Override
+                        public void onResponse(Call<Integer> call, Response<Integer> response) {
+                            animalId = response.body();
+
+                            Call<Boolean> callAnimalColor = serverInterface.addAnimalColor(animalId, spColors.getSelectedItemPosition() - 1);
+                            callAnimalColor.enqueue(new Callback<Boolean>() {
+                                @Override
+                                public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                                    Log.v("Temporary animal/color", "Created successfully");
+                                }
+                                @Override
+                                public void onFailure(Call<Boolean> call, Throwable t) {
+                                    Log.v("Temporary animal/color", t.toString());
+                                }
+                            });
+
+                            Call<Boolean> callAddAlert = serverInterface.addAlert(  animalId,
+                                    etDescription.getText().toString(),
+                                    spRaces.getSelectedItem().toString(),
+                                    spColors.getSelectedItem().toString(),
+                                    currentDate,
+                                    etPhone.getText().toString());
+                            callAddAlert.enqueue(new Callback<Boolean>() {
+                                @Override
+                                public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                                    navController.navigate(R.id.action_fragmentAddAlerte_to_map);
+                                }
+                                @Override
+                                public void onFailure(Call<Boolean> call, Throwable t) {
+                                    Log.v("Add alert", t.toString());
+                                }
+                            });
+                        }
+                        @Override
+                        public void onFailure(Call<Integer> call, Throwable t) {
+                            Log.v("debug error", t.toString());
+                        }
+                    });
                 }
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-                    Log.v("debug error", t.toString());
+                    Log.v("Create animal", t.toString());
                 }
             });
-
-            callAddAnimal = serverInterface.addAnimal(4, spRaces.getSelectedItemPosition() - 1, 0, "Inconnu", filePath, null, true);
         }
-
-        callAddAnimal.enqueue(new Callback<Integer>() {
-            @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                animalId = response.body();
-            }
-            @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
-                Log.v("Temporary animal", t.toString());
-            }
-        });
-    // _____________________________________________________________________________________________
-    // __ CREATE ANIMAL COLOR ______________________________________________________________________
-        Call<Boolean> callAnimalColor = serverInterface.addAnimalColor(1, spColors.getSelectedItemPosition() - 1);
-        callAnimalColor.enqueue(new Callback<Boolean>() {
-            @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                Log.v("Temporary animal/color", "Created successfully");
-            }
-            @Override
-            public void onFailure(Call<Boolean> call, Throwable t) {
-                Log.v("Temporary animal/color", t.toString());
-            }
-        });
-    // _____________________________________________________________________________________________
-        Call<Boolean> callAddAlert = serverInterface.addAlert(  filePath,
-                                                                etDescription.getText().toString(),
-                                                                spRaces.getSelectedItem().toString(),
-                                                                spColors.getSelectedItem().toString(),
-                                                                currentDate,
-                                                                etPhone.getText().toString());
-        callAddAlert.enqueue(new Callback<Boolean>() {
-            @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                navController.navigate(R.id.action_fragmentAddAlerte_to_map);
-            }
-            @Override
-            public void onFailure(Call<Boolean> call, Throwable t) {
-                Log.v("debug error", t.toString());
-            }
-        });
     }
 }
