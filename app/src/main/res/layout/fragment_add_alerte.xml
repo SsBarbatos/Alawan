@@ -11,7 +11,7 @@
         android:id="@+id/et_description_alerte_invite"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="4dp"
         android:autofillHints="@string/descriptionAnimal"
         android:backgroundTint="#000000"
         android:ems="10"
@@ -20,38 +20,39 @@
         android:hint="@string/descriptionAnimal"
         android:inputType="textMultiLine"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/sp_couleur_alerte_invite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/iv_logo_image_add_alerte_invite"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toStartOf="@+id/iv_logo_image_add_alerte_invite"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo_image_add_alerte_invite" />
 
     <Spinner
         android:id="@+id/sp_couleur_alerte_invite"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/inter_semibold"
-        app:layout_constraintBottom_toTopOf="@+id/sp_race_alerte_invite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/et_description_alerte_invite"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_description_alerte_invite"
+        app:layout_constraintTop_toBottomOf="@+id/et_description_alerte_invite" />
 
     <Spinner
         android:id="@+id/sp_race_alerte_invite"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="8dp"
         android:autofillHints="temps"
         android:fontFamily="@font/inter_semibold"
-        app:layout_constraintBottom_toTopOf="@+id/et_phone_alerte_invite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/sp_couleur_alerte_invite"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/sp_couleur_alerte_invite"
+        app:layout_constraintTop_toBottomOf="@+id/sp_couleur_alerte_invite" />
 
     <EditText
         android:id="@+id/et_phone_alerte_invite"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="12dp"
         android:autofillHints="@string/telephone"
         android:drawableEnd="@drawable/ic_phone_black"
         android:ems="10"
@@ -59,26 +60,26 @@
         android:hint="@string/telephone"
         android:inputType="phone"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bt_lancer_alerte_invite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/sp_race_alerte_invite"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/sp_race_alerte_invite"
+        app:layout_constraintTop_toBottomOf="@+id/sp_race_alerte_invite" />
 
     <Button
         android:id="@+id/bt_lancer_alerte_invite"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bg_btnf"
         android:fontFamily="@font/inter_black"
         android:text="@string/lancerAlerte"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/et_phone_alerte_invite"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_phone_alerte_invite"
+        app:layout_constraintTop_toBottomOf="@+id/et_phone_alerte_invite" />
 
     <ImageView
         android:id="@+id/iv_back_alerte_invite"
@@ -108,12 +109,11 @@
         android:id="@+id/iv_logo_image_add_alerte_invite"
         android:layout_width="220dp"
         android:layout_height="220dp"
+        android:layout_marginTop="96dp"
         android:src="@drawable/logo_image"
-        app:layout_constraintBottom_toTopOf="@+id/et_description_alerte_invite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.776" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

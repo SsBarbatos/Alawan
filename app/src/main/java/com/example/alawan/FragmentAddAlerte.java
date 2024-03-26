@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.Location;
 import android.os.Bundle;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -27,6 +28,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -40,6 +42,12 @@ import retrofit2.Response;
 
 import com.example.alawan.Class.Server.RetrofitInstance;
 import com.example.alawan.Class.Server.ServerInterface;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 public class FragmentAddAlerte extends Fragment
 {
@@ -67,6 +75,7 @@ public class FragmentAddAlerte extends Fragment
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        utiliserCoordonnees();
     }
 
     // __ MANAGE CAMERA ____________________________________________________________________________
@@ -190,6 +199,7 @@ public class FragmentAddAlerte extends Fragment
         return view;
     }
 
+
     public void AddAlert()
     {
         if(ivImageAlert.getAutofillHints().toString().equals("no_picture"))
@@ -227,6 +237,8 @@ public class FragmentAddAlerte extends Fragment
                                     spColors.getSelectedItem().toString(),
                                     currentDate,
                                     etPhone.getText().toString());
+
+
                             callAddAlert.enqueue(new Callback<Boolean>() {
                                 @Override
                                 public void onResponse(Call<Boolean> call, Response<Boolean> response) {
@@ -251,4 +263,18 @@ public class FragmentAddAlerte extends Fragment
             });
         }
     }
+
+    private String utiliserCoordonnees() {
+        // Récupérer l'activité parente
+        ActivityMenu activite = (ActivityMenu) getActivity();
+
+            // Utiliser les méthodes publiques de l'activité pour obtenir les coordonnées
+            double latitude = activite.getUserLatitude();
+            double longitude = activite.getUserLongitude();
+            String retour = latitude +" "+longitude;
+            //return retour ;
+
+        return retour ;
+    }
+
 }
