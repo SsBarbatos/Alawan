@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/tv_titre_login"
-        android:layout_width="245dp"
+        android:layout_width="wrap_content"
         android:layout_height="51dp"
         android:fontFamily="@font/inter_black"
         android:text="@string/login"
@@ -79,19 +79,6 @@
         app:layout_constraintStart_toStartOf="@+id/et_password_login"
         app:layout_constraintTop_toBottomOf="@+id/et_password_login">
 
-        <CheckBox
-            android:id="@+id/cb_rappeler_login"
-            android:layout_width="173dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="5dp"
-
-            android:layout_marginLeft="5dp"
-            android:layout_marginEnd="3dp"
-            android:layout_toStartOf="@+id/tv_motdepasseoublier_login"
-            android:text="Se rappeler de moi" />
-
         <TextView
             android:id="@+id/tv_motdepasseoublier_login"
             android:layout_width="wrap_content"
@@ -131,10 +118,10 @@
 
         <TextView
             android:id="@+id/tv_pascompte_login"
-            android:layout_width="189dp"
+            android:layout_width="198dp"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="2dp"
             android:layout_marginEnd="13dp"
             android:gravity="center_horizontal"
             android:text="@string/creerCompte" />

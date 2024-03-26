@@ -54,6 +54,8 @@ public class ActivityMenu extends AppCompatActivity implements  OnMapReadyCallba
     private GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationClient;
     private LatLngBounds bounds;
+    private double userLatitude;
+    private double userLongitude;
 
     public ActivityMenu() {
 
@@ -397,24 +399,33 @@ public class ActivityMenu extends AppCompatActivity implements  OnMapReadyCallba
         return p1;
     }
 
+
+    // Méthode pour obtenir la latitude de l'utilisateur
+    public double getUserLatitude() {
+        return userLatitude;
+    }
+
+    // Méthode pour obtenir la longitude de l'utilisateur
+    public double getUserLongitude() {
+        return userLongitude;
+    }
+
     //localisation du telephone
     private void showUserLocation() {
         // Obtenir la dernière localisation connue de l'utilisateur
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_LOCATION_PERMISSION);
         }
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
                         if (location != null) {
+                            // Stocker les coordonnées de l'utilisateur dans des variables globales
+                            userLatitude = location.getLatitude();
+                            userLongitude = location.getLongitude();
                             // localisation
                             LatLng userLatLng = new LatLng(location.getLatitude(), location.getLongitude());
                             // ajouter un marker

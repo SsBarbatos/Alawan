@@ -3,6 +3,7 @@ package com.example.alawan;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -24,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.alawan.Class.Adapter.AdapterListeAnimalProfil;
 import com.example.alawan.Class.Animal;
@@ -38,6 +40,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import com.example.alawan.Class.Server.RetrofitInstance;
+import com.example.alawan.Class.Server.ServerInterface;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 public class FragmentAddAlerte extends Fragment {
 
@@ -59,7 +69,7 @@ public class FragmentAddAlerte extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        utiliserCoordonnees();
     }
 
     @Override
@@ -115,4 +125,83 @@ public class FragmentAddAlerte extends Fragment {
 
         return view;
     }
+
+
+    public void AddAlert()
+    {
+        if(ivImageAlert.getAutofillHints().toString().equals("no_picture"))
+        {
+            callAddAnimal = serverInterface.addAnimal(4, spRaces.getSelectedItemPosition() - 1, 0, "Inconnu", null, null, true);
+        }
+        else
+        {
+            Call<String> callImage = serverInterface.uploadImage(imageBitmap);
+            callImage.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    filePath = response.body();
+                    callAddAnimal = serverInterface.addAnimal(4, spRaces.getSelectedItemPosition() - 1, 0, "Inconnu", filePath, null, true);
+                    callAddAnimal.enqueue(new Callback<Integer>() {
+                        @Override
+                        public void onResponse(Call<Integer> call, Response<Integer> response) {
+                            animalId = response.body();
+
+                            Call<Boolean> callAnimalColor = serverInterface.addAnimalColor(animalId, spColors.getSelectedItemPosition() - 1);
+                            callAnimalColor.enqueue(new Callback<Boolean>() {
+                                @Override
+                                public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                                    Log.v("Temporary animal/color", "Created successfully");
+                                }
+                                @Override
+                                public void onFailure(Call<Boolean> call, Throwable t) {
+                                    Log.v("Temporary animal/color", t.toString());
+                                }
+                            });
+
+                            Call<Boolean> callAddAlert = serverInterface.addAlert(  animalId,
+                                    etDescription.getText().toString(),
+                                    spRaces.getSelectedItem().toString(),
+                                    spColors.getSelectedItem().toString(),
+                                    currentDate,
+                                    etPhone.getText().toString());
+
+
+                            callAddAlert.enqueue(new Callback<Boolean>() {
+                                @Override
+                                public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                                    navController.navigate(R.id.action_fragmentAddAlerte_to_map);
+                                }
+                                @Override
+                                public void onFailure(Call<Boolean> call, Throwable t) {
+                                    Log.v("Add alert", t.toString());
+                                }
+                            });
+                        }
+                        @Override
+                        public void onFailure(Call<Integer> call, Throwable t) {
+                            Log.v("debug error", t.toString());
+                        }
+                    });
+                }
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Log.v("Create animal", t.toString());
+                }
+            });
+        }
+    }
+
+    private String utiliserCoordonnees() {
+        // Récupérer l'activité parente
+        ActivityMenu activite = (ActivityMenu) getActivity();
+
+            // Utiliser les méthodes publiques de l'activité pour obtenir les coordonnées
+            double latitude = activite.getUserLatitude();
+            double longitude = activite.getUserLongitude();
+            String retour = latitude +" "+longitude;
+            //return retour ;
+
+        return retour ;
+    }
+
 }

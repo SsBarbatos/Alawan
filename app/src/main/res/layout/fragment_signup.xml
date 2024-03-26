@@ -22,8 +22,8 @@
 
     <TextView
         android:id="@+id/tv_creer_compte_signup"
-        android:layout_width="160dp"
-        android:layout_height="92dp"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
         android:fontFamily="@font/inter_black"
         android:text="@string/creerCompteTitre"
         android:textColor="@color/black"
@@ -185,8 +185,6 @@
         android:textColorLink="@color/GreenText"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/bt_creer_signup"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tv_dejacompte_signup"
         app:layout_constraintTop_toBottomOf="@+id/bt_creer_signup" />
 
     <TextView

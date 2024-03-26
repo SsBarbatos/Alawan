@@ -64,9 +64,9 @@
         android:hint="@string/nomCompagnon"
         android:inputType="text"
         android:paddingStart="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/iv_ajout_compagnon"
         app:layout_constraintHorizontal_bias="0.524"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/iv_ajout_compagnon"
         app:layout_constraintTop_toBottomOf="@+id/iv_ajout_compagnon" />
 
     <Spinner
