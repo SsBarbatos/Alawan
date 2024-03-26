@@ -97,7 +97,5 @@ public class AdapterListeAlerteProfil extends RecyclerView.Adapter {
             tvRace = itemView.findViewById(R.id.tv_race_comp_carte);
             ivPicture = itemView.findViewById(R.id.iv_comp_carte);
         }
-
-
     }
 }

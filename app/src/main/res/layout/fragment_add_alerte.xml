@@ -7,113 +7,84 @@
     android:background="@drawable/bg_menu_top"
     tools:context=".FragmentAddAlerte">
 
-    <EditText
-        android:id="@+id/et_description_alerte_invite"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
-        android:autofillHints="@string/descriptionAnimal"
-        android:backgroundTint="#000000"
-        android:ems="10"
-        android:fontFamily="@font/inter_semibold"
-        android:gravity="start|top"
-        android:hint="@string/descriptionAnimal"
-        android:inputType="textMultiLine"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/sp_couleur_alerte_invite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/sp_couleur_alerte_invite"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
-        android:fontFamily="@font/inter_semibold"
-        app:layout_constraintBottom_toTopOf="@+id/sp_race_alerte_invite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/sp_race_alerte_invite"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
-        android:autofillHints="temps"
-        android:fontFamily="@font/inter_semibold"
-        app:layout_constraintBottom_toTopOf="@+id/et_phone_alerte_invite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/et_phone_alerte_invite"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
-        android:autofillHints="@string/telephone"
-        android:drawableEnd="@drawable/ic_phone_black"
-        android:ems="10"
-        android:fontFamily="@font/inter_semibold"
-        android:hint="@string/telephone"
-        android:inputType="phone"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bt_lancer_alerte_invite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/bt_lancer_alerte_invite"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/bg_btnf"
-        android:fontFamily="@font/inter_black"
-        android:text="@string/lancerAlerte"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ImageView
-        android:id="@+id/iv_back_alerte_invite"
+        android:id="@+id/iv_retour_animaux"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
         android:contentDescription="@string/image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />
 
     <TextView
-        android:id="@+id/tv_titre_alerte_invite"
+        android:id="@+id/tv_titre_animaux"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/inter_black"
-        android:text="@string/alerteText"
+        android:text="@string/vosAnimaux"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/iv_back_alerte_invite"
+        app:layout_constraintStart_toEndOf="@+id/iv_retour_animaux"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_logo_image_add_alerte_invite"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:src="@drawable/logo_image"
-        app:layout_constraintBottom_toTopOf="@+id/et_description_alerte_invite"
+    <TextView
+        android:id="@+id/tv_hint_animaux"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/detailAnimaux"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.776" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_liste_animaux"
+        android:layout_width="0dp"
+        android:layout_height="351dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/et_description_alerte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hint_animaux"
+        app:layout_constraintVertical_bias="0.131" />
+
+    <Button
+        android:id="@+id/bt_nouveaux_animaux"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/bg_btnf"
+        android:fontFamily="@font/inter_black"
+        android:text="@string/nouveauCompagnon"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_description_alerte"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/descriptionAlerte"
+        android:inputType="textMultiLine"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bt_nouveaux_animaux"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

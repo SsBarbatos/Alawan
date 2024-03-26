@@ -90,8 +90,6 @@ public class AdapterListeAnimalProfil extends RecyclerView.Adapter {
                 delete(position);
             }
         });
-
-
     }
 
     @Override
