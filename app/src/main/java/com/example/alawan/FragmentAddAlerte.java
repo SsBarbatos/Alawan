@@ -111,8 +111,8 @@ public class FragmentAddAlerte extends Fragment {
         }
     // _____________________________________________________________________________________________
 
-        Call<List<Animal>> callGetUserAnimals = serverInterface.getUserAnimal(userID);
-        callGetUserAnimals.enqueue(new Callback<List<Animal>>() {
+        Call<Integer> callGetIDAuth = serverInterface.getIdAuth();
+        callGetIDAuth.enqueue(new Callback<Integer>() {
             @Override
 
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
@@ -121,7 +121,7 @@ public class FragmentAddAlerte extends Fragment {
 
             }
             @Override
-            public void onFailure(Call<List<Animal>> call, Throwable t) {
+            public void onFailure(Call<Integer> call, Throwable t) {
                 Log.v("Get Auth ID", t.toString());
             }
         });
