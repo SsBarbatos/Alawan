@@ -46,6 +46,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -62,7 +63,7 @@ public class ActivityMenu extends AppCompatActivity implements  OnMapReadyCallba
     private LatLngBounds bounds;
     private double userLatitude;
     private double userLongitude;
-
+    List<Alert> alerts;
     public ActivityMenu() {
 
     }
@@ -346,7 +347,15 @@ public class ActivityMenu extends AppCompatActivity implements  OnMapReadyCallba
             @Override
             public void onResponse(Call<List<Alert>> call, Response<List<Alert>> response) {
                 if(response.body() != null){
-
+                    alerts = response.body();
+                    LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                    for (Alert alert: alerts) {
+                        if(alert.getPlace() != null){
+                            mMap.addMarker(new MarkerOptions().position(getLocationFromAddress(alert.getPlace())).title("chien Perdu"));
+                            builder.include(getLocationFromAddress(alert.getPlace()));
+                        }
+                    }
+                    bounds = builder.build();
                 }
             }
             @Override
@@ -355,6 +364,8 @@ public class ActivityMenu extends AppCompatActivity implements  OnMapReadyCallba
             }
         });
 
+
+    /*
         LatLng address1 = getLocationFromAddress("7331 Rue Notre Dame O, Trois-Rivières, QC G9B 1L7");
         if (address1 != null) {
             mMap.addMarker(new MarkerOptions()
@@ -389,7 +400,7 @@ public class ActivityMenu extends AppCompatActivity implements  OnMapReadyCallba
         if (address3 != null) {
             builder.include(address3);
         }
-        bounds = builder.build();
+        bounds = builder.build();*/
     }
 
     @Override
