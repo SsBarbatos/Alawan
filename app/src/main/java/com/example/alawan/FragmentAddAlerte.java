@@ -69,7 +69,7 @@ public class FragmentAddAlerte extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        utiliserCoordonnees();
+        //utiliserCoordonnees();
     }
 
     @Override
@@ -128,7 +128,7 @@ public class FragmentAddAlerte extends Fragment {
 
 
     public void AddAlert()
-    {
+    {/*
         if(ivImageAlert.getAutofillHints().toString().equals("no_picture"))
         {
             callAddAnimal = serverInterface.addAnimal(4, spRaces.getSelectedItemPosition() - 1, 0, "Inconnu", null, null, true);
@@ -202,6 +202,7 @@ public class FragmentAddAlerte extends Fragment {
             //return retour ;
 
         return retour ;
-    }
+    }*/}
+
 
 }

@@ -109,14 +109,14 @@ public class AdapterListeAnimalAlerte extends RecyclerView.Adapter {
         myViewHolder.ivAlerteCarte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
-            {
+            {/*
                 RetrofitInstance.getInstance().create(ServerInterface.class).addAlert(
                         listeAnimal.get(position).getId(),
                         listeAnimal.get(position).getName() + " a disparu(e) depuis le " + currentDate,
                         listeAnimal.get(position).getIdrace(),
                         null,
-                        currentDate,
-                        etPhone.getText().toString());
+                        currentDate
+                        //etPhone.getText().toString());*/
             }
         });
     }
