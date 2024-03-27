@@ -99,12 +99,14 @@ public class FragmentAddAlerte extends Fragment {
                 callGetUserAnimals.enqueue(new Callback<List<Animal>>() {
                     @Override
                     public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
-                        listeAnimal = response.body();
-                        rvListAnimals.setAdapter(new AdapterListeAnimalProfil(listeAnimal));
+                        if(response.body() != null){
+                            listeAnimal = response.body();
+                            rvListAnimals.setAdapter(new AdapterListeAnimalProfil(listeAnimal));
+                        }
                     }
                     @Override
                     public void onFailure(Call<List<Animal>> call, Throwable t) {
-                        Log.v("Get Auth ID", t.toString());
+                        Log.v("debug error", t.toString());
                     }
                 });
             }

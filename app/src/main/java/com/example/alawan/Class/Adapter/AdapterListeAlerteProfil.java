@@ -46,38 +46,38 @@ public class AdapterListeAlerteProfil extends RecyclerView.Adapter {
         myViewHolder.tvFin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
-                serverInterface.finAlerte(list.get(position).getId()).enqueue(new Callback<Boolean>() {
-                    @Override
-                    public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-
-                        if(response.body() != null){
-                            if (response.body()){
-                                Toast.makeText(v.getContext(), "Votre alerte est fini",Toast.LENGTH_LONG);
-                            }
-                            else{
-                                Toast.makeText(v.getContext(), "Erreur",Toast.LENGTH_LONG);
-                            }
-                        }
-                        else{
-                            Toast.makeText(v.getContext(), "Erreur",Toast.LENGTH_LONG);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Boolean> call, Throwable t) {
-                        Log.d("debug error",t.toString());
-                    }
-                });
-                delete(position);
+                delete(position,v);
             }
         });
     }
 
-    public void delete(int position){
+    public void delete(int position,View v){
+        ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
+        serverInterface.finAlerte(list.get(position).getId()).enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+
+                if(response.body() != null){
+                    if (response.body()){
+                        Toast.makeText(v.getContext(), "Votre alerte est fini",Toast.LENGTH_LONG);
+                    }
+                    else{
+                        Toast.makeText(v.getContext(), "Erreur",Toast.LENGTH_LONG);
+                    }
+                }
+                else{
+                    Toast.makeText(v.getContext(), "Erreur",Toast.LENGTH_LONG);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                Log.d("debug error",t.toString());
+            }
+        });
         list.remove(position);
         notifyItemRemoved(position);
+
     }
 
     @Override
