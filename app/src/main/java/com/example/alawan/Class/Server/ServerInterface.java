@@ -95,7 +95,7 @@ public interface ServerInterface
     @FormUrlEncoded
     Call<Alert> getAlert(@Field("id") int id);
 
-    @GET("/api/Alerts")
+    @GET("/api/alerts")
     Call<List<Alert>> getAllAlert();
 
     @POST("/api/getMaster")
