@@ -3,6 +3,7 @@ package com.example.alawan.Class.Server;
 import android.graphics.Bitmap;
 import com.example.alawan.Class.Alert;
 import com.example.alawan.Class.Animal;
+import com.example.alawan.Class.AnimalColor;
 import com.example.alawan.Class.Color;
 import com.example.alawan.Class.Person;
 import com.example.alawan.Class.Race;
@@ -113,4 +114,13 @@ public interface ServerInterface
     @POST("/api/modifyPerson")
     @FormUrlEncoded
     Call<Boolean> modifyPerson(@Field("id") int id, @Field("name") String name, @Field("lastName") String lastName, @Field("email") String email, @Field("phone") String phone);
+
+    @GET("/api/animal/{idAnimal}")
+    Call<Animal> getAnimal(@Path("idAnimal") int idAnimal);
+
+    @GET("/api/animal/{idAnimal}")
+    Call<Color> getColor(@Path("idColor") int idColor);
+
+    @GET("/api/animal/{idAnimal}")
+    Call<AnimalColor> getAnimalColor(@Path("idAnimal") int idAnimal);
 }

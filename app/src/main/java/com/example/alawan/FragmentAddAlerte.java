@@ -1,5 +1,6 @@
 package com.example.alawan;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -27,14 +28,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.alawan.Class.Adapter.AdapterListeAnimalAlerte;
 import com.example.alawan.Class.Adapter.AdapterListeAnimalProfil;
 import com.example.alawan.Class.Animal;
+import com.example.alawan.Class.AnimalColor;
+import com.example.alawan.Class.Color;
+import com.example.alawan.Class.DescriptionDialog;
+import com.example.alawan.Class.Person;
+import com.example.alawan.Class.Race;
 import com.example.alawan.Class.Server.RetrofitInstance;
 import com.example.alawan.Class.Server.ServerInterface;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,19 +62,20 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public class FragmentAddAlerte extends Fragment {
 
     View view;
+
     ServerInterface serverInterface ;
     NavController navController;
 
     RecyclerView rvListAnimals;
-    List<Animal> listeAnimal = new ArrayList<>();
+    List<Animal> listeAnimal;
     Button btAddAnimal;
     Integer userID;
-    EditText etDescriptionAlerte;
+    Date currentDate;
+    SimpleDateFormat format;
 
     public FragmentAddAlerte() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,9 +84,11 @@ public class FragmentAddAlerte extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         view = inflater.inflate(R.layout.fragment_add_alerte, container, false);
+
+        userID = getActivity().getPreferences(Context.MODE_PRIVATE).getInt("id",0);
 
         NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_mainpage);
         navController = navHostFragment.getNavController();
@@ -87,29 +100,26 @@ public class FragmentAddAlerte extends Fragment {
 
         btAddAnimal = view.findViewById(R.id.bt_nouveaux_animaux);
 
-        etDescriptionAlerte = view.findViewById(R.id.et_description_alerte);
+    // __ SET CURRENT DATE _________________________________________________________________________
+        Date date = new Date();
+        format = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String formattedDate = format.format(date);
+        try {
+            currentDate = format.parse(formattedDate);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    // _____________________________________________________________________________________________
 
-        Call<Integer> callAuthID = serverInterface.getIdAuth();
-        callAuthID.enqueue(new Callback<Integer>() {
+        Call<List<Animal>> callGetUserAnimals = serverInterface.getUserAnimal(userID);
+        callGetUserAnimals.enqueue(new Callback<List<Animal>>() {
             @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                userID = response.body();
-
-                Call<List<Animal>> callGetUserAnimals = serverInterface.getUserAnimal(userID);
-                callGetUserAnimals.enqueue(new Callback<List<Animal>>() {
-                    @Override
-                    public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
-                        listeAnimal = response.body();
-                        rvListAnimals.setAdapter(new AdapterListeAnimalProfil(listeAnimal));
-                    }
-                    @Override
-                    public void onFailure(Call<List<Animal>> call, Throwable t) {
-                        Log.v("Get Auth ID", t.toString());
-                    }
-                });
+            public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
+                listeAnimal = response.body();
+                rvListAnimals.setAdapter(new AdapterListeAnimalAlerte(listeAnimal));
             }
             @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
+            public void onFailure(Call<List<Animal>> call, Throwable t) {
                 Log.v("Get Auth ID", t.toString());
             }
         });
@@ -119,90 +129,10 @@ public class FragmentAddAlerte extends Fragment {
             @Override
             public void onClick(View v)
             {
-                navController.navigate(R.id.action_fragmentAddAlerte_to_map);
+                navController.navigate(R.id.action_fragmentAddAlerte_to_addPet);
             }
         });
 
         return view;
     }
-
-
-    public void AddAlert()
-    {/*
-        if(ivImageAlert.getAutofillHints().toString().equals("no_picture"))
-        {
-            callAddAnimal = serverInterface.addAnimal(4, spRaces.getSelectedItemPosition() - 1, 0, "Inconnu", null, null, true);
-        }
-        else
-        {
-            Call<String> callImage = serverInterface.uploadImage(imageBitmap);
-            callImage.enqueue(new Callback<String>() {
-                @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                    filePath = response.body();
-                    callAddAnimal = serverInterface.addAnimal(4, spRaces.getSelectedItemPosition() - 1, 0, "Inconnu", filePath, null, true);
-                    callAddAnimal.enqueue(new Callback<Integer>() {
-                        @Override
-                        public void onResponse(Call<Integer> call, Response<Integer> response) {
-                            animalId = response.body();
-
-                            Call<Boolean> callAnimalColor = serverInterface.addAnimalColor(animalId, spColors.getSelectedItemPosition() - 1);
-                            callAnimalColor.enqueue(new Callback<Boolean>() {
-                                @Override
-                                public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                                    Log.v("Temporary animal/color", "Created successfully");
-                                }
-                                @Override
-                                public void onFailure(Call<Boolean> call, Throwable t) {
-                                    Log.v("Temporary animal/color", t.toString());
-                                }
-                            });
-
-                            Call<Boolean> callAddAlert = serverInterface.addAlert(  animalId,
-                                    etDescription.getText().toString(),
-                                    spRaces.getSelectedItem().toString(),
-                                    spColors.getSelectedItem().toString(),
-                                    currentDate,
-                                    etPhone.getText().toString());
-
-
-                            callAddAlert.enqueue(new Callback<Boolean>() {
-                                @Override
-                                public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                                    navController.navigate(R.id.action_fragmentAddAlerte_to_map);
-                                }
-                                @Override
-                                public void onFailure(Call<Boolean> call, Throwable t) {
-                                    Log.v("Add alert", t.toString());
-                                }
-                            });
-                        }
-                        @Override
-                        public void onFailure(Call<Integer> call, Throwable t) {
-                            Log.v("debug error", t.toString());
-                        }
-                    });
-                }
-                @Override
-                public void onFailure(Call<String> call, Throwable t) {
-                    Log.v("Create animal", t.toString());
-                }
-            });
-        }
-    }
-
-    private String utiliserCoordonnees() {
-        // Récupérer l'activité parente
-        ActivityMenu activite = (ActivityMenu) getActivity();
-
-            // Utiliser les méthodes publiques de l'activité pour obtenir les coordonnées
-            double latitude = activite.getUserLatitude();
-            double longitude = activite.getUserLongitude();
-            String retour = latitude +" "+longitude;
-            //return retour ;
-
-        return retour ;
-    }*/}
-
-
 }
