@@ -154,14 +154,14 @@
                     android:layout_weight="1"
                     android:contentDescription="@string/image"
                     app:tint="@color/gris"
-                    app:srcCompat="@drawable/ic_chat" />
+                    app:srcCompat="@drawable/logo_1" />
 
                 <TextView
                     android:id="@+id/tv_chat_menu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/chatText"
+                    android:text="Alawan"
                     android:textColor="@color/gris" />
             </LinearLayout>
 
