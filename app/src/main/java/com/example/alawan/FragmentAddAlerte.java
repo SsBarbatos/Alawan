@@ -62,7 +62,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public class FragmentAddAlerte extends Fragment {
 
     View view;
-
+    FragmentAddAlerte context;
     ServerInterface serverInterface ;
     NavController navController;
 
@@ -87,7 +87,7 @@ public class FragmentAddAlerte extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         view = inflater.inflate(R.layout.fragment_add_alerte, container, false);
-
+        context = this;
         userID = getActivity().getPreferences(Context.MODE_PRIVATE).getInt("id",0);
 
         NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_mainpage);
@@ -116,7 +116,7 @@ public class FragmentAddAlerte extends Fragment {
             @Override
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
                 listeAnimal = response.body();
-                rvListAnimals.setAdapter(new AdapterListeAnimalAlerte(listeAnimal));
+                rvListAnimals.setAdapter(new AdapterListeAnimalAlerte(listeAnimal, context));
             }
             @Override
             public void onFailure(Call<List<Animal>> call, Throwable t) {
@@ -134,5 +134,9 @@ public class FragmentAddAlerte extends Fragment {
         });
 
         return view;
+    }
+
+    public int returnIdAuth(){
+        return getActivity().getPreferences(Context.MODE_PRIVATE).getInt("id",0);
     }
 }
