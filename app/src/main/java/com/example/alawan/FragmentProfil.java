@@ -16,10 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.alawan.Class.Adapter.AdapterListeAlerteProfil;
 import com.example.alawan.Class.Adapter.AdapterListeAnimalProfil;
 import com.example.alawan.Class.Animal;
+import com.example.alawan.Class.Person;
 import com.example.alawan.Class.Server.RetrofitInstance;
 import com.example.alawan.Class.Server.ServerInterface;
 
@@ -41,6 +43,7 @@ public class FragmentProfil extends Fragment {
     ImageView ivSetting;
     View view;
     Button btAddPet;
+    TextView tvNbCompagion, tvNbAlert, tvBonjour;
     public FragmentProfil() {
         // Required empty public constructor
     }
@@ -68,6 +71,10 @@ public class FragmentProfil extends Fragment {
         rv2.setHasFixedSize(true);
         rv2.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        tvNbAlert = view.findViewById(R.id.tv_nbAlert_profil);
+        tvNbCompagion = view.findViewById(R.id.tv_nbCompagnion_profil);
+        tvBonjour = view.findViewById(R.id.tv_bonjour_profile);
+
         ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
         /*
         serverInterface.getListAnimal().enqueue(new Callback<List<Animal>>() {
@@ -82,28 +89,55 @@ public class FragmentProfil extends Fragment {
             }
         });*/
 
+        serverInterface.getUser(idAuth).enqueue(new Callback<Person>() {
+            @Override
+            public void onResponse(Call<Person> call, Response<Person> response) {
+                if (response.body() != null){
+                    tvBonjour.setText("Bonjour " + response.body().getName());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Person> call, Throwable t) {
+                Log.v("debug error",t.toString());
+            }
+        });
+
         serverInterface.getUserAnimal(idAuth).enqueue(new Callback<List<Animal>>() {
             @Override
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
-                listCompagnon = response.body();
-                rv1.setAdapter(new AdapterListeAnimalProfil(listCompagnon));
+                if(response.body() != null){
+                    listCompagnon = response.body();
+                    rv1.setAdapter(new AdapterListeAnimalProfil(listCompagnon));
+                    tvNbCompagion.setText(listCompagnon.size() + "");
+                }
+                else{
+                    Log.v("debug","la liste est vide " + response.toString());
+                }
             }
 
             @Override
             public void onFailure(Call<List<Animal>> call, Throwable t) {
-                Log.v("debug",t.toString());
+                Log.v("debug error",t.toString());
             }
         });
 
         serverInterface.getAnimalsAlertProfil(idAuth).enqueue(new Callback<List<Animal>>() {
             @Override
             public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
-                listAlert = response.body();
-                rv2.setAdapter(new AdapterListeAlerteProfil(listAlert));
+                if(response.body() != null){
+                    listAlert = response.body();
+                    rv2.setAdapter(new AdapterListeAlerteProfil(listAlert));
+                    tvNbAlert.setText(listAlert.size() + "");
+                }
+                else{
+                    Log.v("debug","la liste est vide " + response.toString());
+                }
+
             }
             @Override
             public void onFailure(Call<List<Animal>> call, Throwable t) {
-                Log.v("debug",t.toString());
+                Log.v("debug error",t.toString());
             }
         });
 
@@ -126,5 +160,13 @@ public class FragmentProfil extends Fragment {
             }
         });
         return view;
+    }
+
+    public void reduireNbCompagnion(){
+        tvNbCompagion.setText((Integer.parseInt(tvNbCompagion.getText().toString()) - 1 )+ "");
+    }
+
+    public void reduireNbAlert(){
+        tvNbAlert.setText((Integer.parseInt(tvNbAlert.getText().toString()) - 1 )+ "");
     }
 }
