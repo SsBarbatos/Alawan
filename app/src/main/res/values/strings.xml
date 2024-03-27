@@ -67,4 +67,5 @@
     <string name="text_animaux_profil">Animaux profil</string>
     <string name="bouton_add_pet">Ajouter un compagnon</string>
     <string name="descriptionAlerte">Informations supplémentaires</string>
+    <string name="selectionAnimal">Sélectionner le compagnon perdu</string>
 </resources>
