@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class DescriptionDialog extends AlertDialog.Builder
 {
     private EditText editText;
-    AdapterListeAnimalAlerte adapterListeAnimalAlerte = new AdapterListeAnimalAlerte(new ArrayList<>());
+    //AdapterListeAnimalAlerte adapterListeAnimalAlerte = new AdapterListeAnimalAlerte(new ArrayList<>());
 
     public DescriptionDialog(Context context)
     {
@@ -33,7 +33,7 @@ public class DescriptionDialog extends AlertDialog.Builder
                 else
                     description = editText.getText().toString();
 
-                adapterListeAnimalAlerte.setDescription(description);
+                //adapterListeAnimalAlerte.setDescription(description);
             }
         });
         setNegativeButton("Annuler", new DialogInterface.OnClickListener()

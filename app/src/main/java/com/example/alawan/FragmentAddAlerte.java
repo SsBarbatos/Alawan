@@ -62,7 +62,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public class FragmentAddAlerte extends Fragment {
 
     View view;
-
+    FragmentAddAlerte context;
     ServerInterface serverInterface ;
     NavController navController;
 
@@ -87,7 +87,7 @@ public class FragmentAddAlerte extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         view = inflater.inflate(R.layout.fragment_add_alerte, container, false);
-
+        context = this;
         userID = getActivity().getPreferences(Context.MODE_PRIVATE).getInt("id",0);
 
         NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_mainpage);
@@ -114,24 +114,11 @@ public class FragmentAddAlerte extends Fragment {
         Call<List<Animal>> callGetUserAnimals = serverInterface.getUserAnimal(userID);
         callGetUserAnimals.enqueue(new Callback<List<Animal>>() {
             @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                if(response.body() != null){
-                    userID = response.body();
-                    Call<List<Animal>> callGetUserAnimals = serverInterface.getUserAnimal(userID);
-                    callGetUserAnimals.enqueue(new Callback<List<Animal>>() {
-                        @Override
-                        public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
-                            if(response.body() != null){
-                                listeAnimal = response.body();
-                                rvListAnimals.setAdapter(new AdapterListeAnimalProfil(listeAnimal));
-                            }
-                        }
-                        @Override
-                        public void onFailure(Call<List<Animal>> call, Throwable t) {
-                            Log.v("debug error", t.toString());
-                        }
-                    });
-                }
+
+            public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
+                listeAnimal = response.body();
+                rvListAnimals.setAdapter(new AdapterListeAnimalAlerte(listeAnimal, context));
+
             }
             @Override
             public void onFailure(Call<List<Animal>> call, Throwable t) {
@@ -149,5 +136,9 @@ public class FragmentAddAlerte extends Fragment {
         });
 
         return view;
+    }
+
+    public int returnIdAuth(){
+        return getActivity().getPreferences(Context.MODE_PRIVATE).getInt("id",0);
     }
 }
