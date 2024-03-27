@@ -1,6 +1,7 @@
 package com.example.alawan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -110,8 +111,9 @@ public class FragmentProfil extends Fragment {
             @Override
             public void onClick(View v) {
                 // Rajouter le code de deconnexion
-                //Intent intent = new Intent(getActivity(), ActivityModifyProfil.class);
-                //((ActivityMenu)getActivity()).changePage(intent);
+                Intent intent = new Intent(getActivity(), ActivityModifyProfil.class);
+                intent.putExtra("id",idAuth);
+                ((ActivityMenu)getActivity()).changePage(intent);
             }
         });
 

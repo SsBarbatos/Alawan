@@ -68,6 +68,7 @@ public class FragmentFirstPage extends Fragment {
                     public void onResponse(Call<Integer> call, Response<Integer> response)
                     {
                         Intent intent = new Intent(getActivity(), ActivityMenu.class);
+                        intent.putExtra("id",4);
                         startActivity(intent);
                     }
                     @Override

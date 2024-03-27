@@ -28,8 +28,9 @@ public interface ServerInterface
     @GET("/api/persons")
     Call<List<Person>> getListPersons();
 
-    @GET("/api/user")
-    Call<Person> getUser();
+    @POST("/api/getPerson")
+    @FormUrlEncoded
+    Call<Person> getUser(@Field("id") int id);
 
     @POST("/api/animals/person")
     @FormUrlEncoded
@@ -108,4 +109,8 @@ public interface ServerInterface
     @POST("/api/uploadImage")
     @FormUrlEncoded
     Call<String> uploadImage(@Field("bitmap") Bitmap bitmap);
+
+    @POST("/api/modifyPerson")
+    @FormUrlEncoded
+    Call<Boolean> modifyPerson(@Field("id") int id, @Field("name") String name, @Field("lastName") String lastName, @Field("email") String email, @Field("phone") String phone);
 }

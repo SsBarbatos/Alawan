@@ -10,6 +10,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,7 +31,9 @@ import android.location.Geocoder;
 import android.location.Location;
 
 
-
+import com.example.alawan.Class.Alert;
+import com.example.alawan.Class.Server.RetrofitInstance;
+import com.example.alawan.Class.Server.ServerInterface;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -45,6 +48,9 @@ import com.google.android.gms.location.LocationServices;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ActivityMenu extends AppCompatActivity implements  OnMapReadyCallback,
@@ -140,30 +146,42 @@ public class ActivityMenu extends AppCompatActivity implements  OnMapReadyCallba
                 else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
                     navController.navigate(R.id.action_fragmentZoomAlert_to_recherche);
                 }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddAlerteInvite){
+                    navController.navigate(R.id.action_fragmentAddAlerteInvite_to_recherche);
+                }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddAlerte){
+                    navController.navigate(R.id.action_fragmentAddAlerte_to_recherche);
+                }
             }
 
         });
         layoutProfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeColor(tvProfil, ivProfile);
-                if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap) {
-                    navController.navigate(R.id.action_map_to_vav_profil);
-                } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
-                    navController.navigate(R.id.action_recherche_to_vav_profil);
+                if(id != 4){
+                    changeColor(tvProfil, ivProfile);
+                    if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap) {
+                        navController.navigate(R.id.action_map_to_vav_profil);
+                    } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
+                        navController.navigate(R.id.action_recherche_to_vav_profil);
+                    }
+                    else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddAlerteInvite) {
+                        navController.navigate(R.id.action_fragmentAddAlerteInvite_to_vav_profil);
+                    }
+                    else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddPet){
+                        navController.navigate(R.id.action_addPet_to_vav_profil);
+                    }
+                    else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentFindMed){
+                        navController.navigate(R.id.action_fragment_find_med_to_vav_profil);
+                    }
+                    else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
+                        navController.navigate(R.id.action_fragmentZoomAlert_to_vav_profil);
+                    }
+                    else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddAlerte){
+                        navController.navigate(R.id.action_fragmentAddAlerte_to_vav_profil);
+                    }
                 }
-                else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddAlerteInvite) {
-                    navController.navigate(R.id.action_fragmentAddAlerteInvite_to_vav_profil);
-                }
-                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddPet){
-                    navController.navigate(R.id.action_addPet_to_vav_profil);
-                }
-                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentFindMed){
-                    navController.navigate(R.id.action_fragment_find_med_to_vav_profil);
-                }
-                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
-                    navController.navigate(R.id.action_fragmentZoomAlert_to_vav_profil);
-                }
+
             }
         });
         layoutAccueil.setOnClickListener(new View.OnClickListener() {
@@ -187,28 +205,33 @@ public class ActivityMenu extends AppCompatActivity implements  OnMapReadyCallba
                 else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
                     navController.navigate(R.id.action_fragmentZoomAlert_to_map);
                 }
+                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddAlerte){
+                    navController.navigate(R.id.action_fragmentAddAlerte_to_map);
+                }
             }
         });
         layout4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeColor(tv4, iv4);
-                if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil) {
-                    navController.navigate(R.id.action_vav_profil_to_fragment_find_med);
-                } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
-                    navController.navigate(R.id.action_recherche_to_fragment_find_med);
-                }
-                else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddAlerteInvite) {
-                    navController.navigate(R.id.action_fragmentAddAlerteInvite_to_fragment_find_med);
-                }
-                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddPet){
-                    navController.navigate(R.id.action_addPet_to_fragment_find_med);
-                }
-                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap){
-                    navController.navigate(R.id.action_map_to_fragment_find_med);
-                }
-                else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
-                    navController.navigate(R.id.action_fragmentZoomAlert_to_fragment_find_med);
+                if(id != 4){
+                    changeColor(tv4, iv4);
+                    if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil) {
+                        navController.navigate(R.id.action_vav_profil_to_fragment_find_med);
+                    } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
+                        navController.navigate(R.id.action_recherche_to_fragment_find_med);
+                    }
+                    else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddPet){
+                        navController.navigate(R.id.action_addPet_to_fragment_find_med);
+                    }
+                    else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap){
+                        navController.navigate(R.id.action_map_to_fragment_find_med);
+                    }
+                    else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
+                        navController.navigate(R.id.action_fragmentZoomAlert_to_fragment_find_med);
+                    }
+                    else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddAlerte){
+                        navController.navigate(R.id.action_fragmentAddAlerte_to_fragment_find_med);
+                    }
                 }
             }
         });
@@ -219,19 +242,11 @@ public class ActivityMenu extends AppCompatActivity implements  OnMapReadyCallba
                 if(id == 4)
                 {
                     changeColor(null,null);
-                    if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentProfil) {
-                        navController.navigate(R.id.action_vav_profil_to_fragmentAddAlerteInvite);
-                    } else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
+                    if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentRecherche) {
                         navController.navigate(R.id.action_recherche_to_fragmentAddAlerteInvite);
                     }
                     else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentMap){
                         navController.navigate(R.id.action_map_to_fragmentAddAlerteInvite);
-                    }
-                    else if (navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentAddPet) {
-                        navController.navigate(R.id.action_addPet_to_fragmentAddAlerteInvite);
-                    }
-                    else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentFindMed){
-                        navController.navigate(R.id.action_fragment_find_med_to_fragmentAddAlerteInvite);
                     }
                     else if(navHostFragment.getChildFragmentManager().getFragments().get(0) instanceof FragmentZoomAlert){
                         navController.navigate(R.id.action_fragmentZoomAlert_to_fragmentAddAlerteInvite);
@@ -326,6 +341,19 @@ public class ActivityMenu extends AppCompatActivity implements  OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        RetrofitInstance.getInstance().create(ServerInterface.class).getAllAlert().enqueue(new Callback<List<Alert>>() {
+            @Override
+            public void onResponse(Call<List<Alert>> call, Response<List<Alert>> response) {
+                if(response.body() != null){
+
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Alert>> call, Throwable t) {
+                Log.v("debug error",t.toString());
+            }
+        });
 
         LatLng address1 = getLocationFromAddress("7331 Rue Notre Dame O, Trois-Rivières, QC G9B 1L7");
         if (address1 != null) {
