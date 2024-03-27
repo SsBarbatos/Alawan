@@ -51,19 +51,20 @@
         android:layout_marginStart="16dp"
         android:contentDescription="@string/image"
         android:src="@drawable/ic_local_pin"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_ville_recherche"
         app:layout_constraintStart_toEndOf="@+id/tv_chienperdu_recherche"
-        tools:layout_editor_absoluteY="88dp" />
+        app:layout_constraintTop_toTopOf="@+id/tv_ville_recherche" />
 
     <TextView
         android:id="@+id/tv_ville_recherche"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="Trois-rivières - 4km"
         android:textColor="@color/GreenText"
         android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_chienperdu_recherche"
         app:layout_constraintEnd_toEndOf="@+id/tv_region_recherche"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/iv_ping_recherche"
-        app:layout_constraintTop_toBottomOf="@+id/tv_region_recherche" />
+        app:layout_constraintTop_toTopOf="@+id/tv_chienperdu_recherche" />
 </androidx.constraintlayout.widget.ConstraintLayout>
