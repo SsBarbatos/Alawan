@@ -227,6 +227,13 @@ public class FragmentAddAlerteInvite extends Fragment
                                 @Override
                                 public void onResponse(Call<Boolean> call, Response<Boolean> response) {
                                     navController.navigate(R.id.action_fragmentAddAlerteInvite_to_map);
+                                    getActivity().findViewById(R.id.mv_map).setVisibility(View.VISIBLE);
+
+                                    TextView tv = getActivity().findViewById(R.id.tv_acceuil_menu);
+                                    ImageView iv = getActivity().findViewById(R.id.iv_acceuil_menu);
+
+                                    tv.setTextColor(getResources().getColor(R.color.GreenText));
+                                    iv.setColorFilter(getResources().getColor(R.color.GreenText));
                                 }
                                 @Override
                                 public void onFailure(Call<Boolean> call, Throwable t) {
