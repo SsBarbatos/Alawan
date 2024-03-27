@@ -49,7 +49,7 @@ dependencies {
     implementation("junit:junit:4.13.2")
     implementation("org.mockito:mockito-core:3.12.4")
     implementation("org.robolectric:robolectric:4.6.1")
-
+    implementation("com.squareup.picasso:picasso:2.8")
     //mapimport
     implementation ("com.google.android.gms:play-services-maps:18.1.0")
     implementation ("com.google.android.gms:play-services-location:20.0.0")

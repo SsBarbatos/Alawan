@@ -114,9 +114,24 @@ public class FragmentAddAlerte extends Fragment {
         Call<List<Animal>> callGetUserAnimals = serverInterface.getUserAnimal(userID);
         callGetUserAnimals.enqueue(new Callback<List<Animal>>() {
             @Override
-            public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
-                listeAnimal = response.body();
-                rvListAnimals.setAdapter(new AdapterListeAnimalAlerte(listeAnimal));
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.body() != null){
+                    userID = response.body();
+                    Call<List<Animal>> callGetUserAnimals = serverInterface.getUserAnimal(userID);
+                    callGetUserAnimals.enqueue(new Callback<List<Animal>>() {
+                        @Override
+                        public void onResponse(Call<List<Animal>> call, Response<List<Animal>> response) {
+                            if(response.body() != null){
+                                listeAnimal = response.body();
+                                rvListAnimals.setAdapter(new AdapterListeAnimalProfil(listeAnimal));
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<List<Animal>> call, Throwable t) {
+                            Log.v("debug error", t.toString());
+                        }
+                    });
+                }
             }
             @Override
             public void onFailure(Call<List<Animal>> call, Throwable t) {
