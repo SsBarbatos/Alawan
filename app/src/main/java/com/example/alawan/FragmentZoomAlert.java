@@ -134,8 +134,8 @@ public class FragmentZoomAlert extends Fragment {
                 if(response.body() != null){
                     animal = response.body();
                     tvNom.setText(animal.getName());
-                    Picasso.get().load("http://10.0.2.2:8000/img/" + animal.getPicture()).into(ivImage);
-                    //Picasso.get().load("http://172.16.86.209:8080/img/" + animal.getPicture()).into(ivImage);
+                    //Picasso.get().load("http://10.0.2.2:8000/img/" + animal.getPicture()).into(ivImage); //Local host
+                    Picasso.get().load("http://172.16.86.209:8080/img/" + animal.getPicture()).into(ivImage); //server
                 }
                 else {
                     Log.v("debug",response.toString());

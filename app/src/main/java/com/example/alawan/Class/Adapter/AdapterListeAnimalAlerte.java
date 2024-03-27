@@ -194,10 +194,7 @@ public class AdapterListeAnimalAlerte extends RecyclerView.Adapter {
                         }
                     }
                 });
-
                 alertDialog.show();
-
-
             }
         });
     }
