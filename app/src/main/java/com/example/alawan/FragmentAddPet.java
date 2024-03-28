@@ -120,7 +120,7 @@ public class FragmentAddPet extends Fragment
         ivAddAnimal = view.findViewById(R.id.iv_image_add_compagnon);
         ivAddAnimal.setAutofillHints("no_picture");
 
-        serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
+        ServerInterface serverInterface = RetrofitInstance.getInstance().create(ServerInterface.class);
 
     // __ FILL THE COLORS SPINNER __________________________________________________________________
         ArrayAdapter<CharSequence> adapterColors = ArrayAdapter.createFromResource(
@@ -199,47 +199,50 @@ public class FragmentAddPet extends Fragment
             throw new RuntimeException(e);
         }
 
-        Call<String> callImage = serverInterface.uploadImage(imageBitmap);
-        callImage.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                filepath = response.body();
+        if(ivAddAnimal.getAutofillHints().toString().equals("no_picture"))
+        {
+            callAddAnimal = serverInterface.addAnimal(getActivity().getPreferences(Context.MODE_PRIVATE).getInt("id",0), spRace.getSelectedItemPosition() - 1, 0, etName.getText().toString(), null, birth, false);
+        }
+        else
+        {
+            Call<String> callImage = serverInterface.uploadImage(imageBitmap);
+            callImage.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    filepath = response.body();
+                    callAddAnimal = serverInterface.addAnimal(getActivity().getPreferences(Context.MODE_PRIVATE).getInt("id",0), spRace.getSelectedItemPosition() - 1, 0, etName.getText().toString(), filepath, birth, false);
+                    callAddAnimal.enqueue(new Callback<Integer>() {
+                        @Override
+                        public void onResponse(Call<Integer> call, Response<Integer> response) {
+                            animalID = response.body();
+                            Call<Boolean> callAnimalColor = serverInterface.addAnimalColor(animalID, spColor.getSelectedItemPosition() - 1);
+                            callAnimalColor.enqueue(new Callback<Boolean>() {
+                                @Override
+                                public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                                    NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_mainpage);
+                                    navController = navHostFragment.getNavController();
 
-                if(ivAddAnimal.getAutofillHints().toString().equals("no_picture"))
-                    callAddAnimal = serverInterface.addAnimal(getActivity().getPreferences(Context.MODE_PRIVATE).getInt("id",0), spRace.getSelectedItemPosition() - 1, 0, etName.getText().toString(), null, birth, false);
-                else
-                    callAddAnimal = serverInterface.addAnimal(getActivity().getPreferences(Context.MODE_PRIVATE).getInt("id", 0), spRace.getSelectedItemPosition() - 1, 0, etName.getText().toString(), filepath, birth, false);
-                callAddAnimal.enqueue(new Callback<Integer>() {
-                    @Override
-                    public void onResponse(Call<Integer> call, Response<Integer> response) {
-                        animalID = response.body();
+                                    Toast.makeText(requireContext(), "Compagnon ajouté avec succès", Toast.LENGTH_LONG).show();
 
-                        Call<Boolean> callAnimalColor = serverInterface.addAnimalColor(animalID, spColor.getSelectedItemPosition() - 1);
-                        callAnimalColor.enqueue(new Callback<Boolean>() {
-                            @Override
-                            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                                NavHostFragment navHostFragment = (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fv_mainpage);
-                                navController = navHostFragment.getNavController();
-
-                                Toast.makeText(requireContext(), "Compagnon ajouté avec succès", Toast.LENGTH_LONG).show();
-                                navController.navigate(R.id.action_addPet_to_vav_profil2);
-                            }
-                            @Override
-                            public void onFailure(Call<Boolean> call, Throwable t) {
-                                Log.v("debug error", t.toString());
-                            }
-                        });
-                    }
-                    @Override
-                    public void onFailure(Call<Integer> call, Throwable t) {
-                        Log.v("debug error", t.toString());
-                    }
-                });
-            }
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.v("Create animal", t.toString());
-            }
-        });
+                                    navController.navigate(R.id.action_fragmentAddAlerteInvite_to_map);
+                                }
+                                @Override
+                                public void onFailure(Call<Boolean> call, Throwable t) {
+                                    Log.v("debug error", t.toString());
+                                }
+                            });
+                        }
+                        @Override
+                        public void onFailure(Call<Integer> call, Throwable t) {
+                            Log.v("debug error", t.toString());
+                        }
+                    });
+                }
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Log.v("Create animal", t.toString());
+                }
+            });
+        }
     }
 }
