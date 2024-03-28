@@ -79,16 +79,15 @@
         android:id="@+id/bt_ajout_compagnon"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="48dp"
         android:background="@drawable/bg_btnf"
         android:fontFamily="@font/inter_black"
         android:text="@string/ajouterCompagnon"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="664dp" />
 
     <ImageView
         android:id="@+id/iv_image_add_compagnon"

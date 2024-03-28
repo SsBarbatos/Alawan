@@ -35,39 +35,37 @@
         android:id="@+id/rv_liste_animaux"
         android:layout_width="0dp"
         android:layout_height="450dp"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_nouveaux_animaux"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="180dp" />
 
     <Button
         android:id="@+id/bt_nouveaux_animaux"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/bg_btnf"
         android:fontFamily="@font/inter_black"
         android:text="@string/nouveauCompagnon"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_liste_animaux" />
 
     <TextView
         android:id="@+id/tv_selection_animaux"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="12dp"
         android:text="@string/selectionAnimal"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/rv_liste_animaux"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.776" />
+        app:layout_constraintStart_toStartOf="@+id/rv_liste_animaux"
+        app:layout_constraintTop_toBottomOf="@+id/tv_titre_animaux"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

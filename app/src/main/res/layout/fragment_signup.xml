@@ -68,7 +68,7 @@
         android:autofillHints="@string/password"
         android:backgroundTint="#000000"
         android:drawableStart="@drawable/ic_mdp"
-        android:drawableEnd="@drawable/ic_hide"
+
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
@@ -141,7 +141,7 @@
         android:autofillHints="@string/confirmerPassword"
         android:backgroundTint="#000000"
         android:drawableStart="@drawable/ic_mdp"
-        android:drawableEnd="@drawable/ic_hide"
+
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/inter_semibold"
